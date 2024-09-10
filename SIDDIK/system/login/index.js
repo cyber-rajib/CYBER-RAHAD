@@ -1,5 +1,5 @@
 "use strict";
-
+ 
 var utils = require("./utils");
 var cheerio = require("cheerio");
 var log = require('npmlog');
@@ -7,7 +7,7 @@ const logger = require('../../catalogs/siddikc.js');
 const chalk = require('chalk');
 var defaultLogRecordSize = 100;
 log.maxRecordSize = defaultLogRecordSize;
-
+ 
 function setOptions(globalOptions, options) {
   Object.keys(options).map(function (key) {
     switch (key) {
@@ -70,25 +70,25 @@ function setOptions(globalOptions, options) {
     }
   });
 }
-
+ 
 function buildAPI(globalOptions, html, token, jar) {
   var { c_user, i_user } = jar.getCookies('https://www.facebook.com').reduce(function (form, val) {
     var [name, value] = val.cookieString().split('=');
     form[name] = value;
     return form;
   }, {});
-
+ 
   if (!i_user && !c_user) {
     logger.error(`having some unexpected error while retrieving userid. this can be caused by a lot of things, including ${chalk.blueBright('getting blocked by facebook for logging in from an unknown location')} or ${chalk.blueBright('your account get locked, account is logged out etc.')} ` + chalk.red('try to login again and replace your appstate'))
     return process.exit(0);
   }
-
+ 
   if (html.indexOf("/checkpoint/block/?next") > -1) {
     logger.warn("checkpoint detected. please log in with a browser to verify.");
   }
-
+ 
   var userID = i_user || c_user;
-
+ 
   var clientID = (Math.random() * 2147483648 | 0).toString(16);
   var api = {
     setOptions: setOptions.bind(null, globalOptions),
@@ -96,12 +96,12 @@ function buildAPI(globalOptions, html, token, jar) {
       return utils.getAppState(jar);
     }
   }
-
+ 
   let oldFBMQTTMatch = html.match(/irisSeqID:"(.+?)",appID:219994525426954,endpoint:"(.+?)"/);
   let mqttEndpoint = null;
   let region = null;
   let irisSeqID = null;
-
+ 
   if (token == 'NONE') logger.warn('cant get access_token');
   if (oldFBMQTTMatch) {
     irisSeqID = oldFBMQTTMatch[1];
@@ -132,7 +132,7 @@ function buildAPI(globalOptions, html, token, jar) {
       }
     }
   }
-
+ 
   // All data available to api functions
   var ctx = {
     userID,
@@ -149,7 +149,7 @@ function buildAPI(globalOptions, html, token, jar) {
     region,
     firstListen: true
   };
-
+ 
   var http = utils.makeDefaults(html, userID, ctx);
   
   // Load all api functions in a loop
@@ -159,29 +159,29 @@ function buildAPI(globalOptions, html, token, jar) {
     .map(function (v) {
       api[v.replace('.js', '')] = require('./src/' + v)(http, api, ctx);
     });
-
+ 
   //Removing original `listen` that uses pull.
   //Map it to listenMqtt instead for backward compatibly.
   api.listen = api.listenMqtt;
-
+ 
   return [ctx, http, api];
 }
-
+ 
 function makeLogin(jar, email, password, loginOptions, callback, prCallback) {
   return function (res) {
     var html = res.body;
     var $ = cheerio.load(html);
     var arr = [];
-
+ 
     // This will be empty, but just to be sure we leave it
     $("#login_form input").map(function (i, v) {
       arr.push({ val: $(v).val(), name: $(v).attr("name") });
     });
-
+ 
     arr = arr.filter(function (v) {
       return v.val && v.val.length;
     });
-
+ 
     var form = utils.arrToForm(arr);
     form.lsd = utils.getFrom(html, "[\"LSD\",[],{\"token\":\"", "\"}");
     form.lgndim = Buffer.from("{\"w\":1440,\"h\":900,\"aw\":1440,\"ah\":834,\"c\":24}").toString('base64');
@@ -192,8 +192,8 @@ function makeLogin(jar, email, password, loginOptions, callback, prCallback) {
     form.locale = 'en_US';
     form.timezone = '240';
     form.lgnjs = ~~(Date.now() / 1000);
-
-
+ 
+ 
     // Getting cookies from the HTML page... (kill me now plz)
     // we used to get a bunch of cookies in the headers of the response of the
     // request, but FB changed and they now send those cookies inside the JS.
@@ -209,7 +209,7 @@ function makeLogin(jar, email, password, loginOptions, callback, prCallback) {
       jar.setCookie(utils.formatCookie(cookieData, "facebook"), "https://www.facebook.com");
     });
     // ---------- Very Hacky Part Ends -----------------
-
+ 
     const chalk = require('chalk');
     logger.loader(`deploying ${chalk.blueBright('login')} system`);
     return utils
@@ -219,14 +219,14 @@ function makeLogin(jar, email, password, loginOptions, callback, prCallback) {
         var headers = res.headers;
         if (!headers.location) 
           logger.error(`wrong username or password`);
-
+ 
         // This means the account has login approvals turned on.
         if (headers.location.includes('.com/checkpoint/')) {
           logger.loader("you have login approvals turned on.");
           if (callback == prCallback) 
             logger.error('promise is not supported for login code verification')
           var Referer = headers.location;
-
+ 
           return utils
             .get(Referer, jar, null, loginOptions)
             .then(utils.saveCookies(jar))
@@ -250,7 +250,7 @@ function makeLogin(jar, email, password, loginOptions, callback, prCallback) {
                       resolve(callback(err, api));
                     }
                   });
-
+ 
                   form.approvals_code = code;
                   form['submit[Continue]'] = $("#checkpointSubmitButton").html(); // Continue
                   if (typeof code == 'string') {
@@ -274,7 +274,7 @@ function makeLogin(jar, email, password, loginOptions, callback, prCallback) {
                         delete form.no_fido;
                         delete form.approvals_code;
                         form.name_action_selected = 'save_device';
-
+ 
                         return utils
                           .post(Referer, jar, form, loginOptions, null, { Referer })
                           .then(utils.saveCookies(jar));
@@ -313,7 +313,7 @@ function makeLogin(jar, email, password, loginOptions, callback, prCallback) {
                         return cb(err);
                       });
                   }
-
+ 
                   return rtPromise;
                 }
                 throw {
@@ -328,7 +328,7 @@ function makeLogin(jar, email, password, loginOptions, callback, prCallback) {
                   form['submit[This was me]'] = "This was me";
                 else 
                   form['submit[This Is Okay]'] = "This Is Okay";
-
+ 
                 function submitNot2FA() {
                   var cb;
                   var rtPromise = new Promise(function (resolve) {
@@ -336,7 +336,7 @@ function makeLogin(jar, email, password, loginOptions, callback, prCallback) {
                       resolve(callback(err, api));
                     }
                   });
-
+ 
                   utils
                     .post(Referer, jar, form, loginOptions)
                     .then(utils.saveCookies(jar))
@@ -368,7 +368,7 @@ function makeLogin(jar, email, password, loginOptions, callback, prCallback) {
               }
             });
         }
-
+ 
         setOptions(loginOptions, {
           userAgent: "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Mobile Safari/537.36"
         });
@@ -378,12 +378,12 @@ function makeLogin(jar, email, password, loginOptions, callback, prCallback) {
       });
   }
 }
-
+ 
 // Helps the login
 function loginHelper(appState, email, password, globalOptions, callback, prCallback) {
   var mainPromise = null;
   var jar = utils.getJar();
-
+ 
   // If we're given an appState we loop through it and save each cookie
   // back into the jar.
   if (appState) {
@@ -394,7 +394,7 @@ function loginHelper(appState, email, password, globalOptions, callback, prCallb
       var str = c.key + "=" + c.value + "; expires=" + c.expires + "; domain=" + c.domain + "; path=" + c.path + ";";
       jar.setCookie(str, "http://" + c.domain);
     });
-
+ 
     // Load the main page.
     mainPromise = utils
       .get('https://www.facebook.com/', jar, null, globalOptions, null, { noRef: true })
@@ -411,11 +411,11 @@ function loginHelper(appState, email, password, globalOptions, callback, prCallb
       .then(utils.saveCookies(jar))
       .then(makeLogin(jar, email, password, globalOptions, callback, prCallback));
   }
-
+ 
   var ctx = null;
   var _defaultFuncs = null;
   var api = null;
-
+ 
   mainPromise = mainPromise
     .then(function (res) {
       // Hacky check for the redirection that happens on some ISPs, which doesn't return statusCode 3xx
@@ -438,7 +438,7 @@ function loginHelper(appState, email, password, globalOptions, callback, prCallb
       api = stuff[2];
       return res;
     });
-
+ 
   // given a pageID we log in as a page  
   if (globalOptions.pageID) {
     mainPromise = mainPromise
@@ -449,12 +449,12 @@ function loginHelper(appState, email, password, globalOptions, callback, prCallb
       .then(function (resData) {
         var url = utils.getFrom(resData.body, 'window.location.replace("https:\\/\\/www.facebook.com\\', '");').split('\\').join('');
         url = url.substring(0, url.length - 1);
-
+ 
         return utils
           .get('https://www.facebook.com' + url, ctx.jar, null, globalOptions);
       });
   }
-
+ 
   // At the end we call the callback or catch an exception
   mainPromise
     .then(function () {
@@ -467,7 +467,7 @@ function loginHelper(appState, email, password, globalOptions, callback, prCallb
       return callback(e);
     });
 }
-
+ 
 function login(loginData, options, callback) {
   var prCallback;
   var returnPromise = new Promise(function (resolve, reject) {
@@ -481,7 +481,7 @@ function login(loginData, options, callback) {
   if (typeof callback == 'function') prCallback = null;
   else callback = prCallback;
   if (options == undefined) options = {};
-
+ 
   var globalOptions = {
     selfListen: false,
     selfListenEvent: false,
@@ -497,7 +497,7 @@ function login(loginData, options, callback) {
     emitReady: false
   };
   setOptions(globalOptions, options);
-
+ 
   if (parseInt(process.versions.node) < 14) {
     logger.error('node version must be 14.x or higher, recommended version: 16.7.0');
     return callback({
@@ -509,5 +509,6 @@ function login(loginData, options, callback) {
   
   return returnPromise;
 }
-
+ 
 module.exports = login;
+ 
