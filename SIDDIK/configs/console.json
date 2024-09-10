@@ -6,9 +6,9 @@
     "warn": "yellow",
     "available": "blue, red, yellow, white, green, blueBright",
     "editNames": {
-      "success": "NAZRUL RUNNING",
-      "error":   "NAZRUL ERROR",
-      "warn":    "NAZRUL WARNING"
+      "success": "SIDDIK RUNNING",
+      "error":   "SIDDIK ERROR",
+      "warn":    "SIDDIK WARNING"
     }
   },
   "logger": {
@@ -19,10 +19,10 @@
       "evntLoader": "blue"
     },
     "strings": {
-      "cmdStarter": "NAZRUL INPORTING COMMANDS",
-      "evntStarter": "NAZRUL INPORTING EVENTS",
-      "cmdLoader": "NAZRUL COMMAND",
-      "evntLoader": "NAZRUL EVENT"
+      "cmdStarter": "SIDDIK INPORTING COMMANDS",
+      "evntStarter": "SIDDIK INPORTING EVENTS",
+      "cmdLoader": "SIDDIK COMMAND",
+      "evntLoader": "SIDDIK EVENT"
     }
   }
 }
