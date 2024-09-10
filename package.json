@@ -1,14 +1,14 @@
 {
-    "name": "NAZRUL",
+    "name": "SIDDIK",
     "version": "5.2.0",
     "description": "simple messenger bot",
     "main": "",
     "scripts": {
-        "start": "node --trace-warnings --use_strict --async-stack-traces NAZRUL/catalogs/nazrula.js",
+        "start": "node --trace-warnings --use_strict --async-stack-traces SIDDIK/catalogs/siddika.js",
         "login": "node login",
         "test": "node --trace-warnings --use_strict --async-stack-traces main"
     },
-    "author": "NAZRUL",
+    "author": "SIDDIK",
     "license": "GPL-3.0",
     "dependencies": {
         "aes-js": "latest",
