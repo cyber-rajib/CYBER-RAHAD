@@ -9,7 +9,7 @@ const config = require("../configs/console.json");
 var successColor = config.console.success;
 const errorColor = config.console.error;
 const warnColor = config.console.warn;
-
+ 
 module.exports = (text, type) => {
   switch (type) {
 		case "warn":
@@ -29,16 +29,16 @@ module.exports = (text, type) => {
 module.exports.error = (text, type) => {
 	process.stderr.write(chalk[`${errorColor}`](config.console.editNames.error) + ` - ${text}\n`);
 };
-
+ 
 module.exports.err = (text, type) => {
   process.stderr.write(chalk[`${errorColor}`](config.console.editNames.error) + ` - ${text}\n`);
 };
-
+ 
 module.exports.warn = (text, type) => {
 	process.stderr.write(chalk[`${warnColor}`](config.console.editNames.warn) + ` - ${text}\n`);
 };
-
-
+ 
+ 
 module.exports.loader = (data, option) => {
 	switch (option) {
 		case "warn":
@@ -52,3 +52,4 @@ module.exports.loader = (data, option) => {
 			break;
 	}
 }
+ 
