@@ -15,10 +15,10 @@ module.exports.onLoad = function () {
     const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
     const { join } = global.nodemodule["path"];
 
-  const path = join(__dirname, "Nazrul", "font");
+  const path = join(__dirname, "Siddik", "font");
   if (existsSync(path)) mkdirSync(path, { recursive: true });	
 
-  const path2 = join(__dirname, "Nazrul", "font");
+  const path2 = join(__dirname, "Siddik", "font");
     if (!existsSync(path2)) mkdirSync(path2, { recursive: true });
 
     return;
@@ -38,7 +38,7 @@ ________________________\n\n𝐓𝐨 𝐯𝐢𝐞𝐰 𝐚𝐧𝐲 𝐜𝐨𝐦�
 
 ${global.config.PREFIX}Help\n${global.config.PREFIX}Info\n${global.config.PREFIX}Admin
 ________________________\n★যে্ঁকো্ঁনো্ঁ অ্ঁভি্ঁযো্ঁগ্ঁ অ্ঁথ্ঁবা্ৃ হে্ঁল্প্ঁ এ্ঁর্ঁ জ্ঁন্য্ঁ এ্ঁড্ঁমি্ঁন্ঁ 𝐒𝐈𝐃𝐃𝐈𝐊 কে্ঁ ন্ঁক্ঁ ক্ঁর্ঁতে্ঁ পা্ঁরে্ঁন্ঁ★\n𝐓𝐞𝐥𝐞𝐠𝐫𝐚𝐦:  https://t.me/rdxprem12\n𝐈𝐦𝐨 𝐎𝐫 𝐖𝐡𝐚𝐭𝐬𝐀𝐩𝐩: 01831773688
-⋆✦⋆⎯⎯⎯⎯⎯⎯⎯⎯⎯⋆✦⋆`, attachment: fs.createReadStream(__dirname + "/Nazrul/join.jpeg")} ,threadID));
+⋆✦⋆⎯⎯⎯⎯⎯⎯⎯⎯⎯⋆✦⋆`, attachment: fs.createReadStream(__dirname + "/Siddik/join.jpeg")} ,threadID));
   }
   else {
     try {
@@ -46,7 +46,7 @@ ________________________\n★যে্ঁকো্ঁনো্ঁ অ্ঁভ�
       let { threadName, participantIDs } = await api.getThreadInfo(threadID);
 
       const threadData = global.data.threadData.get(parseInt(threadID)) || {};
-      const path = join(__dirname, "Nazrul", "font");
+      const path = join(__dirname, "Siddik", "font");
       const pathGif = join(path, `${threadID}.gif`);
 
       var mentions = [], nameArray = [], memLength = [], i = 0;
@@ -68,11 +68,11 @@ ________________________\n★যে্ঁকো্ঁনো্ঁ অ্ঁভ�
 
       if (existsSync(path)) mkdirSync(path, { recursive: true });
 
-      const randomPath = readdirSync(join(__dirname, "Nazrul", "font"));
+      const randomPath = readdirSync(join(__dirname, "Siddik", "font"));
 
       if (existsSync(pathGif)) formPush = { body: msg, attachment: createReadStream(pathGif), mentions }
       else if (randomPath.length != 0) {
-        const pathRandom = join(__dirname, "Nazrul", "font", `${randomPath[Math.floor(Math.random() * randomPath.length)]}`);
+        const pathRandom = join(__dirname, "Siddik", "font", `${randomPath[Math.floor(Math.random() * randomPath.length)]}`);
         formPush = { body: msg, attachment: createReadStream(pathRandom), mentions }
       }
       else formPush = { body: msg, mentions }
