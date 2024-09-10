@@ -18,7 +18,7 @@ module.exports.run = async function({ api, event, Users, Threads }) {
   const data = global.data.threadData.get(parseInt(threadID)) || (await Threads.getData(threadID)).data;
   const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
   const type = (event.author == event.logMessageData.leftParticipantFbId) ? "  এখানে সিদ্দিক থাকতে তুই লিভ নিবি 😺😸😹🤣😹 \n✢━━━━━𝐒𝐈𝐃𝐃𝐈𝐊━━━━✢" : "তোমার এই গ্রুপে থাকার কোনো যোগ্যাতা নেই😡।\nতাই তোমার লাথি মেরে গ্রুপ থেকে বের করে দেওয়া হলো🤪। WELLCOME REMOVE🤧 \n✢━━━━━𝐒𝐈𝐃𝐃𝐈𝐊━━━━✢";
-  const path = join(__dirname, "Nazrul", "leaveGif");
+  const path = join(__dirname, "Siddik", "leaveGif");
   const gifPath = join(path, `leave1.gif`);
   var msg, formPush
 
