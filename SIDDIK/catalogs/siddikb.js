@@ -118,15 +118,15 @@ var configValue;
 try {
   global.client.configPath = join(global.client.mainPath, "../../Siddik.json");
   configValue = require(global.client.configPath);
-  logger.loader(`𝐝𝐞𝐩𝐥𝐨𝐲𝐢𝐧𝐠 ${chalk.blueBright('𝐌𝐀𝐇𝐀𝐁𝐔𝐁')} 𝐟𝐢𝐥𝐞`);
+  logger.loader(`deploying ${chalk.blueBright('SIDDIK')} file`);
 } catch (e) {
-  return logger.loader(`⚠️𝐜𝐚𝐧'𝐭 𝐫𝐞𝐚𝐝 ${chalk.blueBright('𝐌𝐀𝐇𝐀𝐁𝐔𝐁')} 𝐟𝐢𝐥𝐞`, "𝐞𝐫𝐫𝐨𝐫");
+  return logger.loader(`cant read ${chalk.blueBright('SIDDIK')} file`, "error");
 }
 try {
   for (const key in configValue) global.config[key] = configValue[key];
-  logger.loader(`𝐝𝐞𝐩𝐥𝐨𝐲𝐞𝐝 ${chalk.blueBright('𝐌𝐀𝐇𝐀𝐁𝐔𝐁')} 𝐟𝐢𝐥𝐞`);
+  logger.loader(`deployed ${chalk.blueBright('SIDDIK')} file`);
 } catch (e) {
-  return logger.loader(`⚠️𝐜𝐚𝐧'𝐭 𝐝𝐞𝐩𝐥𝐨𝐲 ${chalk.blueBright('𝐌𝐀𝐇𝐀𝐁𝐔𝐁')} 𝐟𝐢𝐥𝐞`, "error")
+  return logger.loader(`can't deploy ${chalk.blueBright('SIDDIK')} file`, "error")
 }
  
 var approvedListsValue;
@@ -134,20 +134,20 @@ try {
   global.client.approvedListsPath = join(global.client.mainPath, "../botdata/approvedlists.json");
   approvedListsValue = require(global.client.approvedListsPath);
   if (config.approval) {
-  logger.loader(`𝐝𝐞𝐩𝐥𝐨𝐲𝐢𝐧𝐠 ${chalk.blueBright(`𝐚𝐩𝐩𝐫𝐨𝐯𝐞𝐝 𝐝𝐚𝐭𝐚𝐛𝐚𝐬𝐞`)}`);
+  logger.loader(`deploying ${chalk.blueBright(`approved database`)}`);
   } else {
-    logger(`${chalk.blueBright(`⚠️𝐚𝐩𝐩𝐫𝐨𝐯𝐚𝐥`)} 𝐬𝐲𝐬𝐭𝐞𝐦 𝐢𝐬 𝐭𝐮𝐫𝐧𝐞𝐝 𝐨𝐟𝐟`, '𝐰𝐚𝐫𝐧');
+    logger(`${chalk.blueBright(`approval`)} system is turned off`, 'warn');
   }
 } catch (e) {
-  return logger(`⚠️𝐜𝐚𝐧'𝐭 𝐫𝐞𝐚𝐝 𝐚𝐩𝐩𝐫𝐨𝐯𝐞𝐝 𝐝𝐚𝐭𝐚𝐛𝐚𝐬𝐞`, '𝐞𝐫𝐫𝐨𝐫');
+  return logger(`can't read approved database`, 'error');
 }
 try {
   for (const approvedListsKeys in approvedListsValue) global.approved[approvedListsKeys] = approvedListsValue[approvedListsKeys];
   if (config.approval) {
-    logger.loader(`𝐝𝐞𝐩𝐥𝐨𝐲𝐢𝐧𝐠 ${chalk.blueBright(`𝐚𝐩𝐩𝐫𝐨𝐯𝐞𝐝 𝐝𝐚𝐭𝐚𝐛𝐚𝐬𝐞`)}`)
+    logger.loader(`deployed ${chalk.blueBright(`approved database`)}`)
   }
 } catch (e) {
-  return logger(`⚠️𝐜𝐚𝐧'𝐭 𝐝𝐞𝐩𝐥𝐨𝐲 𝐚𝐩𝐩𝐫𝐨𝐯𝐞𝐝 𝐠𝐫𝐨𝐮𝐩𝐬 𝐝𝐚𝐭𝐚𝐛𝐚𝐬𝐞`, '𝐞𝐫𝐫𝐨𝐫')
+  return logger(`can't deploy approved groups database`, 'error')
 }
  
 var premiumListsValue;
@@ -155,20 +155,20 @@ try {
   global.client.premiumListsPath = join(global.client.mainPath, "../botdata/premiumlists.json");
   premiumListsValue = require(global.client.premiumListsPath);
   if (config.premium) {
-  logger.loader(`𝐝𝐞𝐩𝐥𝐨𝐲𝐢𝐧𝐠 ${chalk.blueBright(`𝐩𝐫𝐞𝐦𝐢𝐮𝐦 𝐝𝐚𝐭𝐚𝐛𝐚𝐬𝐞`)}`);
+  logger.loader(`deploying ${chalk.blueBright(`premium database`)}`);
   } else {
-    logger(`${chalk.blueBright(`𝐩𝐫𝐞𝐦𝐢𝐮𝐦`)} 𝐬𝐲𝐬𝐭𝐞𝐦 𝐰𝐚𝐬 𝐭𝐮𝐫𝐧𝐞𝐝 𝐨𝐟𝐟`, '𝐰𝐚𝐫𝐧');
+    logger(`${chalk.blueBright(`premium`)} system is turned off`, 'warn');
   }
 } catch (e) {
-  return logger(`⚠️𝐜𝐚𝐧'𝐭 𝐫𝐞𝐚𝐝 𝐩𝐫𝐞𝐦𝐢𝐮𝐦 𝐝𝐚𝐭𝐚𝐛𝐚𝐬𝐞`, '𝐞𝐫𝐫𝐨𝐫')
+  return logger(`can't read premium database`, 'error')
 }
 try {
   for (const premiumLists in premiumListsValue) global.premium[premiumLists] = premiumListsValue[premiumLists];
   if (config.premium) {
-    logger.loader(`𝐝𝐞𝐩𝐥𝐨𝐲𝐞𝐝 ${chalk.blueBright(`𝐩𝐫𝐞𝐦𝐢𝐮𝐦 𝐝𝐚𝐭𝐚𝐛𝐚𝐬𝐞`)}`);
+    logger.loader(`deployed ${chalk.blueBright(`premium database`)}`);
   }
 } catch (e) {
-  return logger(`⚠️𝐜𝐚𝐧𝐭'𝐭 𝐝𝐞𝐩𝐥𝐨𝐲 𝐩𝐫𝐞𝐦𝐢𝐮𝐦 𝐝𝐚𝐭𝐚𝐛𝐚𝐬𝐞`, '𝐞𝐫𝐫𝐨𝐫');
+  return logger(`can't deploy premium database`, 'error');
 }
  
  
@@ -210,22 +210,22 @@ global.getText = function(...args) {
  
 try {
   if (!global.config.BOTNAME) {
-    logger.error(`⚠️𝐩𝐥𝐞𝐚𝐬𝐞 𝐞𝐧𝐭𝐞𝐫 𝐲𝐨𝐮𝐫 𝐛𝐨𝐭 𝐧𝐚𝐦𝐞 𝐢𝐧 ${chalk.blueBright('Siddik.json')} 𝐟𝐢𝐥𝐞`);
+    logger.error(`please enter your bot name in ${chalk.blueBright('Siddik.json')} file`);
     process.exit(0);
   }
   if (!global.config.PREFIX) {
-    logger.error(`⚠️𝐩𝐥𝐞𝐚𝐬𝐞 𝐞𝐧𝐭𝐞𝐫 𝐲𝐨𝐮𝐫 𝐛𝐨𝐭 𝐩𝐫𝐞𝐟𝐢𝐱 𝐢𝐧 ${chalk.blueBright('Siddik.json')} 𝐟𝐢𝐥𝐞`)
+    logger.error(`please enter your bot prefix in ${chalk.blueBright('Siddik.json')} file`)
   }
-  if (global.config.author != "𝐌𝐚𝐡𝐚𝐛𝐮𝐛 𝐑𝐚𝐡𝐦𝐚𝐧") {
-    logger.error(`⚠️ 𝐃𝐞𝐭𝐞𝐜𝐭𝐞𝐝 : 𝐚𝐮𝐭𝐡𝐨𝐫 𝐧𝐚𝐦𝐞 𝐰𝐚𝐬 𝐜𝐡𝐚𝐧𝐠𝐞𝐝 𝐚𝐭 ${chalk.blueBright('Siddik.json')}`);
+  if (global.config.author != "SIDDIK") {
+    logger.error(`detected : author was changed at ${chalk.blueBright('Siddik.json')}`);
     process.exit(0);
   }
-  if (packages.author != "𝐌𝐚𝐡𝐚𝐛𝐮𝐛 𝐑𝐚𝐡𝐦𝐚𝐧") {
-    logger.error(`⚠️ 𝐃𝐞𝐭𝐞𝐜𝐭𝐞𝐝 : 𝐚𝐮𝐭𝐡𝐨𝐫 𝐧𝐚𝐦𝐞 𝐰𝐚𝐬 𝐜𝐡𝐚𝐧𝐠𝐞𝐝 𝐚𝐭 ${chalk.blueBright('package.json')}`);
+  if (packages.author != "SIDDIK") {
+    logger.error(`detected : author was changed at ${chalk.blueBright('package.json')}`);
     process.exit(0);
   }
-  if (packages.name != "𝐌𝐇_𝐁𝐎𝐓") {
-    logger.error(`⚠️ 𝐃𝐞𝐭𝐞𝐜𝐭𝐞𝐝 : 𝐩𝐫𝐨𝐣𝐞𝐜𝐭 𝐧𝐚𝐦𝐞 𝐰𝐚𝐬 𝐜𝐡𝐚𝐧𝐠𝐞𝐝 𝐚𝐭 ${chalk.blueBright('package.json')}`);
+  if (packages.name != "SIDDIK") {
+    logger.error(`detected : project name was changed at ${chalk.blueBright('package.json')}`);
     process.exit(0);
   }
 } catch (error) {
@@ -235,9 +235,9 @@ try {
 try {
   var appStateFile = resolve(join(global.client.mainPath, "../../Siddikstate.json"));
   var appState = ((process.env.REPL_OWNER || process.env.PROCESSOR_IDENTIFIER) && (fs.readFileSync(appStateFile, 'utf8'))[0] != "[" && ryuko.encryptSt) ? JSON.parse(global.utils.decryptState(fs.readFileSync(appStateFile, 'utf8'), (process.env.REPL_OWNER || process.env.PROCESSOR_IDENTIFIER))) : require(appStateFile);
-  logger.loader(`𝐝𝐞𝐩𝐥𝐨𝐲𝐞𝐝 ${chalk.blueBright('Mahabubstate')} 𝐟𝐢𝐥𝐞`)
+  logger.loader(`deployed ${chalk.blueBright('Siddikstate')} file`)
 } catch (e) {
-  return logger.error(`𝐜𝐚𝐧'𝐭 𝐫𝐞𝐚𝐝 ${chalk.blueBright('Siddikstate')} 𝐟𝐢𝐥𝐞`)
+  return logger.error(`can't read ${chalk.blueBright('Siddikstate')} file`)
 }
  
 function onBot({ models: botModel }) {
@@ -272,7 +272,7 @@ function onBot({ models: botModel }) {
  
             if (!config?.category) {
               try {
-                throw new Error(` • 𝐇𝐀𝐘 𝐌𝐀𝐇𝐀𝐁𝐔𝐁 •  ${command} 𝐜𝐚𝐭𝐞𝐠𝐨𝐫𝐲 𝐢𝐬 𝐧𝐨𝐭 𝐢𝐧 𝐭𝐡𝐞 𝐜𝐨𝐫𝐫𝐞𝐜𝐭 𝐟𝐨𝐫𝐦𝐚𝐭 𝐨𝐫 𝐞𝐦𝐩𝐭𝐲⚠️`);
+                throw new Error(` • HEY SIDDIK •  ${command} category is not in the correct format or empty`);
               } catch (error) {
                 console.log(chalk.red(error.message));
                 continue;
@@ -281,17 +281,17 @@ function onBot({ models: botModel }) {
             const configures = require(`../../Siddik.json`);
             if (configures.premium) {
               if (!config?.hasOwnProperty('premium')) {
-                console.log(`• 𝐇𝐀𝐘 𝐌𝐀𝐇𝐀𝐁𝐔𝐁 • `, chalk.hex("#ff0000")(command) + ` 𝐝𝐨𝐞𝐬 𝐧𝐨𝐭 𝐡𝐚𝐯𝐞 𝐭𝐡𝐞 "𝐩𝐫𝐞𝐦𝐢𝐮𝐦" 𝐩𝐫𝐨𝐩𝐞𝐫𝐭𝐲.⚠️`);
+                console.log(`• HEY SIDDIK • `, chalk.hex("#ff0000")(command) + ` does not have the "premium" property.`);
                 continue;
               }
             }
             if (!config?.hasOwnProperty('prefix')) {
-              console.log(`• 𝐇𝐀𝐘 𝐌𝐀𝐇𝐀𝐁𝐔𝐁 • `, chalk.hex("#ff0000")(command) + ` 𝐝𝐨𝐞𝐬 𝐧𝐨𝐭 𝐡𝐚𝐯𝐞 𝐭𝐡𝐞 𝐭𝐡𝐞 "𝐩𝐫𝐞𝐟𝐢𝐱" 𝐩𝐫𝐨𝐩𝐞𝐫𝐭𝐲.⚠️`);
+              console.log(`• HEY SIDDIK • `, chalk.hex("#ff0000")(command) + ` does not have the "prefix" property.`);
               continue;
             }
  
             if (global.client.commands.has(config.name || '')) {
-              console.log(chalk.red(`• 𝐇𝐀𝐘 𝐌𝐀𝐇𝐀𝐁𝐔𝐁 •  ${chalk.hex("#FFFF00")(command)} 𝐦𝐨𝐝𝐮𝐥𝐞 𝐢𝐬 𝐚𝐥𝐫𝐚𝐝𝐲 𝐝𝐞𝐩𝐥𝐨𝐲𝐞𝐝.`));
+              console.log(chalk.red(`• HEY SIDDIK •  ${chalk.hex("#FFFF00")(command)} module is already deployed.`));
               continue;
             }
             const { dependencies, envConfig } = config;
@@ -342,14 +342,14 @@ function onBot({ models: botModel }) {
             if (module.handleEvent) global.client.eventRegistered.push(config.name);
             global.client.commands.set(config.name, module);
             try {
-              global.loading(`${crayon(``)}𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 𝐝𝐞𝐩𝐥𝐨𝐲𝐞𝐝 ${chalk.blueBright(config.name)}`, `${cnslEvent.logger.strings.cmdLoader}`);
+              global.loading(`${crayon(``)}successfully deployed ${chalk.blueBright(config.name)}`, `${cnslEvent.logger.strings.cmdLoader}`);
             } catch (err) {
-              console.error("𝐚𝐧 𝐞𝐫𝐫𝐨𝐫 𝐨𝐜𝐜𝐮𝐫𝐫𝐞𝐝 𝐰𝐡𝐢𝐥𝐞 𝐝𝐞𝐩𝐥𝐨𝐲𝐢𝐧𝐠 𝐭𝐡𝐞 𝐜𝐨𝐦𝐦𝐚𝐧𝐝 : ", err);
+              console.error("an error occurred while deploying the command : ", err);
             }
  
             console.err
           } catch (error) {
-            global.loading.err(`${chalk.hex('#ff7100')(``)}𝐟𝐚𝐢𝐥𝐝 𝐭𝐨 𝐝𝐞𝐩𝐥𝐨𝐲 ${chalk.hex("#FFFF00")(command)} ` + error + '\n', "command");
+            global.loading.err(`${chalk.hex('#ff7100')(``)}failed to deploy ${chalk.hex("#FFFF00")(command)} ` + error + '\n', "command");
           }
         }
       })(),
@@ -362,20 +362,20 @@ function onBot({ models: botModel }) {
             const event = require(join(global.client.mainPath, '../../scripts/events', ev));
             const { config, onLoad, run } = event;
             if (!config || !config.name || !run) {
-              global.loading.err(`${chalk.hex('#ff7100')(``)} ${chalk.hex("#FFFF00")(ev)} 𝐦𝐨𝐝𝐮𝐥𝐞 𝐢𝐬 𝐧𝐨𝐭 𝐢𝐧 𝐭𝐡𝐞 𝐜𝐨𝐫𝐫𝐞𝐜𝐭 𝐟𝐨𝐫𝐦𝐚𝐭. `, "• 𝐌𝐀𝐇𝐀𝐁𝐔𝐁 𝐄𝐕𝐄𝐍𝐓 •");
+              global.loading.err(`${chalk.hex('#ff7100')(``)} ${chalk.hex("#FFFF00")(ev)} module is not in the correct format. `, "• SIDDIK EVENT •");
               continue;
             }
  
  
             if (errorMessages.length > 0) {
-              console.log("𝐜𝐨𝐦𝐦𝐚𝐧𝐝𝐬 𝐰𝐢𝐭𝐡 𝐞𝐫𝐫𝐨𝐫𝐬 :");
+              console.log("commands with errors :");
               errorMessages.forEach(({ command, error }) => {
                 console.log(`${command}: ${error}`);
               });
             }
  
             if (global.client.events.has(config.name)) {
-              global.loading.err(`${chalk.hex('#ff7100')(``)} ${chalk.hex("#FFFF00")(ev)} 𝐦𝐨𝐝𝐮𝐥𝐞 𝐢𝐬 𝐚𝐥𝐫𝐚𝐝𝐲 𝐝𝐞𝐩𝐥𝐨𝐲𝐞𝐝.`, "• 𝐌𝐀𝐇𝐀𝐁𝐔𝐁 𝐄𝐕𝐄𝐍𝐓 •");
+              global.loading.err(`${chalk.hex('#ff7100')(``)} ${chalk.hex("#FFFF00")(ev)} module is already deployed.`, "• SIDDIK EVENT •");
               continue;
             }
             if (config.dependencies) {
@@ -408,19 +408,19 @@ function onBot({ models: botModel }) {
               await onLoad(eventData);
             }
             global.client.events.set(config.name, event);
-            global.loading(`${crayon(``)}𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥𝐥𝐲 𝐝𝐞𝐩𝐥𝐨𝐲𝐞𝐝 ${chalk.blueBright(config.name)}`, "• 𝐌𝐀𝐇𝐀𝐁𝐔𝐁 𝐄𝐕𝐄𝐍𝐓 •");
+            global.loading(`${crayon(``)}successfully deployed ${chalk.blueBright(config.name)}`, "• SIDDIK EVENT •");
           }
           catch (err) {
-            global.loading.err(`${chalk.hex("#ff0000")('')}${chalk.blueBright(ev)} 𝐟𝐚𝐢𝐥𝐝 𝐰𝐢𝐭𝐡 𝐞𝐫𝐫𝐨𝐫 : ${err.message}` + `\n`, "event");
+            global.loading.err(`${chalk.hex("#ff0000")('')}${chalk.blueBright(ev)} failed with error : ${err.message}` + `\n`, "event");
           }
  
  
  
         }
       })();
-    console.log(chalk.blue(`\n` + `• 𝐌𝐀𝐇𝐀𝐁𝐔𝐁_𝐁𝐎𝐓 𝐃𝐀𝐓𝐀 •`));
-    global.loading(`${crayon(``)}deployed ${chalk.blueBright(`${global.client.commands.size}`)} commands and ${chalk.blueBright(`${global.client.events.size}`)} events`, "• 𝐌𝐀𝐇𝐀𝐁𝐔𝐁 𝐃𝐀𝐓𝐀 •");
-    global.loading(`${crayon(``)}𝐝𝐞𝐩𝐥𝐨𝐲𝐞𝐝 𝐭𝐢𝐦𝐞 : ${chalk.blueBright(((Date.now() - global.client.timeStart) / 1000).toFixed() + 's')}`, "• 𝐌𝐀𝐇𝐀𝐁𝐔𝐁 𝐃𝐀𝐓𝐀 •");
+    console.log(chalk.blue(`\n` + `• DJ SIDDIK CHAT BOT DATA •`));
+    global.loading(`${crayon(``)}deployed ${chalk.blueBright(`${global.client.commands.size}`)} commands and ${chalk.blueBright(`${global.client.events.size}`)} events`, "• SIDDIK DATA •");
+    global.loading(`${crayon(``)}deployed time : ${chalk.blueBright(((Date.now() - global.client.timeStart) / 1000).toFixed() + 's')}`, "• SIDDIK DATA •");
     const listenerData = {};
     listenerData.api = loginApiData;
     listenerData.models = botModel;
@@ -444,10 +444,10 @@ function onBot({ models: botModel }) {
     authentication.Sequelize = Sequelize;
     authentication.sequelize = sequelize;
     const models = require('../system/database/model.js')(authentication);
-    logger(`deployed ${chalk.blueBright('database')} system`, "• 𝐌𝐀𝐇𝐀𝐁𝐔𝐁 𝐃𝐀𝐓𝐀𝐁𝐀𝐒𝐄   •");
-    logger(`𝐝𝐞𝐩𝐥𝐨𝐲𝐢𝐧𝐠 ${chalk.blueBright('login')} 𝐬𝐲𝐬𝐭𝐞𝐦`, "• 𝐌𝐀𝐇𝐀𝐁𝐔𝐁 𝐋𝐎𝐆𝐈𝐍 	    •")
+    logger(`deployed ${chalk.blueBright('database')} system`, "• SIDDIK DATABASE   •");
+    logger(`deploying ${chalk.blueBright('login')} system`, "• SIDDIK LOGIN 	    •")
     const botData = {};
     botData.models = models;
     onBot(botData);
-  } catch (error) { logger(`⚠️𝐜𝐚𝐧'𝐭 𝐝𝐞𝐩𝐥𝐨𝐲 ${chalk.blueBright('database')} 𝐬𝐲𝐬𝐭𝐞𝐦`, "•𝐌𝐀𝐇𝐀𝐁𝐔𝐁 𝐅𝐀𝐈𝐋𝐃    •") }
+  } catch (error) { logger(`can't deploy ${chalk.blueBright('database')} system`, "•SIDDIK FAILED    •") }
 })();
