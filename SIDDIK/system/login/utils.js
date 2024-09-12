@@ -1,19 +1,19 @@
  /* eslint-disable no-prototype-builtins */
 "use strict";
-
+ 
 let request = require("request").defaults({ jar: true });
 const stream = require("stream");
 const log = require("npmlog");
 const querystring = require("querystring");
 const url = require("url");
-
+ 
 function setProxy(proxy) {
   if (typeof proxy == 'string')
     request = require("request").defaults({ jar: true, proxy });
   else request = request;
   return;
 }
-
+ 
 function getHeaders(url, options, ctx, customHeader) {
 	var headers = {
 		"Content-Type": "application/x-www-form-urlencoded",
@@ -31,10 +31,10 @@ function getHeaders(url, options, ctx, customHeader) {
     delete headers.Referer;
 	if (ctx && ctx.region) 
     headers["X-MSGR-Region"] = ctx.region;
-
+ 
 	return headers;
 }
-
+ 
 function isReadableStream(obj) {
 	return (
 		obj instanceof stream.Stream &&
@@ -43,7 +43,7 @@ function isReadableStream(obj) {
 		getType(obj._readableState) === "Object"
 	);
 }
-
+ 
 function get(url, jar, qs, options, ctx, customHeader) {
 	// I'm still confused about this
 	if (getType(qs) === "Object") {
@@ -62,16 +62,16 @@ function get(url, jar, qs, options, ctx, customHeader) {
 		jar: jar,
 		gzip: true
 	};
-
+ 
   var callback;
   var returnPromise = new Promise(function (resolve, reject) {
     callback = (error, data) => error != null ? reject(error) : resolve(data);
   });
   request(op, callback);
-
+ 
 	return returnPromise;
 }
-
+ 
 function post(url, jar, form, options, ctx, customHeader) {
 	var op = {
     headers: getHeaders(url, options, ctx, customHeader),
@@ -82,16 +82,16 @@ function post(url, jar, form, options, ctx, customHeader) {
 		jar: jar,
 		gzip: true
 	}
-
+ 
 	var callback;
   var returnPromise = new Promise(function (resolve, reject) {
     callback = (error, data) => error != null ? reject(error) : resolve(data);
   });
   request(op, callback);
-
+ 
 	return returnPromise;
 }
-
+ 
 function postFormData(url, jar, form, qs, options, ctx) {
 	var headers = getHeaders(url, options, ctx);
 	headers["Content-Type"] = "multipart/form-data";
@@ -105,30 +105,30 @@ function postFormData(url, jar, form, qs, options, ctx) {
 		jar: jar,
 		gzip: true
 	};
-
+ 
 	var callback;
   var returnPromise = new Promise(function (resolve, reject) {
     callback = (error, data) => error != null ? reject(error) : resolve(data);
   });
   request(op, callback);
-
+ 
 	return returnPromise;
 }
-
+ 
 function padZeros(val, len) {
 	val = String(val);
 	len = len || 2;
 	while (val.length < len) val = "0" + val;
 	return val;
 }
-
+ 
 function generateThreadingID(clientID) {
 	const k = Date.now();
 	const l = Math.floor(Math.random() * 4294967295);
 	const m = clientID;
 	return "<" + k + ":" + l + "-" + m + "@mail.projektitan.com>";
 }
-
+ 
 function binaryToDecimal(data) {
 	let ret = "";
 	while (data !== "0") {
@@ -150,7 +150,7 @@ function binaryToDecimal(data) {
 	}
 	return ret;
 }
-
+ 
 function generateOfflineThreadingID() {
 	const ret = Date.now();
 	const value = Math.floor(Math.random() * 4294967295);
@@ -158,7 +158,7 @@ function generateOfflineThreadingID() {
 	const msgs = ret.toString(2) + str;
 	return binaryToDecimal(msgs);
 }
-
+ 
 let h;
 const i = {};
 const j = {
@@ -201,7 +201,7 @@ const j = {
 	l.reverse();
 	h = new RegExp(l.join("|"), "g");
 })();
-
+ 
 function presenceEncode(str) {
 	return encodeURIComponent(str)
 		.replace(/([_A-Z])|%../g, function (m, n) {
@@ -212,7 +212,7 @@ function presenceEncode(str) {
 			return i[m];
 		});
 }
-
+ 
 // eslint-disable-next-line no-unused-vars
 function presenceDecode(str) {
 	return decodeURIComponent(
@@ -221,7 +221,7 @@ function presenceDecode(str) {
 		})
 	);
 }
-
+ 
 function generatePresence(userID) {
 	const time = Date.now();
 	return (
@@ -247,7 +247,7 @@ function generatePresence(userID) {
 		)
 	);
 }
-
+ 
 function generateAccessiblityCookie() {
 	const time = Date.now();
 	return encodeURIComponent(
@@ -263,7 +263,7 @@ function generateAccessiblityCookie() {
 		})
 	);
 }
-
+ 
 function getGUID() {
 	/** @type {number} */
 	let sectionLength = Date.now();
@@ -279,7 +279,7 @@ function getGUID() {
 	});
 	return id;
 }
-
+ 
 function getExtension(original_extension, fullFileName = "") {
 	if (original_extension) {
 		return original_extension;
@@ -294,7 +294,7 @@ function getExtension(original_extension, fullFileName = "") {
 		}
 	}
 }
-
+ 
 function _formatAttachment(attachment1, attachment2) {
 	// TODO: THIS IS REALLY BAD
 	// This is an attempt at fixing Facebook's inconsistencies. Sometimes they give us
@@ -307,7 +307,7 @@ function _formatAttachment(attachment1, attachment2) {
 	const durationVideo = attachment1.genericMetadata ? Number(attachment1.genericMetadata.videoLength) : undefined;
 	const durationAudio = attachment1.genericMetadata ? Number(attachment1.genericMetadata.duration) : undefined;
 	const mimeType = attachment1.mimeType;
-
+ 
 	attachment2 = attachment2 || { id: "", image_data: {} };
 	attachment1 = attachment1.mercury || attachment1;
 	let blob = attachment1.blob_attachment || attachment1.sticker_attachment;
@@ -329,7 +329,7 @@ function _formatAttachment(attachment1, attachment2) {
 		else {
 			type = "ExtensibleAttachment";
 		}
-
+ 
 		blob = attachment1.extensible_attachment;
 	}
 	// TODO: Determine whether "sticker", "photo", "file" etc are still used
@@ -340,21 +340,21 @@ function _formatAttachment(attachment1, attachment2) {
 				type: "sticker",
 				ID: attachment1.metadata.stickerID.toString(),
 				url: attachment1.url,
-
+ 
 				packID: attachment1.metadata.packID.toString(),
 				spriteUrl: attachment1.metadata.spriteURI,
 				spriteUrl2x: attachment1.metadata.spriteURI2x,
 				width: attachment1.metadata.width,
 				height: attachment1.metadata.height,
-
+ 
 				caption: attachment2.caption,
 				description: attachment2.description,
-
+ 
 				frameCount: attachment1.metadata.frameCount,
 				frameRate: attachment1.metadata.frameRate,
 				framesPerRow: attachment1.metadata.framesPerRow,
 				framesPerCol: attachment1.metadata.framesPerCol,
-
+ 
 				stickerID: attachment1.metadata.stickerID.toString(), // @Legacy
 				spriteURI: attachment1.metadata.spriteURI, // @Legacy
 				spriteURI2x: attachment1.metadata.spriteURI2x // @Legacy
@@ -369,10 +369,10 @@ function _formatAttachment(attachment1, attachment2) {
 				original_extension: getExtension(attachment1.original_extension, fullFileName),
 				mimeType: mimeType,
 				url: attachment1.url,
-
+ 
 				isMalicious: attachment2.is_malicious,
 				contentType: attachment2.mime_type,
-
+ 
 				name: attachment1.name // @Legacy
 			};
 		case "photo":
@@ -385,15 +385,15 @@ function _formatAttachment(attachment1, attachment2) {
 				original_extension: getExtension(attachment1.original_extension, fullFileName),
 				mimeType: mimeType,
 				thumbnailUrl: attachment1.thumbnail_url,
-
+ 
 				previewUrl: attachment1.preview_url,
 				previewWidth: attachment1.preview_width,
 				previewHeight: attachment1.preview_height,
-
+ 
 				largePreviewUrl: attachment1.large_preview_url,
 				largePreviewWidth: attachment1.large_preview_width,
 				largePreviewHeight: attachment1.large_preview_height,
-
+ 
 				url: attachment1.metadata.url, // @Legacy
 				width: attachment1.metadata.dimensions.split(",")[0], // @Legacy
 				height: attachment1.metadata.dimensions.split(",")[1], // @Legacy
@@ -407,15 +407,15 @@ function _formatAttachment(attachment1, attachment2) {
 				fullFileName: fullFileName,
 				original_extension: getExtension(attachment2.original_extension, fullFileName),
 				mimeType: mimeType,
-
+ 
 				previewUrl: attachment1.preview_url,
 				previewWidth: attachment1.preview_width,
 				previewHeight: attachment1.preview_height,
-
+ 
 				url: attachment2.image_data.url,
 				width: attachment2.image_data.width,
 				height: attachment2.image_data.height,
-
+ 
 				name: attachment1.name, // @Legacy
 				facebookUrl: attachment1.url, // @Legacy
 				thumbnailUrl: attachment1.thumbnail_url, // @Legacy
@@ -431,20 +431,20 @@ function _formatAttachment(attachment1, attachment2) {
 				type: "share",
 				ID: attachment1.share.share_id.toString(),
 				url: attachment2.href,
-
+ 
 				title: attachment1.share.title,
 				description: attachment1.share.description,
 				source: attachment1.share.source,
-
+ 
 				image: attachment1.share.media.image,
 				width: attachment1.share.media.image_size.width,
 				height: attachment1.share.media.image_size.height,
 				playable: attachment1.share.media.playable,
 				duration: attachment1.share.media.duration,
-
+ 
 				subattachments: attachment1.share.subattachments,
 				properties: {},
-
+ 
 				animatedImageSize: attachment1.share.media.animated_image_size, // @Legacy
 				facebookUrl: attachment1.share.uri, // @Legacy
 				target: attachment1.share.target, // @Legacy
@@ -459,23 +459,23 @@ function _formatAttachment(attachment1, attachment2) {
 				original_extension: getExtension(attachment1.original_extension, fullFileName),
 				mimeType: mimeType,
 				duration: durationVideo,
-
+ 
 				previewUrl: attachment1.preview_url,
 				previewWidth: attachment1.preview_width,
 				previewHeight: attachment1.preview_height,
-
+ 
 				url: attachment1.url,
 				width: attachment1.metadata.dimensions.width,
 				height: attachment1.metadata.dimensions.height,
-
+ 
 				videoType: "unknown",
-
+ 
 				thumbnailUrl: attachment1.thumbnail_url // @Legacy
 			};
 		case "error":
 			return {
 				type: "error",
-
+ 
 				// Save error attachments because we're unsure of their format,
 				// and whether there are cases they contain something useful for debugging.
 				attachment1: attachment1,
@@ -491,15 +491,15 @@ function _formatAttachment(attachment1, attachment2) {
 				original_extension: getExtension(blob.original_extension, fullFileName),
 				mimeType: mimeType,
 				thumbnailUrl: blob.thumbnail.uri,
-
+ 
 				previewUrl: blob.preview.uri,
 				previewWidth: blob.preview.width,
 				previewHeight: blob.preview.height,
-
+ 
 				largePreviewUrl: blob.large_preview.uri,
 				largePreviewWidth: blob.large_preview.width,
 				largePreviewHeight: blob.large_preview.height,
-
+ 
 				url: blob.large_preview.uri, // @Legacy
 				width: blob.original_dimensions.x, // @Legacy
 				height: blob.original_dimensions.y, // @Legacy
@@ -513,15 +513,15 @@ function _formatAttachment(attachment1, attachment2) {
 				fullFileName: fullFileName,
 				original_extension: getExtension(blob.original_extension, fullFileName),
 				mimeType: mimeType,
-
+ 
 				previewUrl: blob.preview_image.uri,
 				previewWidth: blob.preview_image.width,
 				previewHeight: blob.preview_image.height,
-
+ 
 				url: blob.animated_image.uri,
 				width: blob.animated_image.width,
 				height: blob.animated_image.height,
-
+ 
 				thumbnailUrl: blob.preview_image.uri, // @Legacy
 				name: blob.filename, // @Legacy
 				facebookUrl: blob.animated_image.uri, // @Legacy
@@ -541,17 +541,17 @@ function _formatAttachment(attachment1, attachment2) {
 				fileSize: fileSize,
 				duration: durationVideo,
 				mimeType: mimeType,
-
+ 
 				previewUrl: blob.large_image.uri,
 				previewWidth: blob.large_image.width,
 				previewHeight: blob.large_image.height,
-
+ 
 				url: blob.playable_url,
 				width: blob.original_dimensions.x,
 				height: blob.original_dimensions.y,
-
+ 
 				videoType: blob.video_type.toLowerCase(),
-
+ 
 				thumbnailUrl: blob.large_image.uri // @Legacy
 			};
 		case "MessageAudio":
@@ -564,10 +564,10 @@ function _formatAttachment(attachment1, attachment2) {
 				duration: durationAudio,
 				original_extension: getExtension(blob.original_extension, fullFileName),
 				mimeType: mimeType,
-
+ 
 				audioType: blob.audio_type,
 				url: blob.playable_url,
-
+ 
 				isVoiceMail: blob.is_voicemail
 			};
 		case "StickerAttachment":
@@ -576,21 +576,21 @@ function _formatAttachment(attachment1, attachment2) {
 				type: "sticker",
 				ID: blob.id,
 				url: blob.url,
-
+ 
 				packID: blob.pack ? blob.pack.id : null,
 				spriteUrl: blob.sprite_image,
 				spriteUrl2x: blob.sprite_image_2x,
 				width: blob.width,
 				height: blob.height,
-
+ 
 				caption: blob.label,
 				description: blob.label,
-
+ 
 				frameCount: blob.frame_count,
 				frameRate: blob.frame_rate,
 				framesPerRow: blob.frames_per_row,
 				framesPerCol: blob.frames_per_column,
-
+ 
 				stickerID: blob.id, // @Legacy
 				spriteURI: blob.sprite_image, // @Legacy
 				spriteURI2x: blob.sprite_image_2x // @Legacy
@@ -598,31 +598,31 @@ function _formatAttachment(attachment1, attachment2) {
 		case "MessageLocation":
 			var urlAttach = blob.story_attachment.url;
 			var mediaAttach = blob.story_attachment.media;
-
+ 
 			var u = querystring.parse(url.parse(urlAttach).query).u;
 			var where1 = querystring.parse(url.parse(u).query).where1;
 			var address = where1.split(", ");
-
+ 
 			var latitude;
 			var longitude;
-
+ 
 			try {
 				latitude = Number.parseFloat(address[0]);
 				longitude = Number.parseFloat(address[1]);
 			} catch (err) {
 				/* empty */
 			}
-
+ 
 			var imageUrl;
 			var width;
 			var height;
-
+ 
 			if (mediaAttach && mediaAttach.image) {
 				imageUrl = mediaAttach.image.uri;
 				width = mediaAttach.image.width;
 				height = mediaAttach.image.height;
 			}
-
+ 
 			return {
 				type: "location",
 				ID: blob.legacy_attachment_id,
@@ -633,7 +633,7 @@ function _formatAttachment(attachment1, attachment2) {
 				height: height,
 				url: u || urlAttach,
 				address: where1,
-
+ 
 				facebookUrl: blob.story_attachment.url, // @Legacy
 				target: blob.story_attachment.target, // @Legacy
 				styleList: blob.story_attachment.style_list // @Legacy
@@ -643,7 +643,7 @@ function _formatAttachment(attachment1, attachment2) {
 				type: "share",
 				ID: blob.legacy_attachment_id,
 				url: blob.story_attachment.url,
-
+ 
 				title: blob.story_attachment.title_with_entities.text,
 				description:
 					blob.story_attachment.description &&
@@ -651,7 +651,7 @@ function _formatAttachment(attachment1, attachment2) {
 				source: blob.story_attachment.source
 					? blob.story_attachment.source.text
 					: null,
-
+ 
 				image:
 					blob.story_attachment.media &&
 					blob.story_attachment.media.image &&
@@ -674,13 +674,13 @@ function _formatAttachment(attachment1, attachment2) {
 					blob.story_attachment.media == null
 						? null
 						: blob.story_attachment.media.playable_url,
-
+ 
 				subattachments: blob.story_attachment.subattachments,
 				properties: blob.story_attachment.properties.reduce(function (obj, cur) {
 					obj[cur.key] = cur.value.text;
 					return obj;
 				}, {}),
-
+ 
 				facebookUrl: blob.story_attachment.url, // @Legacy
 				target: blob.story_attachment.target, // @Legacy
 				styleList: blob.story_attachment.style_list // @Legacy
@@ -694,11 +694,11 @@ function _formatAttachment(attachment1, attachment2) {
 				fileSize: fileSize,
 				mimeType: blob.mimetype,
 				original_extension: blob.original_extension || fullFileName.split(".").pop(),
-
+ 
 				url: blob.url,
 				isMalicious: blob.is_malicious,
 				contentType: blob.content_type,
-
+ 
 				name: blob.filename
 			};
 		default:
@@ -713,7 +713,7 @@ function _formatAttachment(attachment1, attachment2) {
 			);
 	}
 }
-
+ 
 function formatAttachment(attachments, attachmentIds, attachmentMap, shareMap) {
 	attachmentMap = shareMap || attachmentMap;
 	return attachments
@@ -729,10 +729,10 @@ function formatAttachment(attachments, attachmentIds, attachmentMap, shareMap) {
 		})
 		: [];
 }
-
+ 
 function formatDeltaMessage(m) {
 	const md = m.delta.messageMetadata;
-
+ 
 	const mdata =
 		m.delta.data === undefined
 			? []
@@ -749,7 +749,7 @@ function formatDeltaMessage(m) {
 			m_offset[i] + m_length[i]
 		);
 	}
-
+ 
 	return {
 		type: "message",
 		senderID: formatID(md.actorFbId.toString()),
@@ -765,7 +765,7 @@ function formatDeltaMessage(m) {
     participantIDs: m.delta.participants
 	};
 }
-
+ 
 function formatID(id) {
 	if (id != undefined && id != null) {
 		return id.replace(/(fb)?id[:.]/, "");
@@ -774,7 +774,7 @@ function formatID(id) {
 		return id;
 	}
 }
-
+ 
 function formatMessage(m) {
 	const originalMessage = m.message ? m.message : m;
 	const obj = {
@@ -816,14 +816,14 @@ function formatMessage(m) {
 		reactions: originalMessage.reactions ? originalMessage.reactions : [],
 		isUnread: originalMessage.is_unread
 	};
-
+ 
 	if (m.type === "pages_messaging")
 		obj.pageID = m.realtime_viewer_fbid.toString();
 	obj.isGroup = obj.participantIDs.length > 2;
-
+ 
 	return obj;
 }
-
+ 
 function formatEvent(m) {
 	const originalMessage = m.message ? m.message : m;
 	let logMessageType = originalMessage.log_message_type;
@@ -837,7 +837,7 @@ function formatEvent(m) {
 	else {
 		logMessageData = originalMessage.log_message_data;
 	}
-
+ 
 	return Object.assign(formatMessage(originalMessage), {
 		type: "event",
 		logMessageType: logMessageType,
@@ -845,7 +845,7 @@ function formatEvent(m) {
 		logMessageBody: originalMessage.log_message_body
 	});
 }
-
+ 
 function formatHistoryMessage(m) {
 	switch (m.action_type) {
 		case "ma-type:log-message":
@@ -854,7 +854,7 @@ function formatHistoryMessage(m) {
 			return formatMessage(m);
 	}
 }
-
+ 
 // Get a more readable message type for AdminTextMessages
 function getAdminTextMessageType(type) {
 	switch (type) {
@@ -881,18 +881,18 @@ function getAdminTextMessageType(type) {
 			return type;
 	}
 }
-
+ 
 function formatDeltaEvent(m) {
 	let logMessageType;
 	let logMessageData;
-
+ 
 	// log:thread-color => {theme_color}
 	// log:user-nickname => {participant_id, nickname}
 	// log:thread-icon => {thread_icon}
 	// log:thread-name => {name}
 	// log:subscribe => {addedParticipants - [Array]}
 	// log:unsubscribe => {leftParticipantFbId}
-
+ 
 	switch (m.class) {
 		case "AdminTextMessage":
 			logMessageData = m.untypedData;
@@ -921,7 +921,7 @@ function formatDeltaEvent(m) {
 				}
 			};
 	}
-
+ 
 	return {
 		type: "event",
 		threadID: formatID(
@@ -939,7 +939,7 @@ function formatDeltaEvent(m) {
     participantIDs: m.participants
 	};
 }
-
+ 
 function formatTyp(event) {
 	return {
 		isTyping: !!event.st,
@@ -954,7 +954,7 @@ function formatTyp(event) {
 		type: "typ"
 	};
 }
-
+ 
 function formatDeltaReadReceipt(delta) {
 	// otherUserFbId seems to be used as both the readerID and the threadID in a 1-1 chat.
 	// In a group chat actorFbId is used for the reader and threadFbId for the thread.
@@ -967,7 +967,7 @@ function formatDeltaReadReceipt(delta) {
 		type: "read_receipt"
 	};
 }
-
+ 
 function formatReadReceipt(event) {
 	return {
 		reader: event.reader.toString(),
@@ -976,7 +976,7 @@ function formatReadReceipt(event) {
 		type: "read_receipt"
 	};
 }
-
+ 
 function formatRead(event) {
 	return {
 		threadID: formatID(
@@ -989,11 +989,11 @@ function formatRead(event) {
 		type: "read"
 	};
 }
-
+ 
 function getFrom(str, startToken, endToken) {
 	const start = str.indexOf(startToken) + startToken.length;
 	if (start < startToken.length) return "";
-
+ 
 	const lastHalf = str.substring(start);
 	const end = lastHalf.indexOf(endToken);
 	if (end === -1) {
@@ -1003,10 +1003,10 @@ function getFrom(str, startToken, endToken) {
 	}
 	return lastHalf.substring(0, end);
 }
-
+ 
 function makeParsable(html) {
 	const withoutForLoop = html.replace(/for\s*\(\s*;\s*;\s*\)\s*;\s*/, "");
-
+ 
 	// (What the fuck FB, why windows style newlines?)
 	// So sometimes FB will send us base multiple objects in the same response.
 	// They're all valid JSON, one after the other, at the top level. We detect
@@ -1018,10 +1018,10 @@ function makeParsable(html) {
 	//       rav_kr - 2018-03-19
 	const maybeMultipleObjects = withoutForLoop.split(/\}\r\n *\{/);
 	if (maybeMultipleObjects.length === 1) return maybeMultipleObjects;
-
+ 
 	return "[" + maybeMultipleObjects.join("},{") + "]";
 }
-
+ 
 function arrToForm(form) {
 	return arrayToObject(
 		form,
@@ -1033,34 +1033,34 @@ function arrToForm(form) {
 		}
 	);
 }
-
+ 
 function arrayToObject(arr, getKey, getValue) {
 	return arr.reduce(function (acc, val) {
 		acc[getKey(val)] = getValue(val);
 		return acc;
 	}, {});
 }
-
+ 
 function getSignatureID() {
 	return Math.floor(Math.random() * 2147483648).toString(16);
 }
-
+ 
 function generateTimestampRelative() {
 	const d = new Date();
 	return d.getHours() + ":" + padZeros(d.getMinutes());
 }
-
+ 
 function makeDefaults(html, userID, ctx) {
 	let reqCounter = 1;
 	const fb_dtsg = getFrom(html, 'name="fb_dtsg" value="', '"');
-
+ 
 	// @Hack Ok we've done hacky things, this is definitely on top 5.
 	// We totally assume the object is flat and try parsing until a }.
 	// If it works though it's cool because we get a bunch of extra data things.
 	//
 	// Update: we don't need this. Leaving it in in case we ever do.
 	//       Ben - July 15th 2017
-
+ 
 	// var siteData = getFrom(html, "[\"SiteData\",[],", "},");
 	// try {
 	//   siteData = JSON.parse(siteData + "}");
@@ -1068,13 +1068,13 @@ function makeDefaults(html, userID, ctx) {
 	//   log.warn("makeDefaults", "Couldn't parse SiteData. Won't have access to some variables.");
 	//   siteData = {};
 	// }
-
+ 
 	let ttstamp = "2";
 	for (let i = 0; i < fb_dtsg.length; i++) {
 		ttstamp += fb_dtsg.charCodeAt(i);
 	}
 	const revision = getFrom(html, 'revision":', ",");
-
+ 
 	function mergeWithDefaults(obj) {
 		// @TODO This is missing a key called __dyn.
 		// After some investigation it seems like __dyn is some sort of set that FB
@@ -1099,7 +1099,7 @@ function makeDefaults(html, userID, ctx) {
 			//__spin_b: siteData.__spin_b,
 			//__spin_t: siteData.__spin_t,
 		};
-
+ 
 		// @TODO this is probably not needed.
 		//         Ben - July 15th 2017
 		// if (siteData.be_key) {
@@ -1108,9 +1108,9 @@ function makeDefaults(html, userID, ctx) {
 		// if (siteData.pkg_cohort_key) {
 		//   newObj[siteData.pkg_cohort_key] = siteData.pkg_cohort;
 		// }
-
+ 
 		if (!obj) return newObj;
-
+ 
 		for (const prop in obj) {
 			if (obj.hasOwnProperty(prop)) {
 				if (!newObj[prop]) {
@@ -1118,18 +1118,18 @@ function makeDefaults(html, userID, ctx) {
 				}
 			}
 		}
-
+ 
 		return newObj;
 	}
-
+ 
 	function postWithDefaults(url, jar, form, ctxx, customHeader = {}) {
 		return post(url, jar, mergeWithDefaults(form), ctx.globalOptions, ctxx || ctx, customHeader);
 	}
-
+ 
 	function getWithDefaults(url, jar, qs, ctxx, customHeader = {}) {
 		return get(url, jar, mergeWithDefaults(qs), ctx.globalOptions, ctxx || ctx, customHeader);
 	}
-
+ 
 	function postFormDataWithDefault(url, jar, form, qs, ctxx) {
 		return postFormData(
 			url,
@@ -1140,14 +1140,14 @@ function makeDefaults(html, userID, ctx) {
 			ctxx || ctx
 		);
 	}
-
+ 
 	return {
 		get: getWithDefaults,
 		post: postWithDefaults,
 		postFormData: postFormDataWithDefault
 	};
 }
-
+ 
 function parseAndCheckLogin(ctx, http, retryCount) {
   var delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
   var _try = (tryData) => new Promise(function (resolve, reject) {
@@ -1204,14 +1204,14 @@ function parseAndCheckLogin(ctx, http, retryCount) {
 				err.res = data.body;
 				throw err;
 			}
-
+ 
 			// In some cases the response contains only a redirect URL which should be followed
 			if (res.redirect && data.request.method === "GET") {
 				return http
 					.get(res.redirect, ctx.jar)
 					.then(parseAndCheckLogin(ctx, http));
       }
-
+ 
 			// TODO: handle multiple cookies?
 			if (res.jsmods && res.jsmods.require && Array.isArray(res.jsmods.require[0]) && res.jsmods.require[0][0] === "Cookie") {
         res.jsmods.require[0][3][0] = res.jsmods.require[0][3][0].replace("_js_", "");
@@ -1220,7 +1220,7 @@ function parseAndCheckLogin(ctx, http, retryCount) {
 				ctx.jar.setCookie(cookie, "https://www.facebook.com");
 				ctx.jar.setCookie(cookie2, "https://www.messenger.com");
       }
-
+ 
 			// On every request we check if we got a DTSG and we mutate the context so that we use the latest
 			// one for the next requests.
 			if (res.jsmods && Array.isArray(res.jsmods.require)) {
@@ -1228,7 +1228,7 @@ function parseAndCheckLogin(ctx, http, retryCount) {
 				for (const i in arr) {
 					if (arr[i][0] === "DTSG" && arr[i][1] === "setToken") {
 						ctx.fb_dtsg = arr[i][3][0];
-
+ 
 						// Update ttstamp since that depends on fb_dtsg
 						ctx.ttstamp = "2";
 						for (let j = 0; j < ctx.fb_dtsg.length; j++) {
@@ -1237,7 +1237,7 @@ function parseAndCheckLogin(ctx, http, retryCount) {
 					}
 				}
 			}
-
+ 
 			if (res.error === 1357001) {
 				const err = new Error('Facebook blocked login. Please visit https://facebook.com and check your account.');
 				err.error = "Not logged in.";
@@ -1248,7 +1248,7 @@ function parseAndCheckLogin(ctx, http, retryCount) {
 		return _try(any);
 	};
 }
-
+ 
 function saveCookies(jar) {
 	return function (res) {
 		const cookies = res.headers["set-cookie"] || [];
@@ -1262,7 +1262,7 @@ function saveCookies(jar) {
 		return res;
 	};
 }
-
+ 
 const NUM_TO_MONTH = [
 	"Jan",
 	"Feb",
@@ -1304,13 +1304,13 @@ function formatDate(date) {
 		" GMT"
 	);
 }
-
+ 
 function formatCookie(arr, url) {
 	return (
 		arr[0] + "=" + arr[1] + "; Path=" + arr[3] + "; Domain=" + url + ".com"
 	);
 }
-
+ 
 function formatThread(data) {
 	return {
 		threadID: formatID(data.thread_fbid.toString()),
@@ -1346,11 +1346,11 @@ function formatThread(data) {
 		threadType: data.thread_type
 	};
 }
-
+ 
 function getType(obj) {
 	return Object.prototype.toString.call(obj).slice(8, -1);
 }
-
+ 
 function formatProxyPresence(presence, userID) {
 	if (presence.lat === undefined || presence.p === undefined) return null;
 	return {
@@ -1360,7 +1360,7 @@ function formatProxyPresence(presence, userID) {
 		statuses: presence.p
 	};
 }
-
+ 
 function formatPresence(presence, userID) {
 	return {
 		type: "presence",
@@ -1369,20 +1369,20 @@ function formatPresence(presence, userID) {
 		statuses: presence.a
 	};
 }
-
+ 
 function decodeClientPayload(payload) {
 	/*
 	Special function which Client using to "encode" clients JSON payload
 	*/
 	return JSON.parse(String.fromCharCode.apply(null, payload));
 }
-
+ 
 function getAppState(jar) {
 	return jar
 		.getCookies("https://www.facebook.com")
 		.concat(jar.getCookies("https://www.messenger.com"));
 }
-
+ 
 function createAccess_token(jar, globalOptions) {
   return function (res) {
     return get('https://business.facebook.com/business_locations', jar, null, globalOptions)
@@ -1397,7 +1397,7 @@ function createAccess_token(jar, globalOptions) {
       })
   }
 }
-
+ 
 module.exports = {
 	isReadableStream,
 	get,
@@ -1439,3 +1439,4 @@ module.exports = {
 	setProxy,
   createAccess_token
 }
+ 
