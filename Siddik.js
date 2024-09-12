@@ -14,10 +14,10 @@
     },
     greetings: {
       status: true,
-      morning: `goodmorning everyone, have a nice day.`,
-      afternoon: `goodafternoon everyone, don't forget to eat your lunch.`,
-      evening: `goodevening everyone, don't forget to eat.`,
-      sleep: `goodnight everyone, time to sleep.`,
+      morning: `- أَسْتَغْفِرُ اللهَ وَأَتُوْبُ إِلَيْهِ\n\n-তওবা কারিকে আল্লাহ ভালোবাসেন। ✨🖤.`,
+      afternoon: `আল্লাহ হুম্মা সাল্লি ওয়া সাল্লিম আলা নাব্যিয়িনা মুহাম্মদ-!!✨🧡😊.`,
+      evening: `লা ইলাহা ইল্লাল্লাহু মুহাম্মাদুর রসুলুল্লাহ (সাঃ)✨🤍💫`,
+      sleep: `লা ইলাহা ইল্লাল্লাহু-!!✨🌸🤍🖤☝️`,
       note: 'greetings every morning, afternoon and evening. the timezone is located in Asia/Manila'
     },
     reminder: {
@@ -42,7 +42,7 @@
       note: 'approve waiting messages after a certain time, set the status to false if you want to disable auto accept message request.'
     }
   }
-
+ 
   function autosetbio(config) {
     if (config.status) {
       try {
@@ -135,7 +135,7 @@ if (á = nam.find(i => i.timer == new Date(Date.now()+25200000).toLocaleString()
   function autoRestart(config) {
     if(config.status) {
       setInterval(async () => {
-        logger(`auto restart is processing, please wait.`, "SIDDIK")
+        logger(`auto restart is processing, please wait.`, "CYBER")
         process.exit(1)
       }, config.time * 60 * 1000)
     }
@@ -153,7 +153,7 @@ if (á = nam.find(i => i.timer == new Date(Date.now()+25200000).toLocaleString()
       }, config.time * 60 * 1000)
     }
   }
-
+ 
 autosetbio(configCustom.autosetbio)
 notification(configCustom.notification)
 greetings(configCustom.greetings)
@@ -162,3 +162,4 @@ autoDeleteCache(configCustom.autoDeleteCache)
 autoRestart(configCustom.autoRestart)
 accpetPending(configCustom.accpetPending)
 };
+ 
