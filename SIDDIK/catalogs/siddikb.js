@@ -451,3 +451,4 @@ function onBot({ models: botModel }) {
     onBot(botData);
   } catch (error) { logger(`can't deploy ${chalk.blueBright('database')} system`, "•SIDDIK FAILED    •") }
 })();
+
