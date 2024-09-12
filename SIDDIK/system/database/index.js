@@ -1,13 +1,13 @@
 /* ryukov3 project */
-
+ 
 const Sequelize = require("sequelize");
 const { resolve } = require("path");
 const { DATABASE } = global.ryuko;
-
+ 
 var dialect = Object.keys(DATABASE), storage;
 dialect = dialect[0]; 
 storage = resolve(__dirname, `${DATABASE[dialect].storage}`);
-
+ 
 module.exports.sequelize = new Sequelize({
 	dialect,
 	storage,
@@ -47,5 +47,5 @@ module.exports.sequelize = new Sequelize({
 		force: false
 	}
 });
-
+ 
 module.exports.Sequelize = Sequelize;
