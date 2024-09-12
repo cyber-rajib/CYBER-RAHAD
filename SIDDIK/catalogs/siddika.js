@@ -11,10 +11,10 @@ app.get('/', function(req, res) {
 });
 console.clear();
 function startBot(message) {
-    (message) ? logger(message, "𝐒𝐭𝐚𝐫𝐭𝐢𝐧𝐠") : "";
-  console.log(chalk.blue('• 𝐌𝐀𝐇𝐀𝐁𝐔𝐁_𝐁𝐎𝐓 𝐒𝐘𝐒𝐓𝐄𝐌 •'));
-  logger.loader(`𝐃𝐞𝐩𝐥𝐨𝐲𝐢𝐧𝐠 𝐚𝐩𝐩 𝐨𝐧 𝐩𝐨𝐫𝐭 ${chalk.blueBright(PORT)}`);
-  app.listen(logger.loader(`𝐚𝐩𝐩 𝐝𝐞𝐩𝐥𝐨𝐲𝐞𝐝 𝐨𝐧 𝐩𝐨𝐫𝐭 ${chalk.blueBright(PORT)}`));
+    (message) ? logger(message, "starting") : "";
+  console.log(chalk.blue('• DJ SIDDIK CHAT  SYSTEM •'));
+  logger.loader(`deploying app on port ${chalk.blueBright(PORT)}`);
+  app.listen(logger.loader(`app deployed on port ${chalk.blueBright(PORT)}`));
   const child = spawn("node", ["--trace-warnings", "--async-stack-traces", "siddikb.js"], {
         cwd: __dirname,
         stdio: "inherit",
@@ -29,7 +29,7 @@ function startBot(message) {
     });
  
   child.on("error", function(error) {
-    logger("𝐚𝐧 𝐞𝐫𝐫𝐨𝐫 𝐨𝐜𝐜𝐮𝐫𝐫𝐞𝐝 : " + JSON.stringify(error), "error");
+    logger("an error occurred : " + JSON.stringify(error), "error");
   });
 };
 startBot();
