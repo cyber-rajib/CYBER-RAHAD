@@ -1,15 +1,14 @@
 module.exports.config = {
 	name: "setprefix",
-	version: "0.0.2",
-	permission: 2,
-  prefix: false,
-	credits: "nayan",
-	description: "Change prefix",
-	category: "admin",
-	usages: "prefix",
-    cooldowns: 5,
+	version: "1.0.1",
+	hasPermssion: 2,
+	credits: "MirryKal",
+	description: "Reset group prefix",
+	commandCategory: "System",
+	usages: "[prefix/reset]",
+	cooldowns: 5
 };
-
+ 
 module.exports.languages ={
 	"vi": {
 		"successChange": "Đã chuyển đổi prefix của nhóm thành: %1",
@@ -24,7 +23,7 @@ module.exports.languages ={
 		"confirmChange": "Are you sure that you want to change prefix into: %1"
 	}
 }
-
+ 
 module.exports.handleReaction = async function({ api, event, Threads, handleReaction, getText }) {
 	try {
 		if (event.userID != handleReaction.author) return;
@@ -37,7 +36,7 @@ module.exports.handleReaction = async function({ api, event, Threads, handleReac
 		return api.sendMessage(getText("successChange", handleReaction.PREFIX), threadID, messageID);
 	} catch (e) { return console.log(e) }
 }
-
+ 
 module.exports.run = async ({ api, event, args, Threads , getText }) => {
 	if (typeof args[0] == "undefined") return api.sendMessage(getText("missingInput"), event.threadID, event.messageID);
 	let prefix = args[0].trim();
