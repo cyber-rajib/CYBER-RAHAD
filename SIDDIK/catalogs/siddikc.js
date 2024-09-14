@@ -52,3 +52,4 @@ module.exports.loader = (data, option) => {
 			break;
 	}
 }
+ 
