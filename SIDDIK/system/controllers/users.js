@@ -1,10 +1,10 @@
 module.exports = function ({ models, api }) {
 	const Users = models.use('Users');
-
+ 
 	async function getInfo(id) {
 		return (await api.getUserInfo(id))[id];
 	}
-
+ 
 	async function getNameUser(id) {
 		try {
 			if (global.data.userName.has(id)) return global.data.userName.get(id);
@@ -16,7 +16,7 @@ module.exports = function ({ models, api }) {
 		}
 		catch { return "Facebook users" }
 	}
-
+ 
 	async function getAll(...data) {
 		var where, attributes;
 		for (const i of data) {
@@ -32,7 +32,7 @@ module.exports = function ({ models, api }) {
 			throw new Error(error);
 		}
 	}
-
+ 
 	async function getData(userID) {
 		try {
 			const data = await Users.findOne({ where: { userID } });
@@ -44,7 +44,7 @@ module.exports = function ({ models, api }) {
 			throw new Error(error);
 		}
 	}
-
+ 
 	async function setData(userID, options = {}) {
 		if (typeof options != 'object' && !Array.isArray(options)) throw global.getText("users", "needObject");
 		try {
@@ -60,7 +60,7 @@ module.exports = function ({ models, api }) {
 			}
 		}
 	}
-
+ 
 	async function delData(userID) {
 		try {
 			(await Users.findOne({ where: { userID } })).destroy();
@@ -71,7 +71,7 @@ module.exports = function ({ models, api }) {
 			throw new Error(error);
 		}
 	}
-
+ 
 	async function createData(userID, defaults = {}) {
 		if (typeof defaults != 'object' && !Array.isArray(defaults)) throw global.getText("users", "needObject");
 		try {
@@ -83,7 +83,7 @@ module.exports = function ({ models, api }) {
 			throw new Error(error);
 		}
 	}
-
+ 
 	return {
 		getInfo,
 		getNameUser,
