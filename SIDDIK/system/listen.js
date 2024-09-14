@@ -51,7 +51,7 @@ const sky = gradient('#3446eb', '#3455eb', '#3474eb');
           global.data.commandBanned.set(idUsers, dataU.data.commandBanned);
         }
       });
-      global.loading(`deployed ${chalk.blueBright(`${global.data.allThreadID.length}`)} groups and ${chalk.blueBright(`${global.data.allUserID.length}`)} users\n\n${chalk.blueBright(`CYBER CHAT PROJECT VERSION 6.0.0`)}\n`, "• ISLAMICK CYBER CHAT DATA •");
+      global.loading(`deployed ${chalk.blueBright(`${global.data.allThreadID.length}`)} groups and ${chalk.blueBright(`${global.data.allUserID.length}`)} users\n\n${chalk.blueBright(`SIDDIK PROJECT VERSION 4.0.0`)}\n`, "• SIDDIK DATA •");
     } catch (error) {
       logger.loader(`can't load environment variable, error : ${error}`, 'error');
     }
@@ -61,12 +61,12 @@ const operator = global.config.OPERATOR.length;
 const admin = global.config.ADMINBOT.length;
 const approved = global.approved.APPROVED.length;
 const premium = global.premium.PREMIUMUSERS.length;
-console.log(`${crayon(``)}${sky(`• DJ SIDDIK CHAT DATA •`)} - bot name : ${chalk.blueBright((!global.config.BOTNAME) ? "Siddik" : global.config.BOTNAME)} \n${sky(`• DJ SIDDIK CHAT DATA •`)} - bot id : ${chalk.blueBright(api.getCurrentUserID())} \n${sky(`• DJ SIDDIK CHAT DATA •`)} - bot prefix : ${chalk.blueBright(global.config.PREFIX)}\n${sky(`• DJ SIDDIK CHAT DATA •`)} - deployed ${chalk.blueBright(operator)} bot operators and ${chalk.blueBright(admin)} admins`);
+console.log(`${crayon(``)}${sky(`• SIDDIK DATA •`)} - bot name : ${chalk.blueBright((!global.config.BOTNAME) ? "Siddik" : global.config.BOTNAME)} \n${sky(`• SIDDIK DATA •`)} - bot id : ${chalk.blueBright(api.getCurrentUserID())} \n${sky(`• SIDDIK DATA •`)} - bot prefix : ${chalk.blueBright(global.config.PREFIX)}\n${sky(`• SIDDIK DATA •`)} - deployed ${chalk.blueBright(operator)} bot operators and ${chalk.blueBright(admin)} admins`);
 if (global.config.approval) {
-  console.log(`${sky(`• DJ SIDDIK CHAT DATA •`)} - deployed ${chalk.blueBright(approved)} approved groups`)
+  console.log(`${sky(`• SIDDIK DATA •`)} - deployed ${chalk.blueBright(approved)} approved groups`)
 } 
 if (global.config.premium) {
-  console.log(`${sky(`• DJ SIDDIK CHAT DATA •`)} - deployed ${chalk.blueBright(premium)} premium users`)
+  console.log(`${sky(`• SIDDIK DATA •`)} - deployed ${chalk.blueBright(premium)} premium users`)
 }
  
 const handleCommand = require("./handle/handleCommand.js")({ api, Users, Threads, Currencies, models });
