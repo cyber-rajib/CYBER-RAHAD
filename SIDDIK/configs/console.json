@@ -6,9 +6,9 @@
     "warn": "yellow",
     "available": "blue, red, yellow, white, green, blueBright",
     "editNames": {
-      "success": "• SIDDIK IN RUNNING •",
-      "error":   "• SIDDIK IN ERROR   •",
-      "warn":    "• SIDDIK IN WARNING •"
+      "success": "SIDDIK RUNNING",
+      "error":   "SIDDIK ERROR",
+      "warn":    "SIDDIK WARNING"
     }
   },
   "logger": {
@@ -19,10 +19,10 @@
       "evntLoader": "blue"
     },
     "strings": {
-      "cmdStarter": "• SIDDIK INPORTING COMMANDS •",
-      "evntStarter": "• SIDDIK INPORTING EVENTS •",
-      "cmdLoader": "• SIDDIK COMMAND •",
-      "evntLoader": "• SIDDIK EVENT  •"
+      "cmdStarter": "SIDDIK INPORTING COMMANDS",
+      "evntStarter": "SIDDIK INPORTING EVENTS",
+      "cmdLoader": "SIDDIK COMMAND",
+      "evntLoader": "SIDDIK EVENT"
     }
   }
 }
