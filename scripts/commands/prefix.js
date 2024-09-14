@@ -1,26 +1,40 @@
-const fs = require("fs");
 module.exports.config = {
-	name: "prefix",
-    version: "1.0.1",
-	hasPermssion: 0,
-	credits: "SIDDIK", 
-	description: "no prefix",
-	commandCategory: "No command marks needed",
-	usages: "...",
-    cooldowns: 1, 
+  name: "prefix",
+  version: "1.0.0",
+  permission: 0,
+  credits: "SIDDIK",
+  prefix: true,
+  description: "guide",
+  category: "system",
+  premium: false,
+  usages: "",
+  cooldowns: 5,
 };
  
-module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
-	var { threadID, messageID } = event;
-	if (event.body.indexOf("prefix")==0 || (event.body.indexOf("Prefix")==0 || (event.body.indexOf("Ano prefix")==0 || (event.body.indexOf("ano prefix")==0)))) {
-    const moment = require("moment-timezone");
-    var gio = moment.tz("Asia/Dhaka").format("HH:mm:ss || D/MM/YYYY");
-		var msg = {
-				body: `My prefix is » ${global.config.PREFIX} «\nUse Help for list of commands.`
-			}
-			api.sendMessage(msg, threadID, messageID);
-		}
-	}
-	module.exports.run = function({ api, event, client, __GLOBAL }) {
- 
+module.exports.handleEvent = async ({ event, api, Threads }) => {
+  var { threadID, messageID, body, senderID } = event;
+  function out(data) {
+    api.sendMessage(data, threadID, messageID)
   }
+  var dataThread = (await Threads.getData(threadID));
+  var data = dataThread.data; 
+  const threadSetting = global.data.threadData.get(parseInt(threadID)) || {};
+ 
+  var arr = ["mpre","mprefix","prefix", "command mark", "What is the prefix of the bot?","PREFIX"];
+  arr.forEach(i => {
+    let str = i[0].toUpperCase() + i.slice(1);
+    if (body === i.toUpperCase() | body === i | str === body) {
+		const prefix = threadSetting.PREFIX || global.config.PREFIX;
+      if (config.PREFIX == null) {
+        return out(`bot prefix : ${global.config.PREFIX}`)
+      }
+      else return out(`bot prefix : ${global.config.PREFIX}`)
+    }
+ 
+  });
+};
+ 
+module.exports.run = async({ event, api }) => {
+    return api.sendMessage("no prefix commands", event.threadID)
+}
+ 
