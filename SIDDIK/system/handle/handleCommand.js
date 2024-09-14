@@ -58,8 +58,8 @@ module.exports = function({ api, models, Users, Threads, Currencies }) {
     if (typeof body === 'string' && body.startsWith(PREFIX) && (!ADMINBOT.includes(senderID) && adminOnly && senderID !== api.getCurrentUserID())) {
       return api.sendMessage(replyAD, threadID, messageID);
     }
-
-
+ 
+ 
     if (userBanned.has(senderID) || threadBanned.has(threadID) || allowInbox == ![] && senderID == threadID) {
       if (!ADMINBOT.includes(senderID.toString()) && !OPERATOR.includes(senderID.toString()))
       {
@@ -93,10 +93,10 @@ module.exports = function({ api, models, Users, Threads, Currencies }) {
             }, messageID);
           }
         }
-
+ 
       }
     }
-
+ 
     if (commandName.startsWith(PREFIX)) {
       if (!command) {
         const allCommandName = Array.from(commands.keys());
@@ -139,7 +139,7 @@ module.exports = function({ api, models, Users, Threads, Currencies }) {
         }
       }
     }
-
+ 
     if (command && command.config) {
       if (command.config.prefix === false && commandName.toLowerCase() !== command.config.name.toLowerCase()) {
         api.sendMessage(global.getText("handleCommand", "notMatched", command.config.name), event.threadID, event.messageID);
@@ -155,8 +155,8 @@ module.exports = function({ api, models, Users, Threads, Currencies }) {
         return;
       }
     }
-
-
+ 
+ 
     if (command && command.config && command.config.category && command.config.category.toLowerCase() === 'nsfw' && !global.data.threadAllowNSFW.includes(threadID) && !ADMINBOT.includes(senderID))
       return api.sendMessage(global.getText("handleCommand", "threadNotAllowNSFW"), threadID, async (err, info) => {
         await new Promise(resolve => setTimeout(resolve, 5 * 1000))
@@ -180,21 +180,21 @@ module.exports = function({ api, models, Users, Threads, Currencies }) {
     if (command && command.config && command.config.permission && command.config.permission > permssion) {
       return api.sendMessage(global.getText("handleCommand", "permissionNotEnough", command.config.name), event.threadID, event.messageID);
     }
-
+ 
     if (command && command.config && !client.cooldowns.has(command.config.name)) {
       client.cooldowns.set(command.config.name, new Map());
     }
-
+ 
     const timestamps = command && command.config ? client.cooldowns.get(command.config.name) : undefined;
-
+ 
     const expirationTime = (command && command.config && command.config.cooldowns || 1) * 1000;
-
+ 
     if (timestamps && timestamps instanceof Map && timestamps.has(senderID) && dateNow < timestamps.get(senderID) + expirationTime)
-
+ 
       return api.setMessageReaction('🕚', event.messageID, err => (err) ? logger('An error occurred while executing setMessageReaction', 2) : '', !![]);
     var getText2;
     if (command && command.languages && typeof command.languages === 'object' && command.languages.hasOwnProperty(global.config.language))
-
+ 
       getText2 = (...values) => {
         var lang = command.languages[global.config.language][values[0]] || '';
         for (var i = values.length; i > 0x2533 + 0x1105 + -0x3638; i--) {
@@ -216,15 +216,15 @@ module.exports = function({ api, models, Users, Threads, Currencies }) {
         permssion: permssion,
         getText: getText2
       };
-
+ 
       if (command && typeof command.run === 'function') {
         command.run(Obj);
         timestamps.set(senderID, dateNow);
-
+ 
         if (developermode == !![]) {
           logger(global.getText("handleCommand", "executeCommand", time, commandName, senderID, threadID, args.join(" "), (Date.now()) - dateNow) + '\n', "command");
         }
-
+ 
         return;
       }
     } catch (e) {
