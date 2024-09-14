@@ -1,6 +1,6 @@
 module.exports = function ({ models }) {
 	const Currencies = models.use('Currencies');
-
+ 
 	async function getAll(...data) {
 		var where, attributes;
 		for (const i of data) {
@@ -14,7 +14,7 @@ module.exports = function ({ models }) {
 			throw new Error(error);
 		};
 	}
-
+ 
 	async function getData(userID) {
 		try {
 			const data = await Currencies.findOne({ where: { userID }});
@@ -26,7 +26,7 @@ module.exports = function ({ models }) {
 			throw new Error(error);
 		};
 	}
-
+ 
 	async function setData(userID, options = {}) {
 		if (typeof options != 'object' && !Array.isArray(options)) throw global.getText("currencies", "needObject");
 		try {
@@ -38,7 +38,7 @@ module.exports = function ({ models }) {
 			throw new Error(error);
 		}
 	}
-
+ 
 	async function delData(userID) {
 		try {
 			(await Currencies.findOne({ where: { userID } })).destroy();
@@ -49,7 +49,7 @@ module.exports = function ({ models }) {
 			throw new Error(error);
 		}
 	}
-
+ 
 	async function createData(userID, defaults = {}) {
 		if (typeof defaults != 'object' && !Array.isArray(defaults)) throw global.getText("currencies", "needObject");
 		try {
@@ -61,7 +61,7 @@ module.exports = function ({ models }) {
 			throw new Error(error);
 		}
 	}
-
+ 
 	async function increaseMoney(userID, money) {
 		if (typeof money != 'number') throw global.getText("currencies", "needNumber");
 		try {
@@ -74,7 +74,7 @@ module.exports = function ({ models }) {
 			throw new Error(error);
 		}
 	}
-
+ 
 	async function decreaseMoney(userID, money) {
 		if (typeof money != 'number') throw global.getText("currencies", "needNumber");
 		try {
@@ -87,7 +87,7 @@ module.exports = function ({ models }) {
 			throw new Error(error);
 		}
 	}
-
+ 
 	return {
 		getAll,
 		getData,
