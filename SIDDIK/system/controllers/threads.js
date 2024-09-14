@@ -1,6 +1,6 @@
 module.exports = function ({ models, api }) {
 	const Threads = models.use('Threads');
-
+ 
 	async function getInfo(threadID) {
 		try {
 			const result = await api.getThreadInfo(threadID);
@@ -11,7 +11,7 @@ module.exports = function ({ models, api }) {
 			throw new Error(error);
 		};
 	}
-
+ 
 	async function getAll(...data) {
 		var where, attributes;
 		for (const i of data) {
@@ -25,7 +25,7 @@ module.exports = function ({ models, api }) {
 			throw new Error(error);
 		}
 }
-
+ 
 	async function getData(threadID) {
 		try {
 			const data = await Threads.findOne({ where: { threadID }});
@@ -37,7 +37,7 @@ module.exports = function ({ models, api }) {
             throw new Error(error);
 		}
 	}
-
+ 
 	async function setData(threadID, options = {}) {
 		if (typeof options != 'object' && !Array.isArray(options)) throw global.getText("threads", "needObject");
 		try {
@@ -46,7 +46,7 @@ module.exports = function ({ models, api }) {
 		} catch (error) { 
 			try{
 				await this.createData(threadID, options);
-
+ 
 			} catch (error) {
 				console.error(error);
 				throw new Error(error);
@@ -54,7 +54,7 @@ module.exports = function ({ models, api }) {
 			
 		}
 	}
-
+ 
 	async function delData(threadID) {
 		try {
 			(await Threads.findOne({ where: { threadID } })).destroy();
@@ -65,7 +65,7 @@ module.exports = function ({ models, api }) {
 			throw new Error(error);
 		}
 	}
-
+ 
 	async function createData(threadID, defaults = {}) {
 		if (typeof defaults != 'object' && !Array.isArray(defaults)) throw global.getText("threads", "needObject");
 		try {
@@ -77,7 +77,7 @@ module.exports = function ({ models, api }) {
 			throw new Error(error);
 		}
 	}
-
+ 
 	return {
 		getInfo,
 		getAll,
