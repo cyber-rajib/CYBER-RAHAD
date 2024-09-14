@@ -1,4 +1,4 @@
-
+ 
 module.exports = function ({ Users, Threads, Currencies }) {
     const logger =require("../../catalogs/siddikc.js");
     return async function ({ event }) {
