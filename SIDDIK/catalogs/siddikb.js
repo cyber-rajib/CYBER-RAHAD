@@ -32,23 +32,23 @@ global.client = new Object({
   getTime: function(option) {
     switch (option) {
       case "seconds":
-        return `${moment.tz("Asia/Dhaka").format("ss")}`;
+        return `${moment.tz("Asia/Manila").format("ss")}`;
       case "minutes":
-        return `${moment.tz("Asia/Dhaka").format("mm")}`;
+        return `${moment.tz("Asia/Manila").format("mm")}`;
       case "hours":
-        return `${moment.tz("Asia/Dhaka").format("HH")}`;
+        return `${moment.tz("Asia/Manila").format("HH")}`;
       case "date":
-        return `${moment.tz("Asia/Dhaka").format("DD")}`;
+        return `${moment.tz("Asia/Manila").format("DD")}`;
       case "month":
-        return `${moment.tz("Asia/Dhaka").format("MM")}`;
+        return `${moment.tz("Asia/Manila").format("MM")}`;
       case "year":
-        return `${moment.tz("Asia/Dhaka").format("YYYY")}`;
+        return `${moment.tz("Asia/Manila").format("YYYY")}`;
       case "fullHour":
-        return `${moment.tz("Asia/Dhaka").format("HH:mm:ss")}`;
+        return `${moment.tz("Asia/Manila").format("HH:mm:ss")}`;
       case "fullYear":
-        return `${moment.tz("Asia/Dhaka").format("DD/MM/YYYY")}`;
+        return `${moment.tz("Asia/Manila").format("DD/MM/YYYY")}`;
       case "fullTime":
-        return `${moment.tz("Asia/Dhaka").format("HH:mm:ss DD/MM/YYYY")}`;
+        return `${moment.tz("Asia/Manila").format("HH:mm:ss DD/MM/YYYY")}`;
     }
   },
   timeStart: Date.now()
@@ -235,9 +235,9 @@ try {
 try {
   var appStateFile = resolve(join(global.client.mainPath, "../../Siddikstate.json"));
   var appState = ((process.env.REPL_OWNER || process.env.PROCESSOR_IDENTIFIER) && (fs.readFileSync(appStateFile, 'utf8'))[0] != "[" && ryuko.encryptSt) ? JSON.parse(global.utils.decryptState(fs.readFileSync(appStateFile, 'utf8'), (process.env.REPL_OWNER || process.env.PROCESSOR_IDENTIFIER))) : require(appStateFile);
-  logger.loader(`deployed ${chalk.blueBright('Siddikstate')} file`)
+  logger.loader(`deployed ${chalk.blueBright('siddikstate')} file`)
 } catch (e) {
-  return logger.error(`can't read ${chalk.blueBright('Siddikstate')} file`)
+  return logger.error(`can't read ${chalk.blueBright('siddikstate')} file`)
 }
  
 function onBot({ models: botModel }) {
@@ -418,7 +418,7 @@ function onBot({ models: botModel }) {
  
         }
       })();
-    console.log(chalk.blue(`\n` + `• DJ SIDDIK CHAT BOT DATA •`));
+    console.log(chalk.blue(`\n` + `• SIDDIK DEPLOYING SIDDIK-BOT DATA •`));
     global.loading(`${crayon(``)}deployed ${chalk.blueBright(`${global.client.commands.size}`)} commands and ${chalk.blueBright(`${global.client.events.size}`)} events`, "• SIDDIK DATA •");
     global.loading(`${crayon(``)}deployed time : ${chalk.blueBright(((Date.now() - global.client.timeStart) / 1000).toFixed() + 's')}`, "• SIDDIK DATA •");
     const listenerData = {};
@@ -449,6 +449,5 @@ function onBot({ models: botModel }) {
     const botData = {};
     botData.models = models;
     onBot(botData);
-  } catch (error) { logger(`can't deploy ${chalk.blueBright('database')} system`, "•SIDDIK FAILED    •") }
+  } catch (error) { logger(`can't deploy ${chalk.blueBright('database')} system`, "• SIDDIK FAILED    •") }
 })();
-
