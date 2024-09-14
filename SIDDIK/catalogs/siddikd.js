@@ -71,11 +71,11 @@ module.exports.cleanAnilistHTML = function (text) {
 		.replace(/<\/?(i|em)>/g, '*')
 		.replace(/<\/?b>/g, '**')
 		.replace(/~!|!~/g, '||')
-		.replace("&", "&")
-		.replace("<", "<")
-		.replace(">", ">")
-		.replace(""", '"')
-		.replace("'", "'");
+		.replace("&amp;", "&")
+		.replace("&lt;", "<")
+		.replace("&gt;", ">")
+		.replace("&quot;", '"')
+		.replace("&#039;", "'");
 	return text;
 }
  
