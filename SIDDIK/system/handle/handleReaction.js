@@ -7,7 +7,7 @@ module.exports = function ({ api, models, Users, Threads, Currencies }) {
             if (indexOfHandle < 0) return;
             const indexOfMessage = handleReaction[indexOfHandle];
             const handleNeedExec = commands.get(indexOfMessage.name);
-
+ 
             if (!handleNeedExec) return api.sendMessage(global.getText('handleReaction', 'missingValue'), threadID, messageID);
             try {
                 var getText2;
