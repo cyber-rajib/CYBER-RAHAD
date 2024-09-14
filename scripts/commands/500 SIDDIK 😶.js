@@ -10,13 +10,12 @@ const link = [
 module.exports.config = {
   name: "😶",
   version: "1.0.0",
-  permssion: 0,
+  hasPermssion:"0",
   credits: "SIDDIK",
-  prefix:true,
-  description: "Love",
-  category: "noprefix",
+  description: "auto reply to 😶",
+  commandCategory: "Hình ảnh",
   usages: "😶",
-  cooldowns: 5,
+  cooldowns: 0,
   dependencies: {
     "request":"",
     "fs-extra":"",
