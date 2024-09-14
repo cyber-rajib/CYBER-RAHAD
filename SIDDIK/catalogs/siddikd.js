@@ -206,5 +206,4 @@ module.exports.removeBackground = async(image) => {
 		return rejectFunc(error)
 	});
 	return returnPromise;
-}
- 
+		}
