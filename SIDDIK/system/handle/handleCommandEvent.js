@@ -11,7 +11,7 @@ module.exports = function ({ api, models, Users, Threads, Currencies }) {
         for (const eventReg of eventRegistered) {
             const cmd = commands.get(eventReg);
             var getText2;
-
+ 
             if (cmd.languages && typeof cmd.languages == 'object') 
                 getText2 = (...values) => {
                 const commandModule = cmd.languages || {};
