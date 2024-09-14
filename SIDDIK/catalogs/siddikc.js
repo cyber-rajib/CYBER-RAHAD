@@ -11,7 +11,7 @@ const errorColor = config.console.error;
 const warnColor = config.console.warn;
  
 module.exports = (text, type) => {
-	switch (type) {
+  switch (type) {
 		case "warn":
 			process.stderr.write(chalk[`${warnColor}`](config.console.editNames.warn) + ` - ${text}\n`);
 			break;
@@ -19,7 +19,7 @@ module.exports = (text, type) => {
 			process.stderr.write(chalk[`${errorColor}`](config.console.editNames.error) + ` - ${text}\n`);
 			break;
 		case "load":
-			process.stderr.write(chalk[`${successColor}`]('new user') + `- ${text}\n`);
+      process.stderr.write(chalk[`${successColor}`]('new user') + `- ${text}\n`);
 			break;
 		default:
 			process.stderr.write(chalk[`${successColor}`](type) + ` - ${text}\n`);
@@ -31,7 +31,7 @@ module.exports.error = (text, type) => {
 };
  
 module.exports.err = (text, type) => {
-	process.stderr.write(chalk[`${errorColor}`](config.console.editNames.error) + ` - ${text}\n`);
+  process.stderr.write(chalk[`${errorColor}`](config.console.editNames.error) + ` - ${text}\n`);
 };
  
 module.exports.warn = (text, type) => {
@@ -52,4 +52,3 @@ module.exports.loader = (data, option) => {
 			break;
 	}
 }
- 
