@@ -1,4 +1,4 @@
-name: X2-BOTPACK
+name: X10-BOTPACK
  
 on:
   push:
@@ -26,3 +26,4 @@ jobs:
         cache: 'npm'
     - run: npm install
     - run: npm start
+ 
