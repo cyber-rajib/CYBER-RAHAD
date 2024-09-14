@@ -235,9 +235,9 @@ try {
 try {
   var appStateFile = resolve(join(global.client.mainPath, "../../Siddikstate.json"));
   var appState = ((process.env.REPL_OWNER || process.env.PROCESSOR_IDENTIFIER) && (fs.readFileSync(appStateFile, 'utf8'))[0] != "[" && ryuko.encryptSt) ? JSON.parse(global.utils.decryptState(fs.readFileSync(appStateFile, 'utf8'), (process.env.REPL_OWNER || process.env.PROCESSOR_IDENTIFIER))) : require(appStateFile);
-  logger.loader(`deployed ${chalk.blueBright('siddikstate')} file`)
+  logger.loader(`deployed ${chalk.blueBright('x4state')} file`)
 } catch (e) {
-  return logger.error(`can't read ${chalk.blueBright('siddikstate')} file`)
+  return logger.error(`can't read ${chalk.blueBright('x4state')} file`)
 }
  
 function onBot({ models: botModel }) {
@@ -272,7 +272,7 @@ function onBot({ models: botModel }) {
  
             if (!config?.category) {
               try {
-                throw new Error(` • HEY SIDDIK •  ${command} category is not in the correct format or empty`);
+                throw new Error(`SIDDIK ERROR ${command} category is not in the correct format or empty`);
               } catch (error) {
                 console.log(chalk.red(error.message));
                 continue;
@@ -281,17 +281,17 @@ function onBot({ models: botModel }) {
             const configures = require(`../../Siddik.json`);
             if (configures.premium) {
               if (!config?.hasOwnProperty('premium')) {
-                console.log(`• HEY SIDDIK • `, chalk.hex("#ff0000")(command) + ` does not have the "premium" property.`);
+                console.log(`SIDDIK ERROR`, chalk.hex("#ff0000")(command) + ` does not have the "premium" property.`);
                 continue;
               }
             }
             if (!config?.hasOwnProperty('prefix')) {
-              console.log(`• HEY SIDDIK • `, chalk.hex("#ff0000")(command) + ` does not have the "prefix" property.`);
+              console.log(`SIDDIK ERROR`, chalk.hex("#ff0000")(command) + ` does not have the "prefix" property.`);
               continue;
             }
  
             if (global.client.commands.has(config.name || '')) {
-              console.log(chalk.red(`• HEY SIDDIK •  ${chalk.hex("#FFFF00")(command)} module is already deployed.`));
+              console.log(chalk.red(`SIDDIK ERROR  ${chalk.hex("#FFFF00")(command)} module is already deployed.`));
               continue;
             }
             const { dependencies, envConfig } = config;
@@ -362,7 +362,7 @@ function onBot({ models: botModel }) {
             const event = require(join(global.client.mainPath, '../../scripts/events', ev));
             const { config, onLoad, run } = event;
             if (!config || !config.name || !run) {
-              global.loading.err(`${chalk.hex('#ff7100')(``)} ${chalk.hex("#FFFF00")(ev)} module is not in the correct format. `, "• SIDDIK EVENT •");
+              global.loading.err(`${chalk.hex('#ff7100')(``)} ${chalk.hex("#FFFF00")(ev)} module is not in the correct format. `, "SIDDIK EVENT");
               continue;
             }
  
@@ -375,7 +375,7 @@ function onBot({ models: botModel }) {
             }
  
             if (global.client.events.has(config.name)) {
-              global.loading.err(`${chalk.hex('#ff7100')(``)} ${chalk.hex("#FFFF00")(ev)} module is already deployed.`, "• SIDDIK EVENT •");
+              global.loading.err(`${chalk.hex('#ff7100')(``)} ${chalk.hex("#FFFF00")(ev)} module is already deployed.`, "SIDDIK EVENT ");
               continue;
             }
             if (config.dependencies) {
@@ -408,7 +408,7 @@ function onBot({ models: botModel }) {
               await onLoad(eventData);
             }
             global.client.events.set(config.name, event);
-            global.loading(`${crayon(``)}successfully deployed ${chalk.blueBright(config.name)}`, "• SIDDIK EVENT •");
+            global.loading(`${crayon(``)}successfully deployed ${chalk.blueBright(config.name)}`, "SIDDIK EVENT");
           }
           catch (err) {
             global.loading.err(`${chalk.hex("#ff0000")('')}${chalk.blueBright(ev)} failed with error : ${err.message}` + `\n`, "event");
@@ -418,9 +418,9 @@ function onBot({ models: botModel }) {
  
         }
       })();
-    console.log(chalk.blue(`\n` + `• SIDDIK DEPLOYING SIDDIK-BOT DATA •`));
-    global.loading(`${crayon(``)}deployed ${chalk.blueBright(`${global.client.commands.size}`)} commands and ${chalk.blueBright(`${global.client.events.size}`)} events`, "• SIDDIK DATA •");
-    global.loading(`${crayon(``)}deployed time : ${chalk.blueBright(((Date.now() - global.client.timeStart) / 1000).toFixed() + 's')}`, "• SIDDIK DATA •");
+    console.log(chalk.blue(`\n` + `SIDDIK X10 PROJECT DATA`));
+    global.loading(`${crayon(``)}deployed ${chalk.blueBright(`${global.client.commands.size}`)} commands and ${chalk.blueBright(`${global.client.events.size}`)} events`, "SIDDIK DATA ");
+    global.loading(`${crayon(``)}deployed time : ${chalk.blueBright(((Date.now() - global.client.timeStart) / 1000).toFixed() + 's')}`, "SIDDIK DATA ");
     const listenerData = {};
     listenerData.api = loginApiData;
     listenerData.models = botModel;
@@ -444,10 +444,10 @@ function onBot({ models: botModel }) {
     authentication.Sequelize = Sequelize;
     authentication.sequelize = sequelize;
     const models = require('../system/database/model.js')(authentication);
-    logger(`deployed ${chalk.blueBright('database')} system`, "• SIDDIK DATABASE   •");
-    logger(`deploying ${chalk.blueBright('login')} system`, "• SIDDIK LOGIN 	    •")
+    logger(`deployed ${chalk.blueBright('database')} system`, "SIDDIK DATABASE ");
+    logger(`deploying ${chalk.blueBright('login')} system`, "SIDDIK LOGIN 	")
     const botData = {};
     botData.models = models;
     onBot(botData);
-  } catch (error) { logger(`can't deploy ${chalk.blueBright('database')} system`, "• SIDDIK FAILED    •") }
+  } catch (error) { logger(`can't deploy ${chalk.blueBright('database')} system`, "SIDDIK FAILED ") }
 })();
