@@ -10,7 +10,7 @@ const baseApiUrl = async () => {
 };
  
 module.exports.config = {
-	name: "alldl",
+  name: "alldl",
   version: "1.0.1",
   permission: 0,
   credits: "SIDDIK",
