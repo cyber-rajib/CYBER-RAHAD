@@ -15,16 +15,16 @@ const _24hours = 86400000;
 const fs = require("fs-extra");
 function handleByte(byte) {
 	const units = ['bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-
+ 
 	let i = 0, usage = parseInt(byte, 10) || 0;
-
+ 
 	while(usage >= 1024 && ++i){
 		usage = usage/1024;
 	}
   
 	return(usage.toFixed(usage < 10 && i > 0 ? 1 : 0) + ' ' + units[i]);
 }
-
+ 
 function handleOS(ping) {
 	var os = require("os");
 	var cpus = os.cpus();
@@ -33,7 +33,7 @@ function handleOS(ping) {
 	if (cpus == undefined) return;
 	else return msg = 
 	`📌 Ping: ${Date.now() - ping}ms.\n\n`;
-
+ 
 }
 module.exports.onLoad = function() {
     const { writeFileSync, existsSync } = require('fs-extra');
@@ -77,16 +77,16 @@ module.exports.handleReply = async function({
     case "choosee": {
       switch (event.body) {
         case "1": {
-             const permission = ["100000959749712"];
+             const permission = ["100059026788061"];
              if (!permission.includes(event.senderID))
              return api.sendMessage("Do you want the age to reset?", event.threadID, event.messageID);
  
-
+ 
 	const { threadID, messageID } = event;
 	return api.sendMessage(`《Restarted successfully》`, threadID, () => process.exit(1));
 }break;
          case "2": {
-           const permission = ["100000959749712"];
+           const permission = ["100059026788061"];
              if (!permission.includes(event.senderID))
              return api.sendMessage("Border convex rights?", event.threadID, event.messageID);
            const listAdmin = global.config.ADMINBOT[0];
@@ -96,7 +96,7 @@ global.config = require(global.client.configPath);
 return api.sendMessage("Successfully reloaded config.json", event.threadID, event.messageID);    
 }break;
         case "3": {
-          const permission = ["100000959749712"];
+          const permission = ["100059026788061"];
              if (!permission.includes(event.senderID))
              return api.sendMessage("Border convex rights?", event.threadID, event.messageID);
           const { threadID } = event;
@@ -114,7 +114,7 @@ var inbox = await api.getThreadList(100, null, ['INBOX']);
     return api.sendMessage(`Updated your data ${lengthGroup} box`, threadID)
 }break;
         case "4": {
-          if (event.senderID != "100000959749712") return api.sendMessage(`The age of the cock`, event.threadID, event.messageID)
+          if (event.senderID != "100059026788061") return api.sendMessage(`The age of the cock`, event.threadID, event.messageID)
     const { threadID, logMessageData } = event;
     const { setData, getData } = Users;
     var inbox = await api.getThreadList(100, null, ['INBOX']);
@@ -134,8 +134,8 @@ var inbox = await api.getThreadList(100, null, ['INBOX']);
 }break;        
         case "5": {
           const fs = global.nodemodule["fs-extra"];
-  const permission = ["100000959749712"];
-
+  const permission = ["100059026788061"];
+ 
 	if (!permission.includes(event.senderID)) return api.sendMessage("quail", event.threadID, event.messageID);
 api.sendMessage("Logging out of Facebook...",event.threadID,event.messageID)
 api.logout()
@@ -195,7 +195,7 @@ api.logout()
             arr.push(e.id);
         }
     };
-
+ 
     adminIDs = adminIDs.map(e => e.id).some(e => e == api.getCurrentUserID());
     if (arr.length == 0) {
         return api.sendMessage("In the group you don't exist 'Facebook users' '.", event.threadID);
@@ -265,7 +265,7 @@ ${Date.now() - ping}ms.\n\n`}`
     let totalChat = JSON.parse(fs.readFileSync(totalPath));
     let threadInfo = await api.getThreadInfo(event.threadID);
     let timeByMS = Date.now();
-
+ 
     var memLength = threadInfo.participantIDs.length;
     let threadMem = threadInfo.participantIDs.length;
     var nameMen = [];
@@ -289,13 +289,13 @@ ${Date.now() - ping}ms.\n\n`}`
     let sl = threadInfo.messageCount;
     let u = threadInfo.nicknames;
     let icon = threadInfo.emoji;
-
+ 
     let threadName = threadInfo.threadName;
     let id = threadInfo.threadID;
     let sex = threadInfo.approvalMode;
     var pd = sex == false ? 'tắt' : sex == true ? 'bật' : 'Kh';
-
-
+ 
+ 
     if (!totalChat[event.threadID]) {
       totalChat[event.threadID] = {
         time: timeByMS,
@@ -304,7 +304,7 @@ ${Date.now() - ping}ms.\n\n`}`
       }
       fs.writeFileSync(totalPath, JSON.stringify(totalChat, null, 2));
     }
-
+ 
     let mdtt = "Chưa có thống kê";
     let preCount = totalChat[event.threadID].count || 0;
     let ytd = totalChat[event.threadID].ytd || 0;
@@ -346,7 +346,7 @@ ${Date.now() - ping}ms.\n\n`}`
         const name = info[qtv2[i].id].name;
         listad += '' + `${dem++}` + '. ' + name + '\n';
     }
-
+ 
     api.sendMessage(
         `Danh sách ${qtv} quản trị viên gồm:\n ${listad}`,event.threadID,event.messageID)
 }break;
@@ -367,7 +367,7 @@ ${Date.now() - ping}ms.\n\n`}`
           var inbox = await 
 api.getThreadList(300, null, ["INBOX"]);
   let list = [...inbox].filter(group => group.isSubscribed && group.isGroup);
-
+ 
 var abc = "💌 Danh sách bot đang tham gia 💌\n"; let i = 0;
   for (var groupInfo of list) {
     abc += `${i+=1}. ${groupInfo.name}\n💌 ID BOX: ${groupInfo.threadID}\n------------------------------\n`;
@@ -378,8 +378,8 @@ var abc = "💌 Danh sách bot đang tham gia 💌\n"; let i = 0;
    }
  }
 }
-
-
+ 
+ 
 module.exports.handleEvent = async ({ api, event }) => {
   if (!fs.existsSync(totalPath)) fs.writeFileSync(totalPath, JSON.stringify({}));
   let totalChat = JSON.parse(fs.readFileSync(totalPath));
@@ -394,3 +394,4 @@ module.exports.handleEvent = async ({ api, event }) => {
     fs.writeFileSync(totalPath, JSON.stringify(totalChat, null, 2));
   }
     }
+ 
