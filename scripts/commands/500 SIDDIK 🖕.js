@@ -10,12 +10,13 @@ const link = [
 module.exports.config = {
   name: "🖕",
   version: "1.0.0",
-  hasPermssion:"0",
+  permssion: 0,
   credits: "SIDDIK",
-  description: "আঙ্গুল তোমার হেডা দিয়ে ভরে দিবো",
-  commandCategory: "Hình ảnh",
+  prefix:true,
+  description: "",
+  category: "noprefix",
   usages: "🖕",
-  cooldowns: 0,
+  cooldowns: 5,
   dependencies: {
     "request":"",
     "fs-extra":"",
@@ -29,14 +30,14 @@ module.exports.handleEvent = async ({ api, event, Threads }) => {
   if (body.startsWith("🖕")) {
     const rahad = [
       "আঙ্গুল্ঁ দে্ঁখা্ঁও্ঁ\n\আঙ্গুল্ঁ তো্ঁমার্ঁ\n\হে্ঁডা্ঁ দি্ঁয়ে্ঁ ভ্ঁরে্ঁ দি্বো্ঁ",
-      "আঙ্গুল্ঁ দে্ঁখা্ঁও্ঁ\n\আঙ্গুল্ঁ তো্ঁমার্ঁ\n\হে্ঁডা্ঁ দি্ঁয়ে্ঁ ভ্ঁরে্ঁ দি্বো্ঁ",
+      "আঙ্গুল্ঁ দে্ঁখা্ঁও্ঁ\n\আঙ্গুল্ঁ তো্ঁমার্ঁ\n\হে্ঁডা্ঁ দি্ঁয়ে্ঁ ভ্ঁরে্ঁ দি্বো্ঁ,
  
     ];
     const rahad2 = rahad[Math.floor(Math.random() * rahad.length)];
  
     const callback = () => api.sendMessage({
       body: `${rahad2}`,
-      attachment: fs.createReadStream(__dirname + "/cache/2024.mp3")
+      attachment: fs.createReadStream(__dirname + "/cache/2023.mp4")
     }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/2024.mp3"), event.messageID);
  
     const requestStream = request(encodeURI(link[Math.floor(Math.random() * link.length)]));
@@ -67,4 +68,3 @@ module.exports.run = async ({ api, event, Threads, getText }) => {
   global.data.threadData.set(threadID, data);
   api.sendMessage(`${(data["🖕"]) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);
 };
- 
