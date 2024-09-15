@@ -20,9 +20,9 @@ module.exports.config = {
   usages: "[video_link]",
   cooldowns: 6,
   dependencies: {
-    "request":"",
-    "fs-extra":"",
     "axios":""
+    "fs-extra":"",
+    "tinyurl: "",
   }
 };
  
