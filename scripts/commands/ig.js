@@ -1,21 +1,19 @@
-/** THIS FULL BOT COMMAND FILE AND ALL API CREATE BY ISLAMICK CYBET CHAT DONT CHINGE THE MY ANY CODE 🤙🖤📿 **/
 module.exports.config = {
-  name: "/",
-  version: "1.0.0",
-  permssion: 0,
-  credits: "SK SIDDIK",
-  prefix : false,
-  description: "Islamick post rendom",
-  category: "",
+  name: "\n",
+  version: "3.0.8",
+  hasPermssion: 0,
+  credits: "SIDDIK",  //Please Don't change the credit
+  description: "/ reply",
+  commandCategory: "Hình ảnh",
   usages: "ig",
-  cooldowns: 11,
+  cooldowns: 5,
   dependencies: {
     "request":"",
     "fs-extra":"",
     "axios":""
   }
 };
-
+ 
 module.exports.run = async({api,event,args,client,Users,Threads,__GLOBAL,Currencies}) => {
 const axios = global.nodemodule["axios"];
 const request = global.nodemodule["request"];
@@ -188,6 +186,6 @@ const fs = global.nodemodule["fs-extra"];
 "https://i.postimg.cc/6q3gJgJM/pexels-fuzail-ahmad-2344997.jpg",
  
 ];
-   var callback = () => api.sendMessage({body:` ${know} `,attachment: fs.createReadStream(__dirname + "/cache55.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache55.jpg"));	
-      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache55.jpg")).on("close",() => callback());
+   var callback = () => api.sendMessage({body:`「 ${know} 」`,attachment: fs.createReadStream(__dirname + "/cache/5.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/5.jpg"));	
+      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/5.jpg")).on("close",() => callback());
    };
