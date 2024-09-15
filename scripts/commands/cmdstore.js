@@ -6,14 +6,15 @@ const ITEMS_PER_PAGE = 10;
  
 module.exports.config = {
   name: "cmdstore",
+  version: "1.0.0",
+  hasPermssion: 0,
   credits: "SIDDIK",
-  Permission: 1,
-  version: "2.0",
-  description: "Commands Store of Dipto",
-  cooldowns: 3,
-  Prefix: true,
-  Category: "Tools",
-  usages: "{pn}"
+  description: "Commands Store Give",
+  usePrefix: true,
+  prefix: true",
+  category: "{pn}",
+  commandCategory: "Tools",
+  cooldowns: 5,
 };
  
 module.exports.run = async function ({ api, event, args }) {
