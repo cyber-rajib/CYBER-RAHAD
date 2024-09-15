@@ -16,7 +16,7 @@ handleEvent: function({ api, event, client, __GLOBAL }) {
   var { threadID, messageID } = event;
   const content = event.body ? event.body : '';
   const body = content.toLowerCase();
-  if (body.indexOf("Fuck")==0 || body.indexOf("Vuda")==0 || body.indexOf("Magi")==0 || body.indexOf("fuck you")==0) {
+  if (body.indexOf("fuck")==0 || body.indexOf("Vuda")==0 || body.indexOf("Magi")==0 || body.indexOf("Fuck")==0) {
     var msg = {
         body: "-উফ আসো🤭 আসো ডুকিয়ে চাপ দেই🥴🤤",
 	attachment: fs.createReadStream(__dirname + `/Siddik/npx41.mp3`)
