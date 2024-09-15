@@ -1,14 +1,16 @@
 const fs = require("fs");
-module.exports.config = {
-	name: "Siddik-10",
-    version: "1.0.1",
-	hasPermssion: 0,
-	credits: "SIDDIK", 
-	description: "hihihihi",
-	commandCategory: "no prefix",
-	usages: "siddik-10",
-    cooldowns: 5, 
-};
+module.exports = {
+  config:{
+  name: "siddik-10",
+  version: "1.0.1",
+  prefix: false,
+  permssion: 0,
+  credits: "SIDDIK", 
+  description: "মানুষ_দুনিয়ার অতিথি মাত্র",
+  category: "no prefix",
+  usages: "siddik-10",
+  cooldowns: 5, 
+},
  
 module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 	var { threadID, messageID } = event;
