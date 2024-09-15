@@ -1,19 +1,18 @@
 module.exports.config = {
-	name: "চুর",
-	version: "1.0.1",
-	hasPermssion: 1,
-	credits: "SIDDIK",
-	description: "Nombar 1 Chor",
-	commandCategory: "Picture",
-	usages: "...",
-	cooldowns: 5,
-	dependencies: {
-	  "fs-extra": "",
-	  "axios": "",
-	  "canvas" :"",
-	  "jimp": "",
-	  "node-superfetch": ""
-	}
+  name: "চুর",
+  version: "1.0.0",
+  permission: 0,
+  credits: "SIDDIK",
+  description: "Nombar 1 Chor",
+  prefix: true, 
+  category: "Picture", 
+  usages: "user",
+  cooldowns: 5,
+  dependencies: {
+    "request":"",
+    "fs-extra":"",
+    "axios":""
+  }
 };
  
 module.exports.circle = async (image) => {
@@ -45,4 +44,5 @@ try {
 }
 catch(e) {api.sendMessage(e.stack, event.threadID )}
   }
+ 
  
