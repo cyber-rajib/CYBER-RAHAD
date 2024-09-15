@@ -4,7 +4,7 @@ name : SK SIDDIK KHAN
 age : N\A
 
 link : [facebook]
-(https://www
+(https://www.facebook.com/rxsiddik1)
 
 CONTACT
 modified : [SK SIDDIK](https://www.facebook.com/rxsiddik1)
