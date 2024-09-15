@@ -1,11 +1,11 @@
 module.exports.config = {
-	name: "bdsex",
+  name: "bdsex",
   version: "1.0.0",
-  permission: 0,
+  permission: 1,
   credits: "SIDDIK",
   description: "BANGLADESH SE** PIC",
   prefix: true, 
-  category: "", 
+  category: "user", 
   usages: "addmin",
   cooldowns: 5,
   dependencies: {
