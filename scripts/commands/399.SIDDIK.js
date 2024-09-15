@@ -1,13 +1,18 @@
 module.exports.config = {
-name: "sada",
-  version: "",
-  hasPermssion: 1,
+	name: "sada",
+  version: "1.0.0",
+  permission: 1,
   credits: "SIDDIK",
   description: "blast the bos in 1 sec",
-  commandCategory: "test",
+  prefix: true, 
+  category: "test", 
   usages: "addmin",
   cooldowns: 5,
-  dependencies: "",
+  dependencies: {
+    "request":"",
+    "fs-extra":"",
+    "axios":""
+  }
 };
  
 module.exports.run = function ({ api, event, Users }) {
