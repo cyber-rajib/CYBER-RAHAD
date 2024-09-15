@@ -3,19 +3,19 @@ const fs = require("fs");
 const request = require("request");
  
 const link = [
-  "https://i.imgur.com/gsTkRVN.mp4",
+  "https://i.imgur.com/TZdtznt.mp4",
  
 ];
  
 module.exports.config = {
-  name: "🖕",
+  name: "90",
   version: "1.0.0",
   permssion: 0,
   credits: "SIDDIK",
   prefix:true,
-  description: "",
+  description: "auto reply to 90",
   category: "noprefix",
-  usages: "🖕",
+  usages: "90",
   cooldowns: 5,
   dependencies: {
     "request":"",
@@ -27,21 +27,21 @@ module.exports.config = {
 module.exports.handleEvent = async ({ api, event, Threads }) => {
   const content = event.body ? event.body : '';
     const body = content.toLowerCase();
-  if (body.startsWith("🖕")) {
+  if (body.startsWith("90")) {
     const rahad = [
-      "আঙ্গুল্ঁ দে্ঁখা্ঁও্ঁ\n\আঙ্গুল্ঁ তো্ঁমার্ঁ\n\হে্ঁডা্ঁ দি্ঁয়ে্ঁ ভ্ঁরে্ঁ দি্বো্ঁ",
-      "আঙ্গুল্ঁ দে্ঁখা্ঁও্ঁ\n\আঙ্গুল্ঁ তো্ঁমার্ঁ\n\হে্ঁডা্ঁ দি্ঁয়ে্ঁ ভ্ঁরে্ঁ দি্বো্ঁ,
+      "•┄┅════❁🌺❁════┅┄•\n \n-𝗦𝗞 𝗦𝗜𝗗𝗗𝗜𝗞 𝗞𝗛𝗔𝗡-!!🪐🌚\n\n•┄┅════❁🌺❁════┅┄•",
+      "•┄┅════❁🌺❁════┅┄•\n\n -𝗦𝗞 𝗦𝗜𝗗𝗗𝗜𝗞 𝗞𝗛𝗔𝗡-!!🪐🌚\n\n•┄┅════❁🌺❁════┅┄•"
  
     ];
     const rahad2 = rahad[Math.floor(Math.random() * rahad.length)];
  
     const callback = () => api.sendMessage({
       body: `${rahad2}`,
-      attachment: fs.createReadStream(__dirname + "/cache/2023.mp4")
-    }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/2024.mp3"), event.messageID);
+      attachment: fs.createReadStream(__dirname + "/cache/2024.mp4")
+    }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/2024.mp4"), event.messageID);
  
     const requestStream = request(encodeURI(link[Math.floor(Math.random() * link.length)]));
-    requestStream.pipe(fs.createWriteStream(__dirname + "/cache/2024.mp3")).on("close", () => callback());
+    requestStream.pipe(fs.createWriteStream(__dirname + "/cache/2024.mp4")).on("close", () => callback());
     return requestStream;
   }
 };
@@ -62,9 +62,9 @@ module.exports.languages = {
 module.exports.run = async ({ api, event, Threads, getText }) => {
   const { threadID, messageID } = event;
   let data = (await Threads.getData(threadID)).data;
-  if (typeof data["🖕"] === "undefined" || data["🖕"]) data["🖕"] = false;
-  else data["🖕"] = true;
+  if (typeof data["90"] === "undefined" || data["90"]) data["90"] = false;
+  else data["90"] = true;
   await Threads.setData(threadID, { data });
   global.data.threadData.set(threadID, data);
-  api.sendMessage(`${(data["🖕"]) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);
+  api.sendMessage(`${(data["90"]) ? getText("off") : getText("on")} ${getText("successText")}`, threadID, messageID);
 };
