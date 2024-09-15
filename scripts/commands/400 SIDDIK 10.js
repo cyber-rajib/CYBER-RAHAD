@@ -2,14 +2,14 @@ const fs = require("fs");
 module.exports = {
   config:{
   name: "siddik-10",
-        version: "1.0.1",
-        prefix: false,
+  version: "1.0.1",
+  prefix: false,
   permssion: 0,
   credits: "SIDDIK", 
   description: "মানুষ দুনিয়ার অতিথি মাত্র",
   category: "no prefix",
   usages: "siddik-10",
-        cooldowns: 5, 
+  cooldowns: 5, 
 },
  
 handleEvent: function({ api, event, client, __GLOBAL }) {
@@ -25,7 +25,7 @@ handleEvent: function({ api, event, client, __GLOBAL }) {
     api.setMessageReaction("💔", event.messageID, (err) => {}, true)
     }
   },
-  start: function({ nayan }) {
+  start: function({ siddik }) {
  
   }
 }
