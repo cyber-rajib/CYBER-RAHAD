@@ -8,9 +8,13 @@ module.exports.config = {
   description: "View your box information",
   prefix: true, 
   category: "Box", 
-  usages: "gorup",
+  usages: "boxinfo",
   cooldowns: 5,
-  dependencies: [] 
+  dependencies: {
+    "request":"",
+    "fs-extra":"",
+    "axios":""
+  }
 };
  
 module.exports.run = async function({ api, event, args }) {
