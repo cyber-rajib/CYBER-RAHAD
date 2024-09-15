@@ -1,12 +1,14 @@
+/** THIS FULL BOT COMMAND FILE AND ALL API CREATE BY SK SIDDIK CHAT DONT CHINGE THE MY ANY CODE 🤙🖤📿 **/
 module.exports.config = {
-  name: "\n",
-  version: "3.0.8",
-  hasPermssion: 0,
-  credits: "SIDDIK",  //Please Don't change the credit
-  description: "/ reply",
-  commandCategory: "Hình ảnh",
+  name: "/",
+  version: "1.0.0",
+  permssion: 0,
+  credits: "SIDDIK",
+  prefix : false,
+  description: "Islamick post rendom",
+  category: "𝐈 𝐂 𝐂",
   usages: "ig",
-  cooldowns: 5,
+  cooldowns: 11,
   dependencies: {
     "request":"",
     "fs-extra":"",
@@ -181,11 +183,9 @@ const fs = global.nodemodule["fs-extra"];
 "https://i.postimg.cc/DzCzvHpt/photo-1575645513913-c002ea3b2e01-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-MXxhb.jpg",
 "https://i.postimg.cc/CLvk2rS6/photo-1592326871020-04f58c1a52f3-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-MXxhb.jpg",
 "https://i.postimg.cc/YC1DYw1m/photo-1451422450617-99d28523649e-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-MXxhb.jpg",
-"https://i.postimg.cc/DZPDq3Lz/photo-1579305796288-c534f6cf17ab-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-MXxhb.jpg",
- 
-"https://i.postimg.cc/6q3gJgJM/pexels-fuzail-ahmad-2344997.jpg",
- 
+"https://i.postimg.cc/DZPDq3Lz/photo-1579305796288-c534f6cf17ab-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-MXxhb.jpg", 
+"https://i.postimg.cc/6q3gJgJM/pexels-fuzail-ahmad-2344997.jpg", 
 ];
-   var callback = () => api.sendMessage({body:`「 ${know} 」`,attachment: fs.createReadStream(__dirname + "/cache/5.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/5.jpg"));	
-      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/5.jpg")).on("close",() => callback());
+   var callback = () => api.sendMessage({body:` ${know} `,attachment: fs.createReadStream(__dirname + "/cache55.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache55.jpg"));	
+      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache55.jpg")).on("close",() => callback());
    };
