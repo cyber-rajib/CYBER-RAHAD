@@ -1,13 +1,12 @@
 module.exports.config = {
-	name: "ডিজে",
+  name: "ডিজে",
   version: "1.0.0",
-  permission: 0,
-  credits: "Gm Nuruzzaman",
-  description: "Made By Siddik",
-  prefix: true, 
-  category: "user", 
-  usages: "dj vedio",
-  cooldowns: 5,
+  hasPermssion:"0",
+  credits: "SIDDIK",
+  description: "Make By Siddik",
+  commandCategory: "user",
+  usages: "dj",
+  cooldowns: 0,
   dependencies: {
     "request":"",
     "fs-extra":"",
@@ -48,4 +47,5 @@ const fs = global.nodemodule["fs-extra"];
      var callback = () => api.sendMessage({body:`「 ${know} 」`,attachment: fs.createReadStream(__dirname + "/cache/26.mp3")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/26.mp3"));    
       return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/26.mp3")).on("close",() => callback());
    };
+ 
  
