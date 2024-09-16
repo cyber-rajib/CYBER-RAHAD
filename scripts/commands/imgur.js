@@ -46,8 +46,12 @@ module.exports.run = async ({ api, event }) => {
  
         console.log('Imgur link:', imgurLink);
  
-        const replyMessage = `TYPE: ${type}\nLINK: ${link}`
-        
+        const replyMessage = `====『 𝖨𝖬𝖦𝖴𝖱 』====\n\n=🤗 [ 𝙼𝚁. 𝙰𝙻𝚅𝙸 𝙲𝙷𝙾𝚆𝙳𝙷𝚄𝚁𝚈  ] 🚴‍♂️=
+        ▱▱▱▱▱▱▱▱▱▱▱▱▱\n
+        ✿ 𝖨𝗆𝗀𝗎𝗋 𝗅𝗂𝗇𝗄: ${imgurLink}\n
+        ▱▱▱▱▱▱▱▱▱▱▱▱▱\n
+        『  ${thu} || ${times} 』`;
+ 
         return api.sendMessage({ body: replyMessage }, event.threadID, event.messageID);
     } catch (error) {
         console.error('Error:', error.response?.data || error.message);
