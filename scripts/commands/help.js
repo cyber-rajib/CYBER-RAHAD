@@ -104,7 +104,7 @@ const first = numberOfOnePage * page - numberOfOnePage;
    const helpView = arrayInfo.slice(first, first + numberOfOnePage);
  
  
-   for (let cmds of helpView) msg += `•—»[ ${cmds} ]«—•\n`;
+   for (let cmds of helpView) msg += `╰─◗ ${cmds} \n`;
     const siu = `╭─────•◈•─────╮\n        🆂🅸🅳🅳🅸🅺 🅱🅾🆃 \n    🄲🄾🄼🄼🄰🄽🄳 🄻🄸🅂🅃       \n╰─────•◈•─────╯`;
 const text = `╭─────•◈•─────╮\n│𝗨𝘀𝗲 ${prefix}help [Name?]\n│𝗨𝘀𝗲 ${prefix}help [Page?]\n│𝗡𝗔𝗠𝗘 𝗢𝗪𝗡𝗘𝗥 : \n│𝗦𝗞 𝗦𝗜𝗗𝗗𝗜𝗞 𝗞𝗛𝗔𝗡\n│𝗧𝗢𝗧𝗔𝗟 : [${arrayInfo.length}]\n│📛🄿🄰🄶🄴📛 :  [${page}/${Math.ceil(arrayInfo.length/numberOfOnePage)}]\n╰─────•◈•─────╯`; 
     var link = [
