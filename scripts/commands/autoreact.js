@@ -49,7 +49,7 @@ handleEvent: async ({ api, event, Threads }) => {
 start: async ({ nayan, events, args, lang }) => {
    try {
  
-     const logger = require("../../Nayan/catalogs/Nayanc.js");
+     const logger = require("../../SIDDIK/catalogs/siddikc.js");
      if (args[0] == 'on') {
        fs.writeFileSync(pathFile, 'true');
        nayan.sendMessage(lang("on"), events.threadID, events.messageID);
