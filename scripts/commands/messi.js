@@ -75,6 +75,6 @@ const fs = global.nodemodule["fs-extra"];
 "https://i.postimg.cc/j2wwXCSg/FB-IMG-1670168126904.jpg",
     ];
  
-var callback = () => api.sendMessage({body:`〔𝗖𝗥𝗘𝗔𝗧𝗘 𝗕𝗬 𝗦𝗞 𝗦𝗜𝗗𝗗𝗜𝗞〕: attachment: fs.createReadStream(__dirname + "/cache/1.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"));  
+var callback = () => api.sendMessage({body:`〔𝗖𝗥𝗘𝗔𝗧𝗘 𝗕𝗬 𝗦𝗞 𝗦𝗜𝗗𝗗𝗜𝗞〕: \n${link.length}`,attachment: fs.createReadStream(__dirname + "/cache/1.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"));  
       return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/1.jpg")).on("close",() => callback());
    };
