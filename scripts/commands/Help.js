@@ -29,7 +29,6 @@ module.exports.languages = {
   },
 };
  
- 
 module.exports.handleEvent = function ({ api, event, getText }) {
   const { commands } = global.client;
   const { threadID, messageID, body } = event;  
