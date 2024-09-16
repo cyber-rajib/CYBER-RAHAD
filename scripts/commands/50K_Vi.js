@@ -2,7 +2,7 @@ module.exports.config = {
   name: "vi",
   version: "1.0.0",
   permssion: 0,
-  credits: "𝐊𝐡𝐚𝐧 𝐑𝐚𝐡𝐮𝐥 𝐑𝐊",
+  credits: "SIDDIK",
   prefix: false,
   description: "convert vitname language",
   category: "language",
