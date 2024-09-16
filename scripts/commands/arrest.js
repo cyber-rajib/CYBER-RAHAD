@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "arrest",
+  name: "arrest",
   version: "2.0.0",
   permission: 0,
   credits: "SIDDIK",
@@ -70,7 +70,7 @@ module.exports.run = async function ({ event, api, args }) {
     if (!mention) return api.sendMessage("Please mention 1 Person", threadID, messageID);
     else {
         var one = senderID, two = mention;
-        return makeImage({ one, two }).then(path => api.sendMessage({ body: "Congratulations on entering the state payroll " + tag + '\n Wish you happy',
+        return makeImage({ one, two }).then(path => api.sendMessage({ body: "চলো থানায় তোমার জন্য " + tag + '\n সবাই ওয়েট করতেছে🐸🐸',
             mentions: [{
           tag: tag,
           id: mention
