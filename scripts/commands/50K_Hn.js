@@ -1,18 +1,18 @@
 module.exports.config = {
-  name: "en",
+  name: "hindi",
   version: "1.0.1",
   permssion: 0,
   credits: "SIDDIK",
-  prefix: "noprefix",
+  prefix: false,
   description: "Text translation",
   category: "media",
-  usages: "[en/ko/ja/bn] [Text]",
+  usages: "[hi/ar/bn/vi/en] [Text]",
   cooldowns: 5,
   dependencies: {
     "request":  ""
   }
 };
-
+ 
 module.exports.run = async ({ api, event, args }) => {
   const request = global.nodemodule["request"];
   var content = args.join(" ");
@@ -28,12 +28,12 @@ module.exports.run = async ({ api, event, args }) => {
     translateThis = content.slice(0, content.length)
     lang = global.config.language;
   }
-  return request(encodeURI(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${lang}&dt=t&q=${translateThis}`), (err, response, body) => {
+  return request(encodeURI(`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=hi&dt=t&q=${translateThis}`), (err, response, body) => {
     if (err) return api.sendMessage("An error has occurred!", event.threadID, event.messageID);
     var retrieve = JSON.parse(body);
     var text = '';
     retrieve[0].forEach(item => (item[0]) ? text += item[0] : '');
     var fromLang = (retrieve[2] === retrieve[8][0][0]) ? retrieve[2] : retrieve[8][0][0]
-    api.sendMessage(` ${text}`, event.threadID, event.messageID);
+    api.sendMessage(`${text}`, event.threadID, event.messageID);
   });
-}
+      }
