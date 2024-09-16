@@ -1,45 +1,31 @@
-const axios = require("axios");
-const baseApiUrl = async () => {
-  const base = await axios.get(
-    `https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json`,
-  );
-  return base.data.api;
+module.exports.config = {
+  name: "imgur",
+  version: "1.0.0",
+  permission: 0,
+  credits: "SIDDIK",
+  description: "PHOTO LINK",
+  prefix: true, 
+  category: "user", 
+  usages: "Link",
+  cooldowns: 5,
+  dependencies: {
+  }
 };
  
-(module.exports.config = {
-  name: "imgur",
-  version: "6.9",
-  credits: "SIDDIK",
-  countDown: 5,
-  Permssion: 0,
-  Prefix: true,
-  prefix:true,
-  category: "media",
-  description: "convert image/video into Imgur link",
-  usages: "reply [image, video]",
-}),
-  (module.exports.run = async function ({ api, event }) {
-    const dip = event.messageReply?.attachments[0]?.url;
-    if (!dip) {
-      return api.sendMessage(
-        "Please reply to an image or video.",
-        event.threadID,
-        event.messageID,
-      );
-    }
+module.exports.run = async ({ api, event, args }) => {
+    const axios = global.nodemodule['axios'];
+  const apis = await axios.get('https://raw.githubusercontent.com/MOHAMMAD-NAYAN/Nayan/main/api.json')
+  const n = apis.data.api
+    const linkanh = event.messageReply.attachments[0].url || args.join(" ");
+    if (!linkanh)
+        return api.sendMessage('[🔰]➜ Please give feedback or enter the image or vide link', event.threadID, event.messageID);
     try {
-      const res = await axios.get(
-        `${await baseApiUrl()}/imgur?url=${encodeURIComponent(dip)}`,
-      );
-      const dipto = res.data.data;
-      api.sendMessage(dipto, event.threadID, event.messageID);
-    } catch (error) {
-      console.error(error);
-      return api.sendMessage(
-        "Failed to convert image or video into link.",
-        event.threadID,
-        event.messageID,
-      );
+      var tpk = `",`;
+        const allPromise = (await Promise.all(event.messageReply.attachments.map(item => axios.get(`${n}/imgurv2?link=${encodeURIComponent(item.url)}`)))).map(item => item.data.uploaded.image);
+        return api.sendMessage(`"` + allPromise.join('"\n"') + tpk, event.threadID, event.messageID);
     }
-  });
+    catch (e) {
+        return api.sendMessage('[🔰]➜ An error occurred while executing the command', event.threadID, event.messageID);
+    }
+};
  
