@@ -70,7 +70,7 @@ module.exports.run = async function ({ event, api, args }) {
     if (!mention) return api.sendMessage("Please mention 1 Person", threadID, messageID);
     else {
         var one = senderID, two = mention;
-        return makeImage({ one, two }).then(path => api.sendMessage({ body: "চলো থানায় তোমার জন্য " + tag + '\n সবাই ওয়েট করতেছে🐸🐸',
+        return makeImage({ one, two }).then(path => api.sendMessage({ body: "চলো থানায় " + tag + '\n তোমার জন্য সবাই ওয়েট করতেছে🐸🐸',
             mentions: [{
           tag: tag,
           id: mention
