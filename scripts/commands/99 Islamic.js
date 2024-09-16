@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "islamic",
+  name: "islamic",
   version: "1.0.0",
   permission: 0,
   credits: "SIDDIK",
