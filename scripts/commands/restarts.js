@@ -1,13 +1,17 @@
 module.exports.config = {
   name: "restart",
-  version: "1.0.0",
-  hasPermssion: 1,
+  version: "7.0.0",
+  permission: 2,
   credits: "SIDDIK",
-  description: "Restart the Bot",
-  commandCategory: "system",
-  usages: "addmin",
-  cooldowns: 5
-   };
+  prefix: false,
+  description: "restart bot system",
+  category: "admin",
+  usages: "restart",
+  cooldowns: 5,
+  dependencies: {
+    "process": ""
+  }
+};
  
 module.exports.run = async ({ api, event, args }) => {
   const { threadID, messageID } = event;
