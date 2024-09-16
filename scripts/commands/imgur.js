@@ -80,8 +80,7 @@ const imgurLink = await uploadToImgur(attachment);
 
 console.log('Imgur link:', imgurLink);
 
-const replyMessage = ` ${imgurLink}
-  `;
+const replyMessage = `${imgurLink}`;
 
 return api.sendMessage({ body: replyMessage }, event.threadID, event.messageID);
 
