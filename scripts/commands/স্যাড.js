@@ -1,6 +1,6 @@
 /** I am doing this coding with a lot of difficulty, please don't post it yourself¯\_(ツ)_/¯ **/
 module.exports.config = {
-  names: "sad",
+  name: "sad",
   version: "1.0.0",
   permission: 0,
   credits: "SIDDIK",
