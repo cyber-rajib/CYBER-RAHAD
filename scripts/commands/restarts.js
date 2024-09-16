@@ -17,13 +17,11 @@ module.exports.run = async ({ api, event, args }) => {
   const { threadID, messageID } = event;
   return api.sendMessage(`╭───────────➣
 ╰─◗𝗦𝗞 𝗦𝗜𝗗𝗗𝗜𝗞 𝗦𝗘𝗥𝗩𝗘𝗥𝗦 
-╰─◗Trying To Restart...♻️
-┏━━━━•🔰•━━━━┓
-╰─◗❖Restarting: in 6's❖
+╰─◗Trying To Restart...
+╰─◗Restarting: in 6's
 ╰─◗Restarted..
 ╰─◗🄱🄾🅃
 ╰─◗BOT BY SIDDIK
-┗━━━━•♻️•━━━━┛
 ╰─◗Successfully Restarted
-╰────────────➣`, threadID, () => process.exit(1));
+╰───────────➣`, threadID, () => process.exit(1));
 }
