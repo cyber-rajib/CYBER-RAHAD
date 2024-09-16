@@ -17,7 +17,7 @@ module.exports.config = {
  
 module.exports.languages = {
  "en": {
-    "moduleInfo": "╭─────•◈•─────╮\n |        🆂🅸🅳🅳🅸🅺 🅱🅾🆃\n |●𝗡𝗮𝗺𝗲: •—» %1 «—•\n |●𝗨𝘀𝗮𝗴𝗲: %3\n |●𝗗𝗲𝘀𝗰𝗿𝗶p𝘁𝗶𝗼𝗻: %2\n |●𝗖𝗮𝘁𝗲𝗴𝗼𝗿𝘆: %4\n |●𝗪𝗮𝗶𝘁𝗶𝗻𝗴 𝘁𝗶𝗺𝗲: %5 seconds(s)\n |●𝗣𝗲𝗿𝗺𝗶𝘀𝘀𝗶𝗼𝗻: %6\n |𝗠𝗼𝗱𝘂𝗹𝗲 𝗰𝗼𝗱𝗲 𝗯𝘆\n |•—» 𝗦𝗞 𝗦𝗜𝗗𝗗𝗜𝗞 𝗞𝗛𝗔𝗡 «—•\n╰─────•◈•─────╯",
+    "moduleInfo": "╭─────•◈•─────╮\n        🆂🅸🅳🅳🅸🅺 🅱🅾🆃\n |●𝗡𝗮𝗺𝗲: •—» %1 «—•\n |●𝗨𝘀𝗮𝗴𝗲: %3\n |●𝗗𝗲𝘀𝗰𝗿𝗶p𝘁𝗶𝗼𝗻: %2\n |●𝗖𝗮𝘁𝗲𝗴𝗼𝗿𝘆: %4\n |●𝗪𝗮𝗶𝘁𝗶𝗻𝗴 𝘁𝗶𝗺𝗲: %5 seconds(s)\n |●𝗣𝗲𝗿𝗺𝗶𝘀𝘀𝗶𝗼𝗻: %6\n |𝗠𝗼𝗱𝘂𝗹𝗲 𝗰𝗼𝗱𝗲 𝗯𝘆\n |•—» 𝗦𝗞 𝗦𝗜𝗗𝗗𝗜𝗞 𝗞𝗛𝗔𝗡 «—•\n╰─────•◈•─────╯",
     "helpList": '[ There are %1 commands on this bot, Use: "%2help nameCommand" to know how to use! ]',
     "user": "User",
         "adminGroup": "Admin group",
@@ -59,7 +59,7 @@ if (args[0] == "all") {
  
     return axios.get('https://loidsenpaihelpapi.miraiandgoat.repl.co').then(res => {
     let ext = res.data.data.substring(res.data.data.lastIndexOf(".") + 1);
-      let admID = "61551846081032";
+      let admID = "100059026788061"; "100005002412625";
  
       api.getUserInfo(parseInt(admID), (err, data) => {
       if(err){ return console.log(err)}
@@ -105,13 +105,12 @@ const first = numberOfOnePage * page - numberOfOnePage;
  
  
    for (let cmds of helpView) msg += `•—»[ ${cmds} ]«—•\n`;
-    const siu = `╭─────•◈•─────╮\n |        🆂🅸🅳🅳🅸🅺 🅱🅾🆃 \n |   🄲🄾🄼🄼🄰🄽🄳 🄻🄸🅂🅃       \n╰─────•◈•─────╯`;
+    const siu = `╭─────•◈•─────╮\n        🆂🅸🅳🅳🅸🅺 🅱🅾🆃 \n    🄲🄾🄼🄼🄰🄽🄳 🄻🄸🅂🅃       \n╰─────•◈•─────╯`;
 const text = `╭─────•◈•─────╮\n│𝗨𝘀𝗲 ${prefix}help [Name?]\n│𝗨𝘀𝗲 ${prefix}help [Page?]\n│𝗡𝗔𝗠𝗘 𝗢𝗪𝗡𝗘𝗥 : \n│𝗦𝗞 𝗦𝗜𝗗𝗗𝗜𝗞 𝗞𝗛𝗔𝗡\n│𝗧𝗢𝗧𝗔𝗟 : [${arrayInfo.length}]\n│📛🄿🄰🄶🄴📛 :  [${page}/${Math.ceil(arrayInfo.length/numberOfOnePage)}]\n╰─────•◈•─────╯`; 
     var link = [
-"https://i.imgur.com/qQOh75b.gif", "https://i.imgur.com/qQOh75b.gif", "https://i.imgur.com/qQOh75b.gif", "https://i.imgur.com/qQOh75b.gif",
-"https://i.imgur.com/qQOh75b.gif",
-"https://i.imgur.com/qQOh75b.gif",
-"https://i.imgur.com/qQOh75b.gif",
+"https://i.postimg.cc/pd2RqTRp/1697029960036.jpg",
+"https://i.postimg.cc/D07ZGg0Y/FB-IMG-17130017232311130.jpg",
+"https://i.postimg.cc/43hTx9f7/join.jpg",
     ]
      var callback = () => api.sendMessage({ body: siu + "\n\n" + msg  + text, attachment: fs.createReadStream(__dirname + "/cache/loidbutter.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/loidbutter.jpg"), event.messageID);
     return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/loidbutter.jpg")).on("close", () => callback());
@@ -119,7 +118,7 @@ const text = `╭─────•◈•─────╮\n│𝗨𝘀𝗲 ${p
 const leiamname = getText("moduleInfo", command.config.name, command.config.description, `${(command.config.usages) ? command.config.usages : ""}`, command.config.commandCategory, command.config.cooldowns, ((command.config.hasPermssion == 0) ? getText("user") : (command.config.hasPermssion == 1) ? getText("adminGroup") : getText("adminBot")), command.config.credits);
  
   var link = [
-"https://i.imgur.com/qQOh75b.gif",
+"https://i.postimg.cc/43hTx9f7/join.jpg",
   ]
     var callback = () => api.sendMessage({ body: leiamname, attachment: fs.createReadStream(__dirname + "/cache/loidbutter.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/loidbutter.jpg"), event.messageID);
 return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/loidbutter.jpg")).on("close", () => callback());
