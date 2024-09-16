@@ -3,10 +3,10 @@ module.exports.config = {
   name: "kosto",
   version: "1.0.0",
   permssion: 0,
-  credits: "Islamick Cyber Chat",
+  credits: "SIDDIK",
   prefix:true,
   description: "kosto VEDIO",
-  category: "I C C",
+  category: "user",
   usages: "kosto",
   cooldowns: 5,
   dependencies: {
