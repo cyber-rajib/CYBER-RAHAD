@@ -26,10 +26,10 @@ module.exports. run = async ({ api, event, args }) => {
      const logger = require("../../SIDDIK/catalogs/siddikc.js");
      if (args[0] == 'on') {
        fs.writeFileSync(pathFile, 'true');
-       api.sendMessage('the autoseen function is now enabled for new messages.', event.threadID, event.messageID);
+       api.sendMessage('Sk Siddik boss autoseen on successful😘', event.threadID, event.messageID);
      } else if (args[0] == 'off') {
        fs.writeFileSync(pathFile, 'false');
-       api.sendMessage('the autoseen function has been disabled for new messages.', event.threadID, event.messageID);
+       api.sendMessage('Sk Siddik boss autoseen off successful😘', event.threadID, event.messageID);
      } else {
        api.sendMessage('incorrect syntax', event.threadID, event.messageID);
      }
