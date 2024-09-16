@@ -109,7 +109,7 @@ const first = numberOfOnePage * page - numberOfOnePage;
 const text = `╭─────•◈•─────╮\n│𝗨𝘀𝗲 ${prefix}help [Name?]\n│𝗨𝘀𝗲 ${prefix}help [Page?]\n│𝗡𝗔𝗠𝗘 𝗢𝗪𝗡𝗘𝗥 : \n│𝗦𝗞 𝗦𝗜𝗗𝗗𝗜𝗞 𝗞𝗛𝗔𝗡\n│𝗧𝗢𝗧𝗔𝗟 : [${arrayInfo.length}]\n│📛🄿🄰🄶🄴📛 :  [${page}/${Math.ceil(arrayInfo.length/numberOfOnePage)}]\n╰─────•◈•─────╯`; 
     var link = [
 "https://i.imgur.com/y0199Cb.jpeg",
-"https://i.imgur.com/U8EH2TT.jpeg",
+"https://i.imgur.com/Jy9ZucD.jpeg",
 "https://i.imgur.com/6xoKcTg.jpeg",
     ]
      var callback = () => api.sendMessage({ body: siu + "\n\n" + msg  + text, attachment: fs.createReadStream(__dirname + "/cache/loidbutter.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/loidbutter.jpg"), event.messageID);
