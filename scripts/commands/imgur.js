@@ -4,14 +4,14 @@ const FormData = require('form-data');
 const url = require('url');
  
 module.exports.config = {
-    name: "imgur2",
+    name: "imgur",
     version: "1.0.0",
     permission: 0,
     credits: "SIDDIK",
     description: "Uploads replied attachment to Imgur",
     prefix: false, 
     category: "Video and images Imgur upload", 
-    usages: "imgur2",
+    usages: "imgur",
     cooldowns: 5,
     dependencies: {
         "axios": ""
@@ -46,12 +46,8 @@ module.exports.run = async ({ api, event }) => {
  
         console.log('Imgur link:', imgurLink);
  
-        const replyMessage = `====『 𝖨𝖬𝖦𝖴𝖱 』====\n\n=🤗 [ 𝙼𝚁. 𝙰𝙻𝚅𝙸 𝙲𝙷𝙾𝚆𝙳𝙷𝚄𝚁𝚈  ] 🚴‍♂️=
-        ▱▱▱▱▱▱▱▱▱▱▱▱▱\n
-        ✿ 𝖨𝗆𝗀𝗎𝗋 𝗅𝗂𝗇𝗄: ${imgurLink}\n
-        ▱▱▱▱▱▱▱▱▱▱▱▱▱\n
-        『  ${thu} || ${times} 』`;
- 
+        const replyMessage = `${imgurLink}`;
+        
         return api.sendMessage({ body: replyMessage }, event.threadID, event.messageID);
     } catch (error) {
         console.error('Error:', error.response?.data || error.message);
