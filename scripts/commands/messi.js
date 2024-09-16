@@ -1,11 +1,11 @@
 module.exports.config = {
-	name: "messi",
+  name: "messi",
   version: "1.0.0",
   permission: 0,
   credits: "SIDDIK",
   description: "MESSI PICTURE",
   prefix: true, 
-  category: "", 
+  category: "Random Img", 
   usages: "user",
   cooldowns: 5,
   dependencies: {
