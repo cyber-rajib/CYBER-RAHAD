@@ -18,12 +18,14 @@ module.exports.config = {
 module.exports.languages = {
   en: {
     moduleInfo:
-      "%1\n%2\n\nusage : %3\ncategory : %4\nwaiting time : %5 seconds(s)\npermission : %6\n\nmodule code by %7.",
+      "「 %1 」\n%2\n\n❯ Usage: %3\n❯ Category: %4\n❯ Waiting time: %5 seconds(s)\n❯ Permission: %6\n\n» Module code by %7 ",
     helpList:
-      `there are %1 commands and %2 categories of ${global.config.BOTNAME} ai.`,
-    user: "user",
-    adminGroup: "group admin",
-    adminBot: "bot admin",
+      `◖There are %1 commands and %2 categories on this bot.`,
+    guideList:
+      `◖Use: "%1${this.config.name} ‹command›" to know how to use that command!\n◖Type: "%1${this.config.name} ‹page_number›" to show that page contents!`,
+    user: "User",
+    adminGroup: "Admin group",
+    adminBot: "Admin bot",
   },
 };
  
@@ -49,11 +51,11 @@ module.exports.handleEvent = function ({ api, event, getText }) {
       `${prefix}${command.config.name} ${
         command.config.usages ? command.config.usages : ""
       }`,
-      command.config.category,
+      command.config.commandCategory,
       command.config.cooldowns,
-      command.config.permission === 0
+      command.config.hasPermission === 0
         ? getText("user")
-        : command.config.permission === 1
+        : command.config.hasPermission === 1
         ? getText("adminGroup")
         : getText("adminBot"),
       command.config.credits
@@ -75,7 +77,7 @@ module.exports.run = async function ({ api, event, args, getText }) {
  
   if (!command) {
     const commandList = Array.from(commands.values());
-    const categories = new Set(commandList.map((cmd) => cmd.config.category.toLowerCase()));
+    const categories = new Set(commandList.map((cmd) => cmd.config.commandCategory.toLowerCase()));
     const categoryCount = categories.size;
  
     const categoryNames = Array.from(categories);
@@ -93,7 +95,7 @@ module.exports.run = async function ({ api, event, args, getText }) {
         currentPage = parsedPage;
       } else {
         return api.sendMessage(
-          `oops, you went too far. please choose a page between 1 and ${totalPages}.`,
+          `◖Oops! You went too far! Please choose a page between 1 and ${totalPages}◗`,
           threadID,
           messageID
         );
@@ -108,57 +110,65 @@ module.exports.run = async function ({ api, event, args, getText }) {
       const category = visibleCategories[i];
       const categoryCommands = commandList.filter(
         (cmd) =>
-          cmd.config.category.toLowerCase() === category
+          cmd.config.commandCategory.toLowerCase() === category
       );
       const commandNames = categoryCommands.map((cmd) => cmd.config.name);
       const numberFont = [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7",
-        "8",
-        "9",
-        "10",
+        "❶",
+        "❷",
+        "❸",
+        "❹",
+        "❺",
+        "❻",
+        "❼",
+        "❽",
+        "❾",
+        "❿",
       ];
-      msg += `${
-        category.charAt(0).toLowerCase() + category.slice(1)
-      } category :\n\n${commandNames.join("\n")}\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n\n`;
+      msg += `╭[ ${numberFont[i]} ]─❍ ${
+        category.charAt(0).toUpperCase() + category.slice(1)
+      }\n╰─◗ ${commandNames.join(", ")}\n\n`;
     }
+ 
     const numberFontPage = [
-      "1",
-      "2",
-      "3",
-      "4",
-      "5",
-      "6",
-      "7",
-      "8",
-      "9",
-      "10",
-      "11",
-      "12",
-      "13",
-      "14",
-      "15",
-      "16",
-      "17",
-      "18",
-      "19",
-      "20",
+      "❶",
+      "❷",
+      "❸",
+      "❹",
+      "❺",
+      "❻",
+      "❼",
+      "❽",
+      "❾",
+      "❿",
+      "⓫",
+      "⓬",
+      "⓭",
+      "⓮",
+      "⓯",
+      "⓰",
+      "⓱",
+      "⓲",
+      "⓳",
+      "⓴",
     ];
-    msg += `page ${numberFontPage[currentPage - 1]} of ${
+    msg += `╭ ──────── ╮
+│ Page ${numberFontPage[currentPage - 1]} of ${
       numberFontPage[totalPages - 1]
-    }\n\n`;
+    } │\n╰ ──────── ╯\n`;
     msg += getText("helpList", commands.size, categoryCount, prefix);
  
     const axios = require("axios");
     const fs = require("fs-extra");
     const imgP = [];
     const img = [
-      "https://i.ibb.co/ZLnvPwQ/Picsart-23-07-24-11-03-50-602.png"
+      "https://i.imgur.com/ruQ2pRn.jpg",
+      "https://i.imgur.com/HXHb0cB.jpg",
+      "https://i.imgur.com/ZJEI6KW.jpg",
+      "https://i.imgur.com/XGL57Wp.jpg",
+      "https://i.imgur.com/6OB00HJ.jpg",
+      "https://i.imgur.com/6vHaRZm.jpg",
+      "https://i.imgur.com/k6uE93k.jpg"
     ];
     const path = __dirname + "/cache/menu.png";
     const rdimg = img[Math.floor(Math.random() * img.length)];
@@ -169,16 +179,19 @@ module.exports.run = async function ({ api, event, args, getText }) {
  
     fs.writeFileSync(path, Buffer.from(data, "utf-8"));
     imgP.push(fs.createReadStream(path));
+    const config = require("./../../config.json")
     const msgg = {
-  body: `existing commands and categories\n\nhere's the categories and commands of ${global.config.BOTNAME} ai ;\n\n⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯\n\n` + msg + `\n\n`
-    };
+  body: `╭──────────────╮\n│𝖢𝗈𝗆𝗆𝖺𝗇𝖽 & 𝖢𝖺𝗍𝖾𝗀𝗈𝗋𝗒│\n╰──────────────╯\n‣ Bot Owner: ${config.DESIGN.Admin}\n\n` + msg + `\n◖Total pages available: ${totalPages}.\n` + `\n╭ ──── ╮\n│ GUIDE │\n╰ ──── ╯\n` + getText("guideList", config.PREFIX),
+  attachment: imgP,
+};
  
-    const sentMessage = await api.sendMessage(msgg, threadID, async (error, info) => {
-			if (autoUnsend) {
-				await new Promise(resolve => setTimeout(resolve, delayUnsend * 500));
-				return api.unsendMessage(info.messageID);
-			} else return;
-		}, messageID);
+    const sentMessage = await api.sendMessage(msgg, threadID, messageID);
+ 
+    if (autoUnsend) {
+      setTimeout(async () => {
+        await api.unsendMessage(sentMessage.messageID);
+      }, delayUnsend * 1000);
+    }
   } else {
     return api.sendMessage(
       getText(
@@ -188,21 +201,16 @@ module.exports.run = async function ({ api, event, args, getText }) {
         `${prefix}${command.config.name} ${
           command.config.usages ? command.config.usages : ""
         }`,
-        command.config.category,
+        command.config.commandCategory,
         command.config.cooldowns,
-        command.config.permission === 0
+        command.config.hasPermission === 0
           ? getText("user")
-          : command.config.permission === 1
+          : command.config.hasPermission === 1
           ? getText("adminGroup")
           : getText("adminBot"),
         command.config.credits
       ),
-      threadID, async (error, info) => {
-			if (autoUnsend) {
-				await new Promise(resolve => setTimeout(resolve, delayUnsend * 500));
-				return api.unsendMessage(info.messageID);
-			} else return;
-		}, messageID);
+      threadID, messageID
+    );
   }
 };
- 
