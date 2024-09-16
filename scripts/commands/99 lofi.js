@@ -1,13 +1,13 @@
 /** I am doing this coding with a lot of difficulty, please don't post it yourself¯\_(ツ)_/¯ **/
 module.exports.config = {
-	name: "lofi",
+  name: "lofi",
   version: "1.0.0",
   permission: 0,
-  credits: "S0H4G",
+  credits: "SIDDIK",
   description: "IOFI VEDIO",
   prefix: true, 
   category: "Hình ảnh", 
-  usages: "sad vedio",
+  usages: "lofi vedio",
   cooldowns: 5,
   dependencies: {
     "request":"",
@@ -20,7 +20,7 @@ module.exports.run = async({api,event,args,client,Users,Threads,__GLOBAL,Currenc
 const axios = global.nodemodule["axios"];
 const request = global.nodemodule["request"];
 const fs = global.nodemodule["fs-extra"];
-   var hi = ["🥀VIDEO🥀MAKE BY'E SIDDIK🥀-❤️"];
+   var hi = ["𝗠𝗔𝗗𝗘 𝗕𝗬 𝗦𝗞 𝗦𝗜𝗗𝗗𝗜𝗞"];
   var know = hi[Math.floor(Math.random() * hi.length)];
   var link = [
 
