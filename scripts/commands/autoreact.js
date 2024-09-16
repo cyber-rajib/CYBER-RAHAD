@@ -36,7 +36,7 @@ handleEvent: async ({ api, event, Threads }) => {
    if (isEnable == 'true') {
  
   const reactions = ["💀", "🙄", "🤭","🥺","😶","😝","👿","🤓","🥶","🗿","😾","🤪","🤬","🤫","😼","😶‍🌫️","😎","🤦","💅","👀","☠️","🧠","👺","🤡","🤒","🤧","😫","😇","🥳","😭"];
-  var siddik = reactions[Math.floor(Math.random() * reactions.length)];
+  var nayan = reactions[Math.floor(Math.random() * reactions.length)];
  
   api.setMessageReaction(nayan, event.messageID, (err) => {
     if (err) {
@@ -46,18 +46,18 @@ handleEvent: async ({ api, event, Threads }) => {
 }
 },
  
-start: async ({ siddik, events, args, lang }) => {
+start: async ({ nayan, events, args, lang }) => {
    try {
  
      const logger = require("../../SIDDIK/catalogs/siddikc.js");
      if (args[0] == 'on') {
        fs.writeFileSync(pathFile, 'true');
-       siddik.sendMessage(lang("on"), events.threadID, events.messageID);
+       nayan.sendMessage(lang("on"), events.threadID, events.messageID);
      } else if (args[0] == 'off') {
        fs.writeFileSync(pathFile, 'false');
-       siddik.sendMessage(lang("off"), events.threadID, events.messageID);
+       nayan.sendMessage(lang("off"), events.threadID, events.messageID);
      } else {
-       siddik.sendMessage(lang("error"), events.threadID, events.messageID);
+       nayan.sendMessage(lang("error"), events.threadID, events.messageID);
      }
    }
    catch(e) {
