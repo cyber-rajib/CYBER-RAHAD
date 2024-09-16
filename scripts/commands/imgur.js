@@ -4,14 +4,14 @@ const FormData = require('form-data');
 const url = require('url');
  
 module.exports.config = {
-    name: "imgur",
+    name: "imgur2",
     version: "1.0.0",
     permission: 0,
     credits: "SIDDIK",
     description: "Uploads replied attachment to Imgur",
     prefix: false, 
     category: "Video and images Imgur upload", 
-    usages: "imgur",
+    usages: "imgur2",
     cooldowns: 5,
     dependencies: {
         "axios": ""
