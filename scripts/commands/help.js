@@ -8,7 +8,7 @@ module.exports.config = {
   premium: false,
   category: "guide",
   usages: "[Shows Commands]",
-  cooldowns: 5,
+  cooldowns: 2,
   envConfig: {
 		autoUnsend: true,
 		delayUnsend: 60
@@ -108,9 +108,9 @@ const first = numberOfOnePage * page - numberOfOnePage;
     const siu = `╭─────•◈•─────╮\n        🆂🅸🅳🅳🅸🅺 🅱🅾🆃 \n    🄲🄾🄼🄼🄰🄽🄳 🄻🄸🅂🅃       \n╰─────•◈•─────╯`;
 const text = `╭─────•◈•─────╮\n│𝗨𝘀𝗲 ${prefix}help [Name?]\n│𝗨𝘀𝗲 ${prefix}help [Page?]\n│𝗡𝗔𝗠𝗘 𝗢𝗪𝗡𝗘𝗥 : \n│𝗦𝗞 𝗦𝗜𝗗𝗗𝗜𝗞 𝗞𝗛𝗔𝗡\n│𝗧𝗢𝗧𝗔𝗟 : [${arrayInfo.length}]\n│📛🄿🄰🄶🄴📛 :  [${page}/${Math.ceil(arrayInfo.length/numberOfOnePage)}]\n╰─────•◈•─────╯`; 
     var link = [
-"https://i.postimg.cc/pd2RqTRp/1697029960036.jpg",
-"https://i.postimg.cc/D07ZGg0Y/FB-IMG-17130017232311130.jpg",
-"https://i.postimg.cc/43hTx9f7/join.jpg",
+"https://i.imgur.com/y0199Cb.jpeg",
+"https://i.imgur.com/U8EH2TT.jpeg",
+"https://i.imgur.com/6xoKcTg.jpeg",
     ]
      var callback = () => api.sendMessage({ body: siu + "\n\n" + msg  + text, attachment: fs.createReadStream(__dirname + "/cache/loidbutter.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/loidbutter.jpg"), event.messageID);
     return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/loidbutter.jpg")).on("close", () => callback());
@@ -118,7 +118,7 @@ const text = `╭─────•◈•─────╮\n│𝗨𝘀𝗲 ${p
 const leiamname = getText("moduleInfo", command.config.name, command.config.description, `${(command.config.usages) ? command.config.usages : ""}`, command.config.commandCategory, command.config.cooldowns, ((command.config.hasPermssion == 0) ? getText("user") : (command.config.hasPermssion == 1) ? getText("adminGroup") : getText("adminBot")), command.config.credits);
  
   var link = [
-"https://i.postimg.cc/43hTx9f7/join.jpg",
+"https://i.imgur.com/y0199Cb.jpeg",
   ]
     var callback = () => api.sendMessage({ body: leiamname, attachment: fs.createReadStream(__dirname + "/cache/loidbutter.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/loidbutter.jpg"), event.messageID);
 return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/loidbutter.jpg")).on("close", () => callback());
