@@ -1,17 +1,17 @@
 module.exports.config = {
- name: "help",
- version: "2.0.0",
- permssion: 0,
- credits: "SIDDIK",
-  prefix:true,
- description: "commands list",
- category: "guide",
- usages: "[Shows Commands]",
- cooldowns: 1,
- envConfig: {
-  autoUnsend: false,
-  delayUnsend: 300
- }
+  name: "help",
+  version: "1.0.2",
+  hasPermission: 0,
+  credits: "SIDDIK",
+  description: "Beginner's Guide",
+  usePrefix: true,
+  commandCategory: "guide",
+  usages: "[Shows Commands]",
+  cooldowns: 5,
+  envConfig: {
+		autoUnsend: true,
+		delayUnsend: 60
+	}
 };
  
 module.exports.languages = {
@@ -213,3 +213,4 @@ module.exports.run = async function ({ api, event, args, getText }) {
     );
   }
 };
+ 
