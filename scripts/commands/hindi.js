@@ -1,15 +1,15 @@
 module.exports.config = {
-	name: "hn",
+	name: "hindi",
 	version: "1.0.1",
 	permission: 0,
 	credits: "SIDDIK",
-  prefix: true,
+        prefix: "no prefix",
 	description: "Text translation",
 	category: "media",
 	usages: "[Text]",
 	cooldowns: 5,
 	dependencies: {
-		"request":  ""
+	"request":  ""
 	}
 };
  
