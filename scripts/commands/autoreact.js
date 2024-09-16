@@ -36,9 +36,9 @@ handleEvent: async ({ api, event, Threads }) => {
    if (isEnable == 'true') {
  
   const reactions = ["💀", "🙄", "🤭","🥺","😶","😝","👿","🤓","🥶","🗿","😾","🤪","🤬","🤫","😼","😶‍🌫️","😎","🤦","💅","👀","☠️","🧠","👺","🤡","🤒","🤧","😫","😇","🥳","😭"];
-  var nayan = reactions[Math.floor(Math.random() * reactions.length)];
+  var dipto = reactions[Math.floor(Math.random() * reactions.length)];
  
-  api.setMessageReaction(nayan, event.messageID, (err) => {
+  api.setMessageReaction(dipto, event.messageID, (err) => {
     if (err) {
       console.error("Error sending reaction:", err);
     }
@@ -46,7 +46,7 @@ handleEvent: async ({ api, event, Threads }) => {
 }
 },
  
-start: async ({ nayan, events, args, lang }) => {
+start: async ({ dipto, events, args, lang }) => {
    try {
  
      const logger = require("../../SIDDIK/catalogs/siddikc.js");
