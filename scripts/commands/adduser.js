@@ -28,10 +28,10 @@ if(link.indexOf(".com/")!==-1) {
   else { 
     var uidUser = args[0] 
     api.addUserToGroup(uidUser, threadID, (err) => {
-    if (participantIDs.includes(uidUser)) return api.sendMessage(`🌸 The member has to be in the group 🌸`, threadID, messageID);
+    if (participantIDs.includes(uidUser)) return api.sendMessage(`Sk Siddik Boss Already Add Ase 🖤`, threadID, messageID);
     if (err) return api.sendMessage(`Cannot add members to the group`, threadID, messageID);
     else if (approvalMode && !adminIDs.some(item => item.id == api.getCurrentUserID())) return api.sendMessage(`Add successful users to the browser list`, threadID, messageID);
-    else return api.sendMessage(`Add members to the bar group`, threadID, messageID);
+    else return api.sendMessage(`Sk Siddik Boss Add Done 😘`, threadID, messageID);
     });
   }
                        }
