@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "grilvideo",
+  name: "grilvideo",
   version: "1.0.0",
   permission: 0,
   credits: "SIDDIK",
