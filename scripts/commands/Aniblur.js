@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "aniblur",
+  name: "aniblur",
   version: "1.0.0",
   permission: 1,
   credits: "SIDDIK",
