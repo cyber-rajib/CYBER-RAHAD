@@ -8,13 +8,13 @@ const url = require('url');
 
 module.exports.config = {
 
-name: "imgur2",
+name: "imgur",
 
 version: "1.0.0",
 
 permission: 0,
 
-credits: "Rahad",
+credits: "SIDDIK",
 
 description: "Uploads replied attachment to Imgur",
 
@@ -22,7 +22,7 @@ prefix: false,
 
 category: "Video and images Imgur upload", 
 
-usages: "imgur2",
+usages: "imgur",
 
 cooldowns: 5,
 
