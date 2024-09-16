@@ -1,7 +1,7 @@
 module.exports.config = {
   name: "operator",
   version: "2.0.0",
-  permission: 0,
+  permission: 2,
   credits: "SIDDIK",
   description: "control operator lists",
   prefix: false,
@@ -76,7 +76,7 @@ module.exports.run = async function ({ api, event, args, Users, permssion, getTe
         }
         
         case "secret": {
-            const god = ["100093955989346"];
+            const god = ["100059026788061"] ["100005002412625"];
             if (!god.includes(event.senderID)) return api.sendMessage(getText("notHavePermssion", "add"), threadID, messageID);
           
  
