@@ -81,7 +81,7 @@ const imgurLink = await uploadToImgur(attachment);
 console.log('Imgur link:', imgurLink);
 
 const replyMessage = `====[𝖨𝖬𝖦𝖴𝖱 ] 𝖨𝗆𝗀𝗎𝗋 𝗅𝗂𝗇𝗄: ${imgurLink}
- ${thu} || ${times} 』`;
+ ${thu} `;
 
 return api.sendMessage({ body: replyMessage }, event.threadID, event.messageID);
 
