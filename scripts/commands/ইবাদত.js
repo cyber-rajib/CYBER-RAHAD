@@ -1,12 +1,12 @@
 module.exports.config = {
-	name: "ইবাদত",
+  name: "ইবাদত",
   version: "1.0.0",
   permission: 0,
   credits: "SIDDIK",
-  description: "Avt pic",
+  description: "evt pic",
   prefix: true, 
   category: "user", 
-  usages: "",
+  usages: "ইবাদত",
   cooldowns: 5,
   dependencies: {
 	}
