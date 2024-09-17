@@ -20,8 +20,7 @@ const request = global.nodemodule["request"];
 const fs = global.nodemodule["fs-extra"];
 var link =["https://i.imgur.com/wJZCJDt.mp4","https://i.imgur.com/tvl71V8.mp4","https://i.imgur.com/MddkgxW.mp4",];
  
-var callback = () => api.sendMessage({body:` ===== কবরের ডাক =====
-=======================
+var callback = () => api.sendMessage({body:` ====== কবরের ডাক ======
 প্রতি দিন ডাকি তোমায়
               নেই কোন চেতনা,,
 সময় থাকিতে কর,
@@ -45,8 +44,8 @@ var callback = () => api.sendMessage({body:` ===== কবরের ডাক ===
 তোমার সম্বল ঈমানের বল
              হিসাব হবে পথে,,,
  শান্তি যদি পেতে চাও
-            আমল আনিও সাথে।।।\=====================
-✢━━━━━ 𝐒𝐈𝐃𝐃𝐈𝐊 ━━━━━✢
+            আমল আনিও সাথে।।।\
+✢━━━ 𝐒𝐈𝐃𝐃𝐈𝐊 ━━━✢
 `,attachment: fs.createReadStream(__dirname + "/cache/juswa.mp4")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/juswa.mp4")); 
       return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/juswa.mp4")).on("close",() => callback());
    };
