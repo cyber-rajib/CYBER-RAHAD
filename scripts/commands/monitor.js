@@ -1,61 +1,72 @@
-const axios = require("axios");
- 
-const monitoredURLs = new Set();
+const axios = require('axios');
+const fs = require('fs');
+const path = require('path');
  
 module.exports.config = {
-	name: "monitor",
-	version: "1.0.0",
-	hasPermission: 2,
-	credits: "cliff",
-	description: "Monitor URLs_Monitor URLs and check their uptime",
-	usages: "{p}{n} [url]",
-	usePrefix: false,
-	commandCategory: "utility",
-	cooldowns: 5,
+  name: "ck",
+  version: "1.0.0",
+  permission: 0,
+  credits: "SIDDIK",
+  description: "GENERATE QUOTES",
+  prefix: true, 
+  category: "Notes", 
+  usages: "user",
+  cooldowns: 5,
+  dependencies: {
+    "request":"",
+    "fs-extra":"",
+    "axios":""
+  }
 };
  
-module. exports. run = async function ({ api, event }) {
-	const args = event.body.split(/\s+/);
-	args.shift();
+const SAD_QUOTES_API = 'https://ap-rizz.chatbotmesss.repl.co/api/rizz';
  
-	if (args.length < 1) {
-		api.sendMessage("🗨️ Usage: {p}monitor [url]", event.threadID);
-		return;
-	}
+module.exports.run = async ({ api, event }) => {
+  try {
+    const response = await axios.get(SAD_QUOTES_API);
+    const { quote, author } = response.data;
  
-	const url = args[0];
+   
+    const imageUrl = 'https://i.imgur.com/5IcjJw5.gif'; 
+    const imageFileName = 'img.png'; 
+    const cacheFolderPath = path.join(__dirname, 'cache');
+    const imagePath = path.join(cacheFolderPath, imageFileName);
  
-	if (monitoredURLs.has(url)) {
-		api.sendMessage(`⚠️ ${url} is already being monitored.`, event.threadID);
-		return;
-	}
+    if (!fs.existsSync(cacheFolderPath)) {
+      fs.mkdirSync(cacheFolderPath);
+    }
  
-	try {
-		monitoredURLs.add(url);
-		api.sendMessage(`🕟 Adding ${url} to the monitoring list...`, event.threadID);
+    try {
+      const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
+      fs.writeFileSync(imagePath, Buffer.from(imageResponse.data));
+    } catch (error) {
+      console.error('Error downloading the image:', error);
+      api.sendMessage("Error fetching quotes or sending the image.", event.threadID, event.messageID);
+      return;
+    }
  
-		setTimeout(async () => {
-			try {
-				const response = await axios.post("https://api.render.com/deploy/srv-cmrsr5n109ks73fk7f90?key=y4rjxNVchSA", {
-					url: url,
-					apiKey: "uk1_6nYdUsdSsQs3lwjaviyVjPRZUhoxLysgNGkfl2Gc"
-				});
  
-				if (response.data && response.data.success === false) {
-					api.sendMessage(response.data.msg, event.threadID);
-					return;
-				}
+    const message = {
+      body: quote + ' - ' + author,
+      attachment: fs.createReadStream(imagePath),
+    };
  
-				api.sendMessage(`🟢 ${url} is successfully added to monitoring.`, event.threadID);
-			} catch (error) {
-				api.sendMessage("🔴 An error occurred while adding the URL to monitoring.", event.threadID);
-				console.error(error);
-			} finally {
-				monitoredURLs.delete(url);
-			}
-		}, 3000);
-	} catch (error) {
-		api.sendMessage("🔴 An error occurred while starting the monitoring process.", event.threadID);
-		console.error(error);
-	}
+ 
+    try {
+      await api.sendMessage(message, event.threadID);
+    } catch (error) {
+      console.error('Error sending message:', error);
+    }
+ 
+  
+    fs.unlinkSync(imagePath);
+  } catch (error) {
+    console.error('Error fetching quotes or sending the image:', error);
+    api.sendMessage("Error fetching quotes or sending the image.", event.threadID, event.messageID);
+  }
 };
+ 
+ 
+process.on('unhandledRejection', (error) => {
+  console.error('Unhandled Promise Rejection:', error);
+});
