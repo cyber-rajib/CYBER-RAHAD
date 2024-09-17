@@ -1,12 +1,12 @@
 module.exports.config = {
-	name: "দোয়া",
+  name: "দোয়া",
   version: "1.0.0",
   permission: 0,
   credits: "SIDDIK",
   description: "Duya",
   prefix: true, 
   category: "user", 
-  usages: "",
+  usages: "দোয়া",
   cooldowns: 5,
   dependencies: {
 	}
