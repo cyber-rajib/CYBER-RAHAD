@@ -44,28 +44,25 @@ var callback = () => api.sendMessage({body:`✨𝐀𝐝𝐦𝐢𝐧 𝐈𝐧𝐟
 ╰‣ 𝐂𝐨𝐧𝐜𝐚𝐭𝐞𝐭
 
 ╭────────
-╰‣ 𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤 : https://www.facebook.com/TERA.PAPPA.IS.BUSY
+╰‣ 𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤 : m.me/TERA.PAPPA.IS.BUSY
  
 ╭────────
-╰‣ 𝐖𝐏  : wa.me/+8801831773688
+╰‣ 𝐓𝐠  : t.me/@rdxprem12
  
 ╭────────
 ╰‣ ✨𝐎𝐭𝐡𝐞𝐫𝐬 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧✨
  
 ╭────────
-╰‣ 𝐁𝐨𝐭 𝐍𝐚𝐦𝐞 : ${global.config.BOTNAME}
+╰‣ 𝐁𝐨𝐭 𝐍𝐚𝐦𝐞 : ━[𝗦𝗜𝗗𝗗𝗜𝗞 𝗕𝗢𝗧]━➣
  
 ╭────────
-╰‣ 𝐁𝐨𝐭 𝐏𝐫𝐞𝐟𝐢𝐱 : ${global.config.PREFIX}
+╰‣ 𝐁𝐨𝐭 𝐏𝐫𝐞𝐟𝐢𝐱 : ${global.config.PREFIX} 
  
 ╭────────
-╰‣ 𝐓𝐨𝐝𝐚𝐲 𝐈𝐬 𝐓𝐢𝐦𝐞 : ${juswa} 
+╰‣ 𝐁𝐨𝐭 𝐈𝐬 𝐑𝐮𝐧𝐧𝐢𝐧𝐠 ${hours}:${minutes}:${seconds} 
  
 ╭────────
-╰‣ 𝐁𝐨𝐭 𝐈𝐬 𝐑𝐮𝐧𝐧𝐢𝐧𝐠 ${hours}:${minutes}:${seconds}.
- 
-╭────────
-╰‣ 𝐓𝐡𝐚𝐧𝐤𝐬 𝐅𝐨𝐫 𝐔𝐬𝐢𝐧𝐠  ${global.config.BOTNAME}`,attachment: fs.createReadStream(__dirname + "/cache/cyber.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/cyber.jpg")); 
-      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/cyber.jpg")).on("close",() => callback());
+╰‣ 𝐓𝐡𝐚𝐧𝐤𝐬 𝐅𝐨𝐫 𝐔𝐬𝐢𝐧𝐠  \n ${global.config.BOTNAME}`,attachment: fs.createReadStream(__dirname + "/cache/siddik.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/siddik.jpg")); 
+      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/siddik.jpg")).on("close",() => callback());
    };
  
