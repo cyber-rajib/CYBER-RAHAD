@@ -1,12 +1,12 @@
 module.exports.config = {
-	name: "ডিজে",
+  name: "ডিজে",
   version: "1.0.0",
   permission: 0,
-  credits: "Gm Nuruzzaman",
+  credits: "SIDDIK",
   description: "Made By Siddik",
   prefix: true, 
   category: "user", 
-  usages: "dj vedio",
+  usages: "dj audio",
   cooldowns: 5,
   dependencies: {
     "request":"",
