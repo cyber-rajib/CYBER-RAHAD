@@ -1,8 +1,8 @@
 module.exports.config = {
-	name: "gojol",
+  name: "gojol",
   version: "1.0.0",
   permission: 0,
-  credits: "Gm Nuruzzaman",
+  credits: "SIDDIK",
   description: "Made By Siddik",
   prefix: true, 
   category: "user", 
