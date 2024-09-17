@@ -1,9 +1,9 @@
 module.exports.config = {
-	name: "offbot",
+	name: "off",
 	version: "1.0.0",
 	hasPermssion: 2,
 	credits: "SIDDIK",
-	description: "Off Bot",
+	description: "Off",
 	commandCategory: "System",
 	cooldowns: 0
         };
