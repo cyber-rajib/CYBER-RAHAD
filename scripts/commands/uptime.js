@@ -2,7 +2,7 @@ module.exports.config = {
 	name: "uptime",
 	version: "0.0.2",
 	permission: 0,
-  prefix: true,
+        prefix: true,
 	credits: "SIDDIK",
 	description: "uptime",
 	category: "admin",
@@ -129,7 +129,7 @@ registerFont(__dirname + `/nayan/CaviarDreams.ttf`, {
     const imageBuffer = canvas.toBuffer();
    fs.writeFileSync(pathImg, imageBuffer);
   return api.sendMessage({
-    body: ` ${hours} hours ${minutes} minutes ${seconds} second`;
+    body: ` ${hours} hours ${minutes} minutes ${seconds} second `;
     attachment: fs.createReadStream(pathImg)
   },
     event.threadID,
