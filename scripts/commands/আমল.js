@@ -3,13 +3,16 @@ module.exports.config = {
   version: "1.0.0",
   permission: 0,
   credits: "SIDDIK",
-  description: "AMOL",
+  description: "Made By Siddik",
   prefix: true, 
   category: "user", 
-  usages: "",
+  usages: "আমল",
   cooldowns: 5,
   dependencies: {
-	}
+    "request":"",
+    "fs-extra":"",
+    "axios":""
+  }
 };
  
 module.exports.run = async ({ api, event}) => {
