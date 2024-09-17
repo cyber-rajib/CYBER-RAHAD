@@ -1,10 +1,10 @@
 /** I am doing this coding with a lot of difficulty, please don't post it yourself¯\_(ツ)_/¯ **/
 module.exports.config = {
-	name: "sari",
+  name: "sari",
   version: "1.0.0",
   permission: 0,
-  credits: "Nayan",
-  description: "Shari VEDIO",
+  credits: "SIDDIK",
+  description: "shari vedio",
   prefix: true, 
   category: "Hình ảnh", 
   usages: "sari",
