@@ -1,9 +1,9 @@
 module.exports.config = {
-	name: "আমল",
+  name: "আমল",
   version: "1.0.0",
   permission: 0,
   credits: "SIDDIK",
-  description: "Avt pic",
+  description: "AMOL",
   prefix: true, 
   category: "user", 
   usages: "",
