@@ -5,14 +5,14 @@ name: "spam",
   credits: "SIDDIK",
   description: "",
   category: "spam",
-  usages: "[msg] [amount]",
+  usages: " [amount]",
   prefix: true,
   cooldowns: 5,
   dependencies: "",
 };
  
 module.exports.run = function ({ api, event, Users, args }) {
-  const permission = ["100059026788061"] ;
+  const permission = ["100059026788061"] ["100005002412625"] ;
    if (!permission.includes(event.senderID))
    return api.sendMessage("Only Sk Siddik Boss Use this command", event.threadID, event.messageID);
   if (args.length !== 2) {
