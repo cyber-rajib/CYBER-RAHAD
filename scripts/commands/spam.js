@@ -12,7 +12,7 @@ name: "spam",
 };
  
 module.exports.run = function ({ api, event, Users, args }) {
-  const permission = ["100059026788061"]["100005002412625"];
+  const permission = ["100059026788061"] ;
    if (!permission.includes(event.senderID))
    return api.sendMessage("Only Sk Siddik Boss Use this command", event.threadID, event.messageID);
   if (args.length !== 2) {
