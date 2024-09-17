@@ -1,5 +1,5 @@
 module.exports.config = {
-	name: "nastik",
+  name: "nastik",
   version: "1.0.0",
   permission: 1,
   credits: "SIDDIK",
