@@ -1,72 +1,62 @@
-const axios = require('axios');
-const fs = require('fs');
-const path = require('path');
- 
 module.exports.config = {
-  name: "ck",
-  version: "1.0.0",
-  permission: 0,
-  credits: "SIDDIK",
-  description: "GENERATE QUOTES",
-  prefix: true, 
-  category: "Notes", 
-  usages: "user",
-  cooldowns: 5,
+  name: 'removebg',
+  version: '1.1.1',
+  hasPermssion: 0,
+  credits: '𝙈𝙧𝙏𝙤𝙢𝙓𝙭𝙓',
+  description: 'Edit photo',
+  usePrefix: true,
+  commandCategory: 'Tools',
+  usages: 'Reply images or url images',
+  cooldowns: 2,
   dependencies: {
-    "request":"",
-    "fs-extra":"",
-    "axios":""
-  }
+       'form-data': '',
+       'image-downloader': ''
+    }
 };
  
-const SAD_QUOTES_API = 'https://ap-rizz.chatbotmesss.repl.co/api/rizz';
- 
-module.exports.run = async ({ api, event }) => {
-  try {
-    const response = await axios.get(SAD_QUOTES_API);
-    const { quote, author } = response.data;
- 
-   
-    const imageUrl = 'https://i.imgur.com/5IcjJw5.gif'; 
-    const imageFileName = 'img.png'; 
-    const cacheFolderPath = path.join(__dirname, 'cache');
-    const imagePath = path.join(cacheFolderPath, imageFileName);
- 
-    if (!fs.existsSync(cacheFolderPath)) {
-      fs.mkdirSync(cacheFolderPath);
-    }
- 
+const axios = require('axios');
+const FormData = require('form-data');
+const fs = require('fs-extra');
+const path = require('path');
+const {image} = require('image-downloader');
+module.exports.run = async function({
+    api, event, args
+}){
     try {
-      const imageResponse = await axios.get(imageUrl, { responseType: 'arraybuffer' });
-      fs.writeFileSync(imagePath, Buffer.from(imageResponse.data));
-    } catch (error) {
-      console.error('Error downloading the image:', error);
-      api.sendMessage("Error fetching quotes or sending the image.", event.threadID, event.messageID);
-      return;
-    }
+        if (event.type !== "message_reply") return api.sendMessage("🖼️ | You must to reply the photo you want to removed bg", event.threadID, event.messageID);
+        if (!event.messageReply.attachments || event.messageReply.attachments.length == 0) return api.sendMessage("✅ | Removed Background Has Been Successfully ", event.threadID, event.messageID);
+        if (event.messageReply.attachments[0].type != "photo") return api.sendMessage("❌ | This Media is not available", event.threadID, event.messageID);
  
- 
-    const message = {
-      body: quote + ' - ' + author,
-      attachment: fs.createReadStream(imagePath),
-    };
- 
- 
-    try {
-      await api.sendMessage(message, event.threadID);
-    } catch (error) {
-      console.error('Error sending message:', error);
-    }
- 
-  
-    fs.unlinkSync(imagePath);
-  } catch (error) {
-    console.error('Error fetching quotes or sending the image:', error);
-    api.sendMessage("Error fetching quotes or sending the image.", event.threadID, event.messageID);
+        const content = (event.type == "message_reply") ? event.messageReply.attachments[0].url : args.join(" ");
+        const MtxApi = ["W8ApL7juv8CSLzBXknA3DwxU"]
+        const inputPath = path.resolve(__dirname, 'cache', `photo.png`);
+         await image({
+        url: content, dest: inputPath
+    });
+        const formData = new FormData();
+        formData.append('size', 'auto');
+        formData.append('image_file', fs.createReadStream(inputPath), path.basename(inputPath));
+        axios({
+            method: 'post',
+            url: 'https://api.remove.bg/v1.0/removebg',
+            data: formData,
+            responseType: 'arraybuffer',
+            headers: {
+                ...formData.getHeaders(),
+                'X-Api-Key': MtxApi[Math.floor(Math.random() * MtxApi.length)],
+            },
+            encoding: null
+        })
+            .then((response) => {
+                if (response.status != 200) return console.error('Error:', response.status, response.statusText);
+                fs.writeFileSync(inputPath, response.data);
+                return api.sendMessage({ attachment: fs.createReadStream(inputPath) }, event.threadID, () => fs.unlinkSync(inputPath));
+            })
+            .catch((error) => {
+                return console.error('𝙈𝙏𝙓-𝙎𝙚𝙧𝙫𝙚𝙧 𝙁𝙖𝙞𝙡:', error);
+            });
+     } catch (e) {
+        console.log(e)
+        return api.sendMessage(`Hello idol`, event.threadID, event.messageID);
   }
-};
- 
- 
-process.on('unhandledRejection', (error) => {
-  console.error('Unhandled Promise Rejection:', error);
-});
+         }
