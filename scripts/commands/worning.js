@@ -59,9 +59,9 @@ module.exports.handleEvent = async ({ event, api }) => {
         outputStream.on("finish", () => {
           const warningMessage = `╭──────
 ╰‣ 𝐖𝐀𝐑𝐍𝐈𝐍𝐆!\n\n╭──────
-╰‣ 𝐍𝐨𝐭𝐞 : Your message contains sensitive content. Please refrain from using inappropriate language or threatening other users.\n\n ╭──────
-╰‣ 𝐔𝐬𝐞𝐫 : ${userName}\n ╭──────
-╰‣ 𝐈𝐝  : ${senderID}\n ╭──────
+╰‣ 𝐍𝐨𝐭𝐞 : Your message contains sensitive content. Please refrain from using inappropriate language or threatening other users.\n\n╭──────
+╰‣ 𝐔𝐬𝐞𝐫 : ${userName}\n╭──────
+╰‣ 𝐈𝐝  : ${senderID}\n╭──────
 ╰‣ 𝐊𝐞𝐲𝐰𝐨𝐫𝐝 : ${keyword}`;
           api.sendMessage({ body: warningMessage, attachment: fs.createReadStream(__dirname + "/cache/warned_avt.png") }, event.threadID);
  
