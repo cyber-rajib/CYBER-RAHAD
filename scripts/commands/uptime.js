@@ -3,7 +3,7 @@ module.exports.config = {
 	version: "0.0.2",
 	permission: 0,
         prefix: true,
-	credits: "nazrul",
+	credits: "SIDDIK",
 	description: "uptime",
 	category: "admin",
 	usages: "",
@@ -18,7 +18,7 @@ module.exports.onLoad = () => {
     const request = require("request");
     const lvb = __dirname + `/noprefix/`;
     if (!fs.existsSync(lvb + "noprefix")) fs.mkdirSync(lvb, { recursive: true });
-    if (!fs.existsSync(lvb + "upt.png")) request("https://i.imgur.com/vn4rXA4.jpg").pipe(fs.createWriteStream(lvb + "upt.png"));
+    if (!fs.existsSync(lvb + "upt.png")) request("").pipe(fs.createWriteStream(lvb + ""));
       }
 module.exports.run = async function({ api, event, args, client }) {
     const fs = require('fs-extra');
@@ -32,10 +32,10 @@ module.exports.run = async function({ api, event, args, client }) {
     var lvbang = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
     if(url.match(lvbang) == null) return api.sendMessage({body:`╭────────
 ╰‣ 𝗨𝗣𝗧𝗜𝗠𝗘\n╭────────
-╰‣ 𝗛𝗢𝗨𝗥𝗦━➢ ${hours} \n╭────────
-╰‣ 𝗠𝗜𝗡𝗨𝗧𝗘 ━➢ ${minutes}\n╭────────
-╰‣ 𝗦𝗘𝗖𝗢𝗡𝗗 ━➢${seconds}\n╭────────
-╰‣ 𝐎𝐖𝐍𝐄𝐑➢ 𝐒𝐈𝐃𝐃𝐈𝐊 `, attachment: fs.createReadStream(__dirname + `/noprefix/upt.png`)}, event.threadID, event.messageID);
+╰‣ 𝗛𝗢𝗨𝗥𝗦↣ ${hours} \n╭────────
+╰‣ 𝗠𝗜𝗡𝗨𝗧𝗘 ↣ ${minutes}\n╭────────
+╰‣ 𝗦𝗘𝗖𝗢𝗡𝗗 ↣${seconds}\n╭────────
+╰‣ 𝐎𝐖𝐍𝐄𝐑↣ 𝐒𝐈𝐃𝐃𝐈𝐊 `, attachment: fs.createReadStream(__dirname + `/noprefix/upt.png`)}, event.threadID, event.messageID);
     var request = require("request");
     var options = { method: 'POST',
   url: 'https://api.uptimerobot.com/v2/newMonitor',
