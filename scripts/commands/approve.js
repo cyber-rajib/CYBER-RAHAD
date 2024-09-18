@@ -6,6 +6,7 @@ module.exports.config = {
   description: "approve thread using thread id",
   prefix: false,
   category: "admin",
+  premium: false,
   usages: "approve [group/remove] [threadid]",
   cooldowns: 5,
 };
@@ -28,13 +29,13 @@ module.exports.languages = {
 module.exports.run = async function ({ api, event, args, Threads, Users, permssion, getText }) {
     const content = args.slice(1, args.length);
     const { threadID, messageID, mentions } = event;
-    const { configPath } = global.client;
-    const { APPROVED } = global.config;
+    const { approvedListsPath } = global.client;
+    const { APPROVED } = global.approved;
     const { userName } = global.data;
     const { writeFileSync } = global.nodemodule["fs-extra"];
     const mention = Object.keys(mentions);
-    delete require.cache[require.resolve(configPath)];
-    var config = require(configPath);
+    delete require.cache[require.resolve(approvedListsPath)];
+    var config = require(approvedListsPath);
     
        
     switch (args[0]) {
@@ -77,7 +78,7 @@ module.exports.run = async function ({ api, event, args, Threads, Users, permssi
                     listAdd.push(`${id} - ${event.mentions[id]}`);
                 };
  
-                writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf8');
+                writeFileSync(approvedListsPath, JSON.stringify(config, null, 2), 'utf8');
                 return api.sendMessage(getText("addedNewAdmin", mention.length, listAdd.join("\n").replace(/\@/g, "")), threadID, messageID);
             }
             else if (content.length != 0 && !isNaN(content[0])) {
@@ -92,7 +93,7 @@ module.exports.run = async function ({ api, event, args, Threads, Users, permssi
         const username = await Users.getNameUser(content[0]);
         boxname = `user name : ${username}\nuser id : ${content[0]}`;
       }
-                writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf8');
+                writeFileSync(approvedListsPath, JSON.stringify(config, null, 2), 'utf8');
                 return api.sendMessage('this box has been approved', content[0], () => {
                 return api.sendMessage(getText("addedNewAdmin", 1, `${boxname}`), threadID, messageID);
                 });
@@ -116,7 +117,7 @@ module.exports.run = async function ({ api, event, args, Threads, Users, permssi
                     listAdd.push(`${id} - ${event.mentions[id]}`);
                 };
  
-                writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf8');
+                writeFileSync(approvedListsPath, JSON.stringify(config, null, 2), 'utf8');
                 return api.sendMessage(getText("removedAdmin", mention.length, listAdd.join("\n").replace(/\@/g, "")), threadID, messageID);
             }
             else if (content.length != 0 && !isNaN(content[0])) {
@@ -132,7 +133,7 @@ module.exports.run = async function ({ api, event, args, Threads, Users, permssi
         const username = await Users.getNameUser(content[0]);
         boxname = `user name : ${username}\nuser id : ${content[0]}`
       }
-                writeFileSync(configPath, JSON.stringify(config, null, 2), 'utf8');
+                writeFileSync(approvedListsPath, JSON.stringify(config, null, 2), 'utf8');
                 return api.sendMessage('this box has been removed from approved list', content[0], () => {
                 return api.sendMessage(getText("removedAdmin", 1, `${boxname}`), threadID, messageID);
                 });
