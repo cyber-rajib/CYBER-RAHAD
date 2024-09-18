@@ -1,5 +1,5 @@
 module.exports.config = {
-  name: "approved",
+  name: "approve",
   version: "2.0.0",
   permission: 0,
   credits: "SIDDIK",
