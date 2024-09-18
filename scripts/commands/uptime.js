@@ -18,8 +18,7 @@ module.exports.onLoad = () => {
     const request = require("request");
     const lvb = __dirname + `/noprefix/`;
     if (!fs.existsSync(lvb + "noprefix")) fs.mkdirSync(lvb, { recursive: true });
-    if (!fs.existsSync(lvb + "upt.png")) request("").pipe(fs.createWriteStream(lvb + "upt.png"));
-      }
+          }
 module.exports.run = async function({ api, event, args, client }) {
     const fs = require('fs-extra');
     let time = process.uptime();
