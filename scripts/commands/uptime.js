@@ -35,7 +35,7 @@ module.exports.run = async function({ api, event, args, client }) {
 ╰‣ 𝗛𝗢𝗨𝗥𝗦↣ ${hours} \n╭────────
 ╰‣ 𝗠𝗜𝗡𝗨𝗧𝗘 ↣ ${minutes}\n╭────────
 ╰‣ 𝗦𝗘𝗖𝗢𝗡𝗗 ↣${seconds}\n╭────────
-╰‣ 𝐎𝐖𝐍𝐄𝐑↣ 𝐒𝐈𝐃𝐃𝐈𝐊 `, attachment: fs.createReadStream(__dirname + `/noprefix/upt.png`)}, event.threadID, event.messageID);
+╰‣ 𝐎𝐖𝐍𝐄𝐑↣ 𝐒𝐈𝐃𝐃𝐈𝐊 `, attachment: fs.createReadStream(__dirname + ``)}, event.threadID, event.messageID);
     var request = require("request");
     var options = { method: 'POST',
   url: 'https://api.uptimerobot.com/v2/newMonitor',
