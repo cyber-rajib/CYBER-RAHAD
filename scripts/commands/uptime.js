@@ -30,10 +30,10 @@ module.exports.run = async function({ api, event, args, client }) {
     var name = Date.now();
     var url = (event.type == "message_reply") ? event.messageReply.body : args.join(" ");
     var lvbang = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
-    if(url.match(lvbang) == null) return api.sendMessage({body:`╭────────
-╰‣ 𝗨𝗣𝗧𝗜𝗠𝗘\n╭────────|
-╰‣ 𝗛𝗢𝗨𝗥𝗦 :⎯ ${hours} \n╭────────|
-╰‣ 𝗠𝗜𝗡𝗨𝗧𝗘 :⎯ ${minutes}\n╭────────|
+    if(url.match(lvbang) == null) return api.sendMessage({body:`╭────────|
+╰‣ 𝗨𝗣𝗧𝗜𝗠𝗘\n╭────────
+╰‣ 𝗛𝗢𝗨𝗥𝗦 :⎯ ${hours} \n╭────────
+╰‣ 𝗠𝗜𝗡𝗨𝗧𝗘 :⎯ ${minutes}\n╭────────
 ╰‣ 𝗦𝗘𝗖𝗢𝗡𝗗 :⎯ ${seconds}\n╭────────|
 ╰‣ 𝐎𝐖𝐍𝐄𝐑 :⎯ 𝐒𝐈𝐃𝐃𝐈𝐊 `, attachment: fs.createReadStream(__dirname + `/noprefix/upt.png`)}, event.threadID, event.messageID);
     var request = require("request");
