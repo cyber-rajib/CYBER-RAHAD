@@ -18,7 +18,8 @@ module.exports.onLoad = () => {
     const request = require("request");
     const lvb = __dirname + `/noprefix/`;
     if (!fs.existsSync(lvb + "noprefix")) fs.mkdirSync(lvb, { recursive: true });
-          }
+    if (!fs.existsSync(lvb + "upt.png")) request("https://i.imgur.com/vn4rXA4.jpg").pipe(fs.createWriteStream(lvb + "upt.png"));
+      }
 module.exports.run = async function({ api, event, args, client }) {
     const fs = require('fs-extra');
     let time = process.uptime();
@@ -29,7 +30,7 @@ module.exports.run = async function({ api, event, args, client }) {
     var name = Date.now();
     var url = (event.type == "message_reply") ? event.messageReply.body : args.join(" ");
     var lvbang = /(http(s)?:\/\/.)?(www\.)?[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/g;
-    if(url.match(lvbang) == null) return api.sendMessage({body:`•┄┅════❁🌺❁════┅┄•\n    𝗨𝗣𝗧𝗜𝗠𝗘 𝗥𝗢𝗕𝗢𝗧\n•┄┅════❁🌺❁════┅┄•\n𝐍𝐀𝐌𝐄➢𝐈𝐬𝐥𝐚𝐦𝐢𝐜𝐤 𝐂𝐡𝐚𝐭\n𝐁𝐎𝐓 𝐏𝐑𝐄𝐅𝐈𝐗 ➢ ｢ / ｣\n𝐑𝐎𝐁𝐎𝐓 𝐂𝐌𝐃➢ ｢ 210 ｣\n𝗛𝗢𝗨𝗥𝗦━➢ ${hours} \n𝗠𝗜𝗡𝗨𝗧𝗘 ━➢ ${minutes}\n𝗦𝗘𝗖𝗢𝗡𝗗 ━➢${seconds}\n𝐎𝐖𝐍𝐄𝐑➢ 𝐍𝐀𝐙𝐑𝐔𝐋 \n⋆✦⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯✦⋆\n𝐂𝐫𝐞𝐚𝐭𝐨𝐫 ━➢ 𝐈𝐬𝐥𝐦𝐚𝐢𝐜𝐤 𝐂𝐡𝐚𝐭`, attachment: fs.createReadStream(__dirname + `/noprefix/upt.png`)}, event.threadID, event.messageID);
+    if(url.match(lvbang) == null) return api.sendMessage({body:`𝗨𝗣𝗧𝗜𝗠𝗘 𝗥𝗢𝗕𝗢𝗧\n𝗛𝗢𝗨𝗥𝗦━➢ ${hours} \n𝗠𝗜𝗡𝗨𝗧𝗘 ━➢ ${minutes}\n𝗦𝗘𝗖𝗢𝗡𝗗 ━➢${seconds}\n𝐎𝐖𝐍𝐄𝐑➢ 𝐍𝐀𝐙𝐑𝐔𝐋 `, attachment: fs.createReadStream(__dirname + `/noprefix/upt.png`)}, event.threadID, event.messageID);
     var request = require("request");
     var options = { method: 'POST',
   url: 'https://api.uptimerobot.com/v2/newMonitor',
