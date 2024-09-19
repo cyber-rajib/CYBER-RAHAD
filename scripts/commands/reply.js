@@ -49,7 +49,7 @@ react.includes("Saoya") ||
 react.includes("Sawya") || 
 react.includes("tor mare xudi") || react.includes("vuda") || react.includes("heda") || react.includes("hop")) {
 		var msg = {
-				body: :`╭────────|
+				body:`╭────────|
 ╰‣ ❒𝐌𝐄𝐒𝐒𝐄𝐆𝐄:\n╭────────
 ╰‣ এখানে গালাগালি করলে মুখ সেলাই কইরা দিমু..!!😾 `, 
 			}
