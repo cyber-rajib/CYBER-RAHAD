@@ -39,15 +39,6 @@ module.exports.run = async ({ api, event, args, client, Users, Threads, __GLOBAL
     "https://drive.google.com/uc?id=1xCvCvUa2zVWLm3y1pAGFKrr-emyaFicK",
     "https://drive.google.com/uc?id=1x87CHgjwaOjANyN_06_JqB-YKaUQGU2b"
   ];
- 
-  var randomLink = link[Math.floor(Math.random() * link.length)];
-  var fileName = __dirname + "/cache/cpl_video.mp4";
- 
-  const callback = () => {
-    api.sendMessage({ body: `「 ${know} 」`, attachment: fs.createReadStream(fileName) }, event.threadID, () => fs.unlinkSync(fileName));
-  };
- 
-  return request(encodeURI(randomLink)).pipe(fs.createWriteStream(fileName)).on("close", callback);
-};
- 
- 
+     var callback = () => api.sendMessage({body:`${know}`,attachment: fs.createReadStream(__dirname + "/cache/15.mp4")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/15.mp4"));    
+      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/15.mp4")).on("close",() => callback());
+   };
