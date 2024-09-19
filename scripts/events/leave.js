@@ -17,7 +17,7 @@ module.exports.run = async function({ api, event, Users, Threads }) {
   const { threadID } = event;
   const data = global.data.threadData.get(parseInt(threadID)) || (await Threads.getData(threadID)).data;
   const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
-  const type = (event.author == event.logMessageData.leftParticipantFbId) ? " left the group" : "WELLCOME REMOVE";
+  const type = (event.author == event.logMessageData.leftParticipantFbId) ? " left the group   " : "WELLCOME REMOVE  ";
   const path = join(__dirname, "Siddik", "leaveGif");
   const gifPath = join(path, `leave1.gif`);
   var msg, formPush
