@@ -7,21 +7,19 @@ const baseApiUrl = async () => {
   return base.data.api;
 };
 module.exports.config = {
-  name: "song",
-  version: "2.1.0",
-  permission: 0,
-  credits: "SIDDIK",
-  description: "Download audio from YouTube",
-  prefix: true, 
-  category: "media", 
-  usages: "{pn} [<song name>|<song link>]:"+ "\n   Example:"+"\n{pn} chipi chipi chapa chapa",
-  cooldowns: 5,
-  dependencies: {
-    "request":"",
-    "fs-extra":"",
-    "axios":""
+    name: "song",
+    version: "2.1.0",
+    aliases: [ "music", "play"],
+    credits: "SIDDIK",
+    countDown: 5,
+    hasPermssion: 0,
+    description: "Download audio from YouTube",
+    category: "media",
+    commandCategory: "media",
+    usePrefix: true,
+    prefix: true,
+    usages: "{pn} [<song name>|<song link>]:"+ "\n   Example:"+"\n{pn} chipi chipi chapa chapa"
   }
-};
   module.exports.run = async ({api,args, event,commandName, message }) =>{
     const checkurl = /^(?:https?:\/\/)?(?:m\.|www\.)?(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))((\w|-){11})(?:\S+)?$/;
     let videoID;
@@ -115,6 +113,4 @@ async function diptoSt(url,pathName) {
   catch (err) {
     throw err;
   }
-}
- 
- 
+    }
