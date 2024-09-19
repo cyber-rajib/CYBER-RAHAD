@@ -17,7 +17,7 @@ module.exports.run = async function({ api, event, Users, Threads }) {
   const { threadID } = event;
   const data = global.data.threadData.get(parseInt(threadID)) || (await Threads.getData(threadID)).data;
   const name = global.data.userName.get(event.logMessageData.leftParticipantFbId) || await Users.getNameUser(event.logMessageData.leftParticipantFbId);
-  const type = (event.author == event.logMessageData.leftParticipantFbId) ? "  তোর সাহস কম নয় এখানে নজরুল এর ইসলামিক চ্যাট থাকতে তুই লিভ নিস😡😠🤬 \n✢━━━━━━━━━━━━━━━✢\n ----❖----- 𝐍𝐀𝐙𝐑𝐔𝐋 -----❖----" : "তোমার এই গ্রুপে থাকার কোনো যোগ্যাতা নেই আবাল😡।\n|────────> WELLCOME REMOVE🤧 ";
+  const type = (event.author == event.logMessageData.leftParticipantFbId) ? "  তোর সাহস কম নয় এখানে নজরুল এর ইসলামিক চ্যাট থাকতে তুই লিভ নিস😡😠🤬 \n✢━━━━━━━━━━━━━━━✢\n ----❖----- 𝐍𝐀𝐙𝐑𝐔𝐋 -----❖----" : "|────────> WELLCOME REMOVE🤧 ";
   const path = join(__dirname, "Nazrul", "leaveGif");
   const gifPath = join(path, `leave1.gif`);
   var msg, formPush
