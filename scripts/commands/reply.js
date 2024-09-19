@@ -47,10 +47,19 @@ react.includes("Abal ") ||
 react.includes("খানকি মাগি") || 
 react.includes("Saoya") || 
 react.includes("Sawya") || 
+react.includes("bostir pola") ||
+react.includes("bostir pula") ||
+react.includes("nodir put") ||
+react.includes("proti bondi") || 
+react.includes("protita magi") ||
+react.includes("jaros sontan") ||
+react.includes("jaros chele") ||
+react.includes("তোমার মাইরে ষুদি") ||
+react.includes("তোর মার ভোদা") ||
 react.includes("tor mare xudi") || react.includes("vuda") || react.includes("heda") || react.includes("hop")) {
 		var msg = {
 				body:`╭────────|
-╰‣ ❒𝐌𝐄𝐒𝐒𝐄𝐆𝐄:\n╭────────
+╰‣ ❒𝐌𝐄𝐒𝐒𝐄𝐆𝐄:\n╭────────|
 ╰‣ এখানে গালাগালি করলে মুখ   সেলাই কইরা দিমু..!!😾 `, 
 			}
 			api.sendMessage(msg, threadID, messageID);
