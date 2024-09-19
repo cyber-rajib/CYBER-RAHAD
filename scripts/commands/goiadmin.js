@@ -1,13 +1,12 @@
 module.exports.config = {
-  name: "goiadmin",
-    version: "1.0.0",
-    permission: 0,
-    credits: "SIDDIK",
-    description: "mention",
-    prefix: true,
-    category: "user",
-    usages: "tag",
-    cooldowns: 5,
+  name: "admintag",
+  version: "1.0.0",
+  hasPermssion: 0,
+  credits: "SIDDIK",
+  description: "Bot will reply if admin is tag in a message.",
+  commandCategory: "Other",
+  usages: "",
+  cooldowns: 1
 };
 module.exports.handleEvent = function({ api, event }) {
   if (event.senderID !== "100059026788061","100005002412625") {
