@@ -19,7 +19,7 @@ handleEvent: function({ api, event, client, __GLOBAL }) {
   if (body.indexOf("🍼")==0 || body.indexOf("pompom")==0 || body.indexOf("Pompom dew")==0 || body.indexOf("Pom Pom Khabo")==0) {
     var msg = {
         body: "জা্ঁন্ঁ প্ঁম‌্ঁ'প্ঁম্ঁ খা্ঁবা্ঁ__🤭🤤",
-	attachment: fs.createReadStream(__dirname + `/Siddik/popom khaiba.m4a)
+	attachment: fs.createReadStream(__dirname + `/Siddik/pompom.m4a)
       }
       api.sendMessage( msg, threadID, messageID);
     api.setMessageReaction("🐸", event.messageID, (err) => {}, true)
