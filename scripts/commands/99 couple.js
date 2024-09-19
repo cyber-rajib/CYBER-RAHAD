@@ -1,12 +1,14 @@
+/** I am doing this coding with a lot of difficulty, please don't post it yourself¯\_(ツ)_/¯ **/
 module.exports.config = {
   name: "couple",
   version: "1.0.0",
-  hasPermssion:"0",
+  permission: 0,
   credits: "SIDDIK",
-  description: "Make By Siddik",
-  commandCategory: "user",
+  description: "COUPLE VEDIO",
+  prefix: true, 
+  category: "Hình ảnh", 
   usages: "couple",
-  cooldowns: 0,
+  cooldowns: 5,
   dependencies: {
     "request":"",
     "fs-extra":"",
@@ -14,12 +16,11 @@ module.exports.config = {
   }
 };
  
-module.exports.run = async ({ api, event, args, client, Users, Threads, __GLOBAL, Currencies }) => {
-  const axios = global.nodemodule["axios"];
-  const request = global.nodemodule["request"];
-  const fs = global.nodemodule["fs-extra"];
- 
-  var hi = ["𝐂𝐑𝐄𝐀𝐓𝐄 𝐒𝐊 𝐒𝐈𝐃𝐃𝐈𝐊"];
+module.exports.run = async ({api,event,args,client,Users,Threads,__GLOBAL,Currencies}) => {
+const axios = global.nodemodule["axios"];
+const request = global.nodemodule["request"];
+const fs = global.nodemodule["fs-extra"];
+   var hi = ["𝐂𝐑𝐄𝐀𝐓𝐄 𝐒𝐊 𝐒𝐈𝐃𝐃𝐈𝐊"];
   var know = hi[Math.floor(Math.random() * hi.length)];
   var link = [
     "https://drive.google.com/uc?id=1xLc_9r1TYGVM0J33hJ61hmW3yXOBTcEo",
@@ -37,8 +38,10 @@ module.exports.run = async ({ api, event, args, client, Users, Threads, __GLOBAL
     "https://drive.google.com/uc?id=1xgfepctwXjZ5Y9kxhD3HcTTaJcsWHi-x",
     "https://drive.google.com/uc?id=1xhymaD6J1patQzfass5-e4ewUDg8gnQ9",
     "https://drive.google.com/uc?id=1xCvCvUa2zVWLm3y1pAGFKrr-emyaFicK",
-    "https://drive.google.com/uc?id=1x87CHgjwaOjANyN_06_JqB-YKaUQGU2b"
-  ];
+    "https://drive.google.com/uc?id=1x87CHgjwaOjANyN_06_JqB-YKaUQGU2b",
+ 
+ 
+];
      var callback = () => api.sendMessage({body:`${know}`,attachment: fs.createReadStream(__dirname + "/cache/15.mp4")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/15.mp4"));    
       return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/15.mp4")).on("close",() => callback());
    };
