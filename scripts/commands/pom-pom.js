@@ -1,24 +1,25 @@
 module.exports.config = {
-  name: "pom pom",
+	name: "pompom",
   version: "1.0.0",
-  hasPermssion: 2,
+  permission: 0,
   credits: "SIDDIK",
-  description: "POM POM PIC",
-  commandCategory: "Random inmage",
+  description: "POMPOM PICTURE",
+  prefix: true, 
+  category: "user", 
   usages: "pompom",
-  cooldowns: 3,
+  cooldowns: 5,
   dependencies: {
-    "request": "",
-    "fs-extra": "",
-    "axios": ""
+    "request":"",
+    "fs-extra":"",
+    "axios":""
   }
 };
  
-module.exports.run = async ({ api, event, args, client, Users, Threads, __GLOBAL, Currencies }) => {
-  const axios = global.nodemodule["axios"];
-  const request = global.nodemodule["request"];
-  const fs = global.nodemodule["fs-extra"];
-  var link = [
+module.exports.run = async({api,event,args,Users,Threads,Currencies}) => {
+const axios = global.nodemodule["axios"];
+const request = global.nodemodule["request"];
+const fs = global.nodemodule["fs-extra"];
+    var link = [
     "https://i.imgur.com/2PBlIqx.jpg",
     "https://i.imgur.com/Hn99iMk.jpg",
     "https://i.imgur.com/uqof6q8.jpg",
@@ -52,7 +53,7 @@ module.exports.run = async ({ api, event, args, client, Users, Threads, __GLOBAL
     "https://i.imgur.com/2vq9lXD.jpg",
     "https://i.imgur.com/EhMNnYG.jpg",
     "https://i.imgur.com/il2UjnC.jpg",
-  ];
-  var callback = () => api.sendMessage({ body: `পম পম সাইজ বলে দিও তোমরা 🙈😹`, attachment: fs.createReadStream(__dirname + "/cache/5.jpg") }, event.threadID, () => fs.unlinkSync(__dirname + "/cache/5.jpg"));
-  return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname + "/cache/5.jpg")).on("close", () => callback());
-};
+];
+     var callback = () => api.sendMessage({body:`POM POM OYALI`,attachment: fs.createReadStream(__dirname + "/cache/1.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/1.jpg"));  
+      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/1.jpg")).on("close",() => callback());
+   };
