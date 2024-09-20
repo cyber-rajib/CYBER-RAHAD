@@ -30,7 +30,7 @@ const shortLang = "en";
 const lang = languagesMap[shortLang];
  
 module.exports.config = {
-  name: "jan",
+  name: "Jan",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "SIDDIK",
