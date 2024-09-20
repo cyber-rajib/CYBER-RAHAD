@@ -101,7 +101,7 @@ module.exports.run = async function ({ args, Users, Threads, api, event, Currenc
   fs.writeFileSync(pathImg, imageBuffer);
   fs.removeSync(pathAvt1);
   fs.removeSync(pathAvt2);
-  return api.sendMessage({ body: `╰┈➤${name1}\n\n╰┈➤${name2}\n╰┈➤  ${tile}℅ 𝐋𝐎𝐕𝐄 \n╰┈➤𝐒𝐈𝐃𝐃𝐈𝐊 𝐁𝐎𝐓 `,
+  return api.sendMessage({ body: `╰┈➤${name1}\n╰┈➤${name2}\n╰┈➤  ${tile}% 𝐋𝐎𝐕𝐄 \n╰┈➤𝐒𝐈𝐃𝐃𝐈𝐊 𝐁𝐎𝐓 `,
             mentions: [{
           tag: `${name2}`,
           id: id2
