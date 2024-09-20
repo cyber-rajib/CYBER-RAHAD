@@ -60,7 +60,9 @@ module.exports.run = async function ({ args, Users, Threads, api, event, Currenc
   var tile = djtme[Math.floor(Math.random() * djtme.length)];
  
   var background = [
-  "https://i.postimg.cc/N0pn64fJ/20240106-195948.png"
+  "https://i.postimg.cc/wjJ29HRB/background1.png",
+  "https://i.postimg.cc/zf4Pnshv/background2.png",
+  "https://i.postimg.cc/5tXRQ46D/background3.png"
   ];
   var rd = background[Math.floor(Math.random() * background.length)];
  
@@ -99,7 +101,7 @@ module.exports.run = async function ({ args, Users, Threads, api, event, Currenc
   fs.writeFileSync(pathImg, imageBuffer);
   fs.removeSync(pathAvt1);
   fs.removeSync(pathAvt2);
-  return api.sendMessage({ body: `আসসালামু আলাইকুম, \n${name1}\n❤️❤️\n${name2}\nআই  ${tile}% লাভ ইউ \n===== 𝐒𝐈𝐃𝐃𝐈𝐊 𝐁𝐎𝐓 =====`,
+  return api.sendMessage({ body: ` ╰┈➤\n${name1}\n\n╰┈➤${name2}\n╰┈➤  ${tile}℅ 𝐋𝐎𝐕𝐄 \n╰┈➤===== 𝐒𝐈𝐃𝐃𝐈𝐊 𝐁𝐎𝐓 =====`,
             mentions: [{
           tag: `${name2}`,
           id: id2
