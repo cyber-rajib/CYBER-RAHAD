@@ -30,7 +30,7 @@ const shortLang = "en";
 const lang = languagesMap[shortLang];
  
 module.exports.config = {
-  name: "meta",
+  name: "jan",
   version: "1.0.0",
   hasPermssion: 0,
   credits: "SIDDIK",
@@ -75,7 +75,7 @@ module.exports.run = async function ({ api, args, event }) {
     const dipto = args.join(" ").toLowerCase();
     if (!args[0]) {
       api.sendMessage(
-        "Please provide a question to answer\n\nExample:\nbby ki koro",
+        "Please provide a question to answer\n\nExample:\njan ki koro",
         event.threadID,
         event.messageID,
       );
