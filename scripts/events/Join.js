@@ -31,9 +31,7 @@ module.exports.run = async function({ api, event }) {
   if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
     api.changeNickname(`${(!global.config.BOTNAME) ? "bot" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
     const fs = require("fs");
-    return api.sendMessage("╰┈➤চলে এসেছি আমি পিচ্চি সিদ্দিক তোমাদের মাঝে🤭!", event.threadID, () => api.sendMessage({body:`________আসসালামু আলাইকুম___________
-  
-🤖ROBOT CONNECTED SUCCESSFULLY🤖
+    return api.sendMessage("╰┈➤চলে এসেছি আমি পিচ্চি সিদ্দিক তোমাদের মাঝে🤭!", event.threadID, () => api.sendMessage({body:`🤖-BOT CONNECTED-🤖
   
 ╰┈➤চলে আসলাম তোমাদের মাঝে 🥀
  
@@ -47,8 +45,7 @@ module.exports.run = async function({ api, event }) {
  
 ╰┈➤ফেসবুক লিংক ☞ https://www.facebook.com/rxsiddik1
  
-╰┈➤ 2nd লিংক ☞ https://www.facebook.com/TERA.PAPPA.IS.BUSY 🐰😗
- ${global.config.PREFIX}Help\n${global.config.PREFIX}Info\n${global.config.PREFIX}Admin 
+╰┈➤ 2nd লিংক ☞ https://www.facebook.com/TERA.PAPPA.IS.BUSY 🐰😗 
 `, attachment: fs.createReadStream(__dirname + "/Siddik/join.jpeg")} ,threadID));
   }
   else {
