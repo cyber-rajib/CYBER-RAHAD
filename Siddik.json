@@ -6,6 +6,8 @@
   "language": "en",
   "notification": true,
   "approval": false,
+  "api":
+    "https://nobs-api.onrender.com/dipto",
   "BOTNAME": "━━[𝗦𝗜𝗗𝗗𝗜𝗞 𝗕𝗢𝗧]━━➣",
   "PREFIX": "/",
   "OPERATOR": [
