@@ -31,7 +31,7 @@ module.exports.run = async function({ api, event }) {
   if (event.logMessageData.addedParticipants.some(i => i.userFbId == api.getCurrentUserID())) {
     api.changeNickname(`${(!global.config.BOTNAME) ? "bot" : global.config.BOTNAME}`, threadID, api.getCurrentUserID());
     const fs = require("fs");
-    return api.sendMessage("╭────•◈•─────╮\n         🅂🄸🄳🄳🄸🄺🄱🄾🅃       \n\n চলে এসেছি আমি পিচ্ছি সিদ্দিক তোমাদের মাঝে_🤭 \n╰────•◈•─────╯", event.threadID, () => api.sendMessage({body:`________আসসালামু আলাইকুম___________
+    return api.sendMessage("╰┈➤চলে এসেছি আমি পিচ্চি সিদ্দিক তোমাদের মাঝে🤭!", event.threadID, () => api.sendMessage({body:`________আসসালামু আলাইকুম___________
   
 🤖ROBOT CONNECTED SUCCESSFULLY🤖
   
