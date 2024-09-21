@@ -32,37 +32,22 @@ var link = ["https://i.imgur.com/5BPiJjA.jpeg",
  
             "https://i.imgur.com/9cXJ9h7.jpeg"];
  
-var callback = () => api.sendMessage({body:`✨𝐀𝐬𝐬𝐚𝐥𝐚𝐦𝐮 𝐖𝐚𝐥𝐚𝐢𝐤𝐮𝐦✨
- 
-╭─────────────|
-╰‣ 𝐀𝐝𝐦𝐢𝐧 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧
-
-╭─────────────|
-╰‣ 𝐁𝐨𝐭 𝐍𝐚𝐦𝐞 : 𝗦𝗜𝗗𝗗𝗜𝗞 𝗕𝗢𝗧
- 
-╭─────────────|
-╰‣ 𝐁𝐨𝐭 𝐀𝐝𝐦𝐢𝐧 : 𝐒𝐤 𝐒𝐢𝐝𝐝𝐢𝐤 𝐊𝐡𝐚𝐧
- 
-╭─────────────|
-╰‣ 𝐂𝐨𝐧𝐜𝐚𝐭𝐞𝐭
-
-╭─────────────|
-╰‣ 𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤 : m.me/TERA.PAPPA.IS.BUSY
- 
-╭─────────────|
-╰‣ 𝐓𝐠  : t.me/@rdxprem12
- 
-╭─────────────|
-╰‣ ✨𝐎𝐭𝐡𝐞𝐫𝐬 𝐈𝐧𝐟𝐨𝐫𝐦𝐚𝐭𝐢𝐨𝐧✨
- 
-╭─────────────|
-╰‣ 𝐁𝐨𝐭 𝐏𝐫𝐞𝐟𝐢𝐱 : ${global.config.PREFIX} 
- 
-╭─────────────|
-╰‣ 𝐁𝐨𝐭 𝐈𝐬 𝐑𝐮𝐧𝐧𝐢𝐧𝐠 ${hours}:${minutes}:${seconds} 
- 
-╭─────────────|
-╰‣ 𝐓𝐡𝐚𝐧𝐤𝐬 𝐅𝐨𝐫 𝐔𝐬𝐢𝐧𝐠  \n\n${global.config.BOTNAME}`,attachment: fs.createReadStream(__dirname + "/cache/siddik.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/siddik.jpg")); 
+var callback = () => api.sendMessage({body:`===「 Bot & Owner Info 」===
+❏ Bot Name: ${botName}
+❏ Bot Prefix: ${botPrefix}
+❏ Author Name: SIDDIK-KHAN
+❏ FB: SK-SIDDIK-KHAN
+❏ 2nd FB: TANJID HASAN TAMIM
+❏ Author Email: siddik4x9@gmail.com
+❏ Author Github: SK-SIDDIK-143
+❏ Status: ${status}
+❏ Date: ${date}
+❏ Total Threads: ${allThreads.length}
+❏ Total Users: ${allUsers.length}
+❏ Time: ${time}
+❏ Bot Running: ${uptimeString}
+❏ Bot's Speed: ${result} MBPS
+===================== \n\n${global.config.BOTNAME}`,attachment: fs.createReadStream(__dirname + "/cache/siddik.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/siddik.jpg")); 
       return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/siddik.jpg")).on("close",() => callback());
    };
  
