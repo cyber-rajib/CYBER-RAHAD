@@ -13,6 +13,22 @@ module.exports.config = {
   cooldowns: 5,
 };
 
+languages: {
+  "vi": {},
+      "en": {
+          "off": 'the autoreact function has been disabled for new messages.',
+          "on": 'the autoreact function is now enabled for new messages.',
+        "error": 'incorrect syntax'
+      }
+  },
+ 
+handleEvent: async ({ api, event, Threads }) => {
+ 
+  if (!fs.existsSync(pathFile))
+   fs.writeFileSync(pathFile, 'false');
+   const isEnable = fs.readFileSync(pathFile, 'utf-8');
+   if (isEnable == 'true') {
+    
 module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
  let haha = event.body ? event.body.toLowerCase() : '';
 if (haha.includes(" ") || haha.includes("")){
