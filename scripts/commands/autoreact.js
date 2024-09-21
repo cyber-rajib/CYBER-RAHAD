@@ -1,68 +1,41 @@
 const fs = require('fs-extra');
 const pathFile = __dirname + '/autoreact/autoreact.txt';
  
-module.exports = {
-config: {
+module.exports.config = {
   name: "autoreact",
-  version: "1.0.0",
-  permission: 1,
+  version: "2.0.0",
+  permission: 2,
   credits: "SIDDIK",
-  description: "",
-  prefix: 'awto', 
-  category: "auto", 
-  usages: "[off]/[on]",
+  description: "..",
+  prefix: false,
+  category: "...",
+  usages: "",
   cooldowns: 5,
-  dependencies: {
-    "request": "",
-    "fs-extra": "",
-    "axios": ""
-  }
-},
+};
+
+module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
+ let haha = event.body ? event.body.toLowerCase() : '';
+if (haha.includes(" ") || haha.includes("")){
+const dipto = ['😆','🐸','🙃','😈','🤖','🙄','🐣','🍎','🐰','🦟','🧐','😐','🙂','🤐','♥️','😘','😻','😍','😸','💦','🤨','😭','😁','😜','🤫','😶','🥱','😤','🥵','😇','💋','🙈','🙀','🦵','💛','🖤','🤎','💙','💜','🦶','🙆','😏','🌸','🏵️','🍁','🌼','🔥','🐍','👄','✈️','🦛','🦐','🐇','🐮','🐰','🦃','🫦','🦋','🍒','🍓','🐼','🍊','🫤','🍍','🍌','🌚','🥥','🐛','🥕','😳','👻','😾','🧀','😒','🥹','☠️','👊','😴','😦','😷','🫣','🫂','🤕','😵','🫢','🤭','😔','💩','💣','👀','🌝','🍼','🐤','😋','😻','😕','🙀']
  
-  languages: {
-  "vi": {},
-      "en": {
-          "off": 'the autoreact function has been disabled for new messages.',
-          "on": 'the autoreact function is now enabled for new messages.',
-        "error": 'incorrect syntax'
-      }
-  },
- 
-handleEvent: async ({ api, event, Threads }) => {
- 
-  if (!fs.existsSync(pathFile))
-   fs.writeFileSync(pathFile, 'false');
-   const isEnable = fs.readFileSync(pathFile, 'utf-8');
-   if (isEnable == 'true') {
- 
-  const reactions = ["💀", "🙄", "🤭","🥺","😶","😝","👿","🤓","🥶","🗿","😾","🤪","🤬","🤫","😼","😶‍🌫️","😎","🤦","💅","👀","☠️","🧠","👺","🤡","🤒","🤧","😫","😇","🥳","😭"];
-  var nayan = reactions[Math.floor(Math.random() * reactions.length)];
- 
-  api.setMessageReaction(nayan, event.messageID, (err) => {
-    if (err) {
-      console.error("Error sending reaction:", err);
-    }
-  }, true);
+const r = dipto[Math.floor(Math.random() * dipto.length)];
+return api.setMessageReaction(r, event.messageID, (err) => {}, true)
 }
-},
- 
-start: async ({ nayan, events, args, lang }) => {
+    };
+module.exports. run = async ({ api, event, args }) => {
    try {
- 
      const logger = require("../../SIDDIK/catalogs/siddikc.js");
      if (args[0] == 'on') {
        fs.writeFileSync(pathFile, 'true');
-       nayan.sendMessage(lang("on"), events.threadID, events.messageID);
+       api.sendMessage('the autoreact function is now enabled for new messages.', event.threadID, event.messageID);
      } else if (args[0] == 'off') {
        fs.writeFileSync(pathFile, 'false');
-       nayan.sendMessage(lang("off"), events.threadID, events.messageID);
+       api.sendMessage('the autoreact function has been disabled for new messages.', event.threadID, event.messageID);
      } else {
-       nayan.sendMessage(lang("error"), events.threadID, events.messageID);
+       api.sendMessage('incorrect syntax', event.threadID, event.messageID);
      }
    }
    catch(e) {
      logger("unexpected error while using autoseen function", "system");
    }
-}
-}
- 
+};
