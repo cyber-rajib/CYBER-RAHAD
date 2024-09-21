@@ -33,20 +33,16 @@ var link = ["https://i.imgur.com/5BPiJjA.jpeg",
             "https://i.imgur.com/9cXJ9h7.jpeg"];
  
 var callback = () => api.sendMessage({body:`===「 Bot & Owner Info 」===
-❏ Bot Name: ${botName}
-❏ Bot Prefix: ${botPrefix}
+❏ Bot Name: ${global.config.BOTNAME}
+❏ Bot Prefix: ${global.config.PREFIX}
 ❏ Author Name: SIDDIK-KHAN
 ❏ FB: SK-SIDDIK-KHAN
 ❏ 2nd FB: TANJID HASAN TAMIM
 ❏ Author Email: siddik4x9@gmail.com
 ❏ Author Github: SK-SIDDIK-143
-❏ Status: ${status}
-❏ Date: ${date}
-❏ Total Threads: ${allThreads.length}
-❏ Total Users: ${allUsers.length}
-❏ Time: ${time}
-❏ Bot Running: ${uptimeString}
-❏ Bot's Speed: ${result} MBPS
+❏ Statues : Single
+❏ Bot Running: ${hours}:${minutes}:${seconds} 
+❏ Thanks For Using: SK SIDDIK BOT 🥀
 ===================== \n\n${global.config.BOTNAME}`,attachment: fs.createReadStream(__dirname + "/cache/siddik.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/siddik.jpg")); 
       return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/siddik.jpg")).on("close",() => callback());
    };
