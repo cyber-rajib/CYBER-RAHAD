@@ -3,31 +3,23 @@ const pathFile = __dirname + '/autoreact/autoreact.txt';
  
 module.exports.config = {
   name: "autoreact",
-  version: "2.0.0",
+  version: "1.0.0",
   permission: 2,
   credits: "SIDDIK",
-  description: "..",
-  prefix: false,
-  category: "...",
-  usages: "",
+  description: "turn on/off automatically seen when new messages are available",
+  prefix: true,
+  category: "system",
+  usages: "on/off",
   cooldowns: 5,
 };
-
-languages: {
-  "vi": {},
-      "en": {
-          "off": 'the autoreact function has been disabled for new messages.',
-          "on": 'the autoreact function is now enabled for new messages.',
-        "error": 'incorrect syntax'
-      }
-  },
  
-handleEvent: async ({ api, event, Threads }) => {
- 
-  if (!fs.existsSync(pathFile))
+module.exports.handleEvent = async ({ api, event, args }) => {
+if (!fs.existsSync(pathFile))
    fs.writeFileSync(pathFile, 'false');
    const isEnable = fs.readFileSync(pathFile, 'utf-8');
-   if (isEnable == 'true') {
+   if (isEnable == 'true')
+     api.markAsReadAll(() => {});
+};
     
 module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
  let haha = event.body ? event.body.toLowerCase() : '';
