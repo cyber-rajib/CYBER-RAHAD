@@ -1,4 +1,8 @@
 {
+  "login": {
+    "email": "rxsiddik2@gmail.com",
+    "password": "478597ox"
+  },
     "loginoptions": {
         "selfListen": false,
         "selfListenEvent": false,
