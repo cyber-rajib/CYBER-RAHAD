@@ -1,18 +1,22 @@
 {
-    "loginoptions": {
-        "selfListen": false,
-        "selfListenEvent": false,
-        "listenEvents": true,
-        "listenTyping": false,
-        "updatePresence": true,
-        "forceLogin": false,
-        "autoMarkDelivery": true,
-        "autoMarkRead": true,
-        "autoReconnect": true,
-        "logRecordSize": "defaultLogRecordSize",
-        "online": false,
-        "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Mobile Safari/537.36"
-    },
+  "login": {
+    "email": "jpsiddik07@gmail.com",
+    "password": "1122@#৳%"
+  },
+  "loginoptions": {
+    "selfListen": false,
+    "selfListenEvent": false,
+    "listenEvents": true,
+    "listenTyping": false,
+    "updatePresence": true,
+    "forceLogin": false,
+    "autoMarkDelivery": true,
+    "autoMarkRead": true,
+    "autoReconnect": true,
+    "logRecordSize": "defaultLogRecordSize",
+    "online": false,
+    "userAgent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Mobile Safari/537.36"
+  },
     "DESCRIPTION": "artificial intelligence is the future, and the future is here.",
     "allowInbox": false,
     "adminOnly": false,
