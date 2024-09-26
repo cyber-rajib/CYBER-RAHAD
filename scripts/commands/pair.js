@@ -1,7 +1,8 @@
-module.exports.config = {
+ module.exports.config = {
   name: "pair",
   version: "1.0.0",
-  permssion: 0,
+  hermssion: 0,
+  prefix: true,
   credits: "RAHAT",
   description: "It's a compound :>",
   category: "fun",
