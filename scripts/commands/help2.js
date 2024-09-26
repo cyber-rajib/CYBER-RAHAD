@@ -1,16 +1,17 @@
 module.exports.config = {
-  name: "help2",
-  version: "1.0.0",
-  permission: 0,
-  credits: "RAHAT", //  PUTANG INA MO WAG MONG PAPALITAN TONG CREDITS KHAN RAHUL RK..
-  description: "Help2 Command Create 🏆Khan Rahul Rk🏆",
-  category: "system",
-  usages: "help",
-  cooldowns: 5,
-  envConfig: {
-    autoUnsend: true,
-    delayUnsend: 60
-  }
+ name: "help2",
+ version: "2.0.0",
+ permssion: 0,
+ credits: "𝐊𝐡𝐚𝐧 𝐑𝐚𝐡𝐮𝐥 𝐑𝐊",
+  prefix:true,
+ description: "commands list",
+ category: "system",
+ usages: "module name",
+ cooldowns: 1,
+ envConfig: {
+  autoUnsend: false,
+  delayUnsend: 300
+ }
 };
 
   const mathSansBold = {
