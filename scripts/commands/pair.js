@@ -1,7 +1,7 @@
 module.exports.config = {
   name: "pair",
   version: "1.0.0",
-  hermssion: 0,
+  phermssion: 0,
   prefix: true,
   credits: "RAHAT",
   description: "It's a compound :>",
