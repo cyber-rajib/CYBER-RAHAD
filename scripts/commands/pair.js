@@ -2,14 +2,15 @@ module.exports.config = {
   name: "pair",
   version: "1.0.0",
   permssion: 0,
-  credits: "RAHAT",
+  prefix: true,
+  credits: "SIDDIK",
   description: "It's a compound :>",
   category: "fun",
   usages: "",
   dependencies: {
         "axios": "",
         "fs-extra": ""
-  }
+  },
 };
   cooldowns: 15
 }
