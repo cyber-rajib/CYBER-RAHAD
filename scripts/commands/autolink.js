@@ -8,23 +8,18 @@ const baseApiUrl = async () => {
   return base.data.api;
 };
 
-module.exports.config = {
-  name: "autolink",
-  version: "1.0.",
-  permssion: 0,
-  credits: "RAHAT",
-  description: "Fb Vid Downloader",
-  commandcategory: "other",
-  category: "others",
-  usags: "fb video link",
-  prefix: true,
-  prefix: true,
-  cooldowns: 2,
-  dependencies: {
-    axios: "",
-    "fs-extra": "",
-    tinyurl: "",
-  },
+module.exports = {
+  config:{
+    name: "autolink",
+    version: "0.0.2",
+    permission: 0,
+    prefix: 'awto',
+    credits: "RAHAT",
+    description: "auto video download",
+    category: "user",
+    usages: "",
+    cooldowns: 5,
+},
 };
 
 module.exports.handleEvent = async function ({ api, event, client, __GLOBAL }) {
