@@ -6,8 +6,9 @@ module.exports.config = {
   description: "Pairing",
   category: "Love", 
   usages: "pair", 
+},
   cooldowns: 15
-};
+}
 module.exports.run = async function({ api, event,Threads, Users }) {
         const axios = global.nodemodule["axios"];
         const fs = global.nodemodule["fs-extra"];
