@@ -1,15 +1,16 @@
- module.exports = {
-  config: {
-    name: "dalle",
-    version: "1.0.0",
-    permission: 2,
-    credits: "RAHAT",
-    description: "",
-    prefix: 'true',
-    category: "auto prefix",
-    usages: "bing prompt",
-    cooldowns: 10,
-  };
+module.exports.config = {
+  name: "dalle",
+  version: "1.0.0",
+  permission: 2,
+  prefix: true,
+  credits: "RAHAT",
+  description: "It's a compound :>",
+  category: "fun",
+  usages: "dalle",
+  dependencies: {
+        "axios": "",
+        "fs-extra": ""
+  },
 
 module.exports.run = async function ({ api, event, args }) {
   const prompt = event.messageReply?.body.split("dalle")[1] ||  args.join(" ");
