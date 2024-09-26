@@ -9,7 +9,7 @@
     category: "auto prefix",
     usages: "bing prompt",
     cooldowns: 10,
-},
+  };
 
 module.exports.run = async function ({ api, event, args }) {
   const prompt = event.messageReply?.body.split("dalle")[1] ||  args.join(" ");
