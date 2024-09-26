@@ -7,7 +7,6 @@ const baseApiUrl = async () => {
   );
   return base.data.api;
 };
-
 module.exports = {
   config:{
     name: "autolink",
