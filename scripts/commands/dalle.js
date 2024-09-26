@@ -2,10 +2,10 @@
   config: {
     name: "dalle",
     version: "1.0.0",
-    permission: 0,
+    permission: 2,
     credits: "RAHAT",
     description: "",
-    prefix: 'awto',
+    prefix: 'true',
     category: "auto prefix",
     usages: "bing prompt",
     cooldowns: 10,
