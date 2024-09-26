@@ -1,17 +1,15 @@
-const axios = require('axios');
-const fs = require('fs-extra');
-const path = require('path');
-
-module.exports.config = {
+ module.exports = {
+  config: {
     name: "dalle",
-    version: "1.0",
-    credits: "RAHUL",
-    permssion: 2,
-    description: "Generate images by Dalle-3 AI",
-    category: "download",
-    usages: "[text] \nJamon [A 17/18/19 years old boy/girl watching football match on tv and written Rahul and 69 on the back of his Dress , 4k]",
-    cooldowns: 5
-  };
+    version: "1.0.0",
+    permission: 0,
+    credits: "RAHAT",
+    description: "",
+    prefix: 'awto',
+    category: "auto prefix",
+    usages: "bing prompt",
+    cooldowns: 10,
+},
 
 module.exports.run = async function ({ api, event, args }) {
   const prompt = event.messageReply?.body.split("dalle")[1] ||  args.join(" ");
