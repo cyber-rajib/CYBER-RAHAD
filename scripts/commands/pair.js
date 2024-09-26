@@ -1,4 +1,4 @@
- module.exports.config = {
+module.exports.config = {
   name: "pair",
   version: "1.0.0",
   hermssion: 0,
@@ -13,7 +13,7 @@
   },
  };
   cooldowns: 15
-};
+}
 
 module.exports.run = async function ({ args, Users, Threads, api, event, Currencies }) {
   const { loadImage, createCanvas } = require("canvas");
