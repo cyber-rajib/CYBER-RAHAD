@@ -1,16 +1,17 @@
 module.exports.config = {
-  name: "help",
-  version: "1.0.2",
-  permssion: 0,
-  credits: "RAHUL",
-  description: "Beginner's Guide",
-  category: "system",
-  usages: "[Name module]",
-  cooldowns: 5,
-  envConfig: {
-    autoUnsend: false,
-    delayUnsend: 20
-  }
+ name: "help",
+ version: "2.0.0",
+ permssion: 0,
+ credits: "𝐊𝐡𝐚𝐧 𝐑𝐚𝐡𝐮𝐥 𝐑𝐊",
+  prefix:true,
+ description: "commands list",
+ category: "system",
+ usages: "module name",
+ cooldowns: 1,
+ envConfig: {
+  autoUnsend: false,
+  delayUnsend: 300
+ }
 };
 
 module.exports.languages = {
