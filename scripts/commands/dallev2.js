@@ -3,14 +3,17 @@ const fs = require('fs-extra');
 const path = require('path');
 
 module.exports.config = {
-    name: "edit",
-    version: "1.0",
-    credits: "RAHAT",
-    permssion: 2,
-    description: "Generate images by Dalle-3 AI",
-    category: "download",
-    usages: "[text] \nJamon [A 17/18/19 years old boy/girl watching football match on tv and written RAHAT and 69 on the back of his Dress , 4k]",
-    cooldowns: 5
+  name: "edit",
+  version: "1.0.0",
+  permission: 2,
+  prefix: true,
+  credits: "RAHAT",
+  description: "download",
+  category: "Generate images by Dalle-3 AI",
+  usages: "[text] \nJamon [A 17/18/19 years old boy/girl watching football match on tv and written RAHAT and 69 on the back of his Dress , 4k]",
+  dependencies: {
+        "axios": "",
+        "fs-extra": ""
   };
 
 module.exports.run = async function ({ api, event, args }) {
