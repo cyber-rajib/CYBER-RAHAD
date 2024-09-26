@@ -11,6 +11,7 @@
         "axios": "",
         "fs-extra": ""
   },
+ };
   cooldowns: 15
 }
 
