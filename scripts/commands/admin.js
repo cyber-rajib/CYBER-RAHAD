@@ -1,15 +1,20 @@
-module.exports = {
-  config:{
+module.exports.config = {
     name: "admin",
-    version: "0.0.2",
+    version: "1.0.0",
     permission: 0,
-    prefix: 'awto',
     credits: "RAHAT",
-    description: "admin",
-    category: "user",
+    prefix: true,
+    description: "",
+    category: "admin",
     usages: "",
     cooldowns: 5,
- };
+    dependencies: 
+	{
+    "request":"",
+    "fs-extra":"",
+    "axios":""
+  }
+};
 
 module.exports.languages = {
     "bn": {
