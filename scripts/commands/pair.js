@@ -9,7 +9,7 @@ module.exports.config = {
   dependencies: {
         "axios": "",
         "fs-extra": ""
-  },
+  }
 };
   cooldowns: 15
 }
