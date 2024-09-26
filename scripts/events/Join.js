@@ -43,9 +43,9 @@ module.exports.run = async function({ api, event }) {
  
 ╰┈➤আমার বস এসকে সিদ্দিক কে এড দিতে প্রথমে টাইপ করুন /add তারপর একটা স্পেস দিয়ে বস এর Uid 100059026788061 দিন ☺️
  
-╰┈➤ফেসবুক লিংক ☞ https://www.facebook.com/rxsiddik1
+╰┈➤ফেসবুক লিংক ☞ https://www.facebook.com/profile.php?id=10001795024562
  
-╰┈➤ 2nd লিংক ☞ https://www.facebook.com/TERA.PAPPA.IS.BUSY 🐰😗 
+╰┈➤ 2nd লিংক ☞ https://www.facebook.com/khan.rahulrk.127 🐰😗 
 `, attachment: fs.createReadStream(__dirname + "/Siddik/join.jpeg")} ,threadID));
   }
   else {
