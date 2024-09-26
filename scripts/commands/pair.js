@@ -1,17 +1,18 @@
 module.exports.config = {
   name: "pair",
   version: "1.0.0",
-  permssion: 0,
+  phermssion: 0,
   prefix: true,
-  credits: "SIDDIK",
+  credits: "RAHAT",
   description: "It's a compound :>",
   category: "fun",
   usages: "",
   dependencies: {
         "axios": "",
         "fs-extra": ""
+  },
   cooldowns: 15
-};
+}
 
 module.exports.run = async function ({ args, Users, Threads, api, event, Currencies }) {
   const { loadImage, createCanvas } = require("canvas");
