@@ -1,8 +1,7 @@
 module.exports.config = {
   name: "pair",
   version: "1.0.0",
-  phermssion: 0,
-  prefix: true,
+  permssion: 0,
   credits: "RAHAT",
   description: "It's a compound :>",
   category: "fun",
@@ -11,7 +10,6 @@ module.exports.config = {
         "axios": "",
         "fs-extra": ""
   },
- };
   cooldowns: 15
 }
 
