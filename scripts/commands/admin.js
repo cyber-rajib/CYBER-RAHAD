@@ -1,16 +1,15 @@
-module.exports.config = {
-  name: "admin",
-  version: "1.0.5",
-  permssion: 0,
-  credits: "RAHAT",
-  description: "Manage bot admin",
-  category: "admin",
-  usages: "[list/add/remove] [userID]",
+module.exports = {
+  config:{
+    name: "admin",
+    version: "0.0.2",
+    permission: 0,
+    prefix: 'awto',
+    credits: "RAHAT",
+    description: "admin",
+    category: "user",
+    usages: "",
     cooldowns: 5,
-    dependencies: {
-        "fs-extra": ""
-    }
-};
+ };
 
 module.exports.languages = {
     "bn": {
