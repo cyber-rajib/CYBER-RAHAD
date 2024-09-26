@@ -10,8 +10,9 @@ module.exports.config = {
         "axios": "",
         "fs-extra": ""
   },
-  cooldowns: 15
 };
+  cooldowns: 15
+}
 
 module.exports.run = async function ({ args, Users, Threads, api, event, Currencies }) {
   const { loadImage, createCanvas } = require("canvas");
