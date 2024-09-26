@@ -1,16 +1,13 @@
 module.exports.config = {
   name: "pairv2",
-  version: "1.0.0",
-  permission: 0,
-  prefix: true,
+  version: "1.0.0", 
+  permssion: 0,
   credits: "RAHAT",
-  description: "It's a compound :>",
-  category: "fun",
-  usages: "",
-  dependencies: {
-        "axios": "",
-        "fs-extra": ""
-  };
+  description: "Pairing",
+  category: "Love", 
+  usages: "pair", 
+  cooldowns: 15
+};
 module.exports.run = async function({ api, event,Threads, Users }) {
         const axios = global.nodemodule["axios"];
         const fs = global.nodemodule["fs-extra"];
