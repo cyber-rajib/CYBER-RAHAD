@@ -1,14 +1,20 @@
 const fs = global.nodemodule["fs-extra"];
+const moment = require("moment-timezone");
+const axios = require("axios");
+const path = require("path");
+
 module.exports.config = {
-  name: "goibot2",
+  name: "goibot",
   version: "1.0.1",
-  permssion: 0,
-  credits: "RAHAT",
+  permission: 0,
+  credits: "𝐊𝐡𝐚𝐧 𝐑𝐚𝐡𝐮𝐥 𝐑𝐊",
+  prefix: false,
   description: "goibot",
   category: "Noprefix",
   usages: "noprefix",
   cooldowns: 5,
 };
+
 module.exports.handleEvent = async function({ api, event, args, Threads, Users }) {
   var { threadID, messageID, reason } = event;
   const moment = require("moment-timezone");
