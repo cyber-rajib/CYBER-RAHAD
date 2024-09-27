@@ -1,6 +1,6 @@
-/** THIS FULL BOT COMMAND FILE AND ALL API CREATE BY KHAN RAHUL RK CHAT DONT CHINGE THE MY ANY CODE 🤙🖤📿 **/
+/** THIS FULL BOT COMMAND FILE AND ALL API CREATE BY Khan Rahul RK CHAT DONT CHINGE THE MY ANY CODE 🤙🖤📿 **/
 module.exports.config = {
-  name: "\N",
+  name: "\n",
   version: "1.0.0",
   permssion: 0,
   credits: "RAHAT",
@@ -15,7 +15,7 @@ module.exports.config = {
     "axios":""
   }
 };
-
+ 
 module.exports.run = async({api,event,args,client,Users,Threads,__GLOBAL,Currencies}) => {
 const axios = global.nodemodule["axios"];
 const request = global.nodemodule["request"];
@@ -183,11 +183,9 @@ const fs = global.nodemodule["fs-extra"];
 "https://i.postimg.cc/DzCzvHpt/photo-1575645513913-c002ea3b2e01-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-MXxhb.jpg",
 "https://i.postimg.cc/CLvk2rS6/photo-1592326871020-04f58c1a52f3-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-MXxhb.jpg",
 "https://i.postimg.cc/YC1DYw1m/photo-1451422450617-99d28523649e-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-MXxhb.jpg",
-"https://i.postimg.cc/DZPDq3Lz/photo-1579305796288-c534f6cf17ab-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-MXxhb.jpg",
-
-"https://i.postimg.cc/6q3gJgJM/pexels-fuzail-ahmad-2344997.jpg",
-
+"https://i.postimg.cc/DZPDq3Lz/photo-1579305796288-c534f6cf17ab-crop-faces-edges-cs-tinysrgb-fit-crop-fm-jpg-ixid-Mnwx-Mj-A3f-DB8-MXxhb.jpg", 
+"https://i.postimg.cc/6q3gJgJM/pexels-fuzail-ahmad-2344997.jpg", 
 ];
-   var callback = () => api.sendMessage({body:`「 ${know} 」`,attachment: fs.createReadStream(__dirname + "/cache/5.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache/5.jpg"));	
-      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache/5.jpg")).on("close",() => callback());
+   var callback = () => api.sendMessage({body:` ${know} `,attachment: fs.createReadStream(__dirname + "/cache55.jpg")}, event.threadID, () => fs.unlinkSync(__dirname + "/cache55.jpg"));	
+      return request(encodeURI(link[Math.floor(Math.random() * link.length)])).pipe(fs.createWriteStream(__dirname+"/cache55.jpg")).on("close",() => callback());
    };
