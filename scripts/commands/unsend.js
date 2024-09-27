@@ -1,12 +1,12 @@
 module.exports.config = {
-  name: "uns",
+  name: "unsend",
   version: "1.0.1",
-  permssion: 1,
-  credits: "SIDDIK",
+  permssion: 2,
+  credits: "RAHAT",
   prefix: 'awto',
   description: "Unsend Message",
   category: "addmin",
-  usages: "uns",
+  usages: "unsend",
   cooldowns: 0
 };
  
