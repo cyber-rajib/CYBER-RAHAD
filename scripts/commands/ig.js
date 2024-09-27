@@ -1,13 +1,14 @@
+/** THIS FULL BOT COMMAND FILE AND ALL API CREATE BY KHAN RAHUL RK CHAT DONT CHINGE THE MY ANY CODE 🤙🖤📿 **/
 module.exports.config = {
-  name: "\n",
-  version: "1.0.1",
-  prefix: false,
+  name: "\N",
+  version: "1.0.0",
   permssion: 0,
-  credits: "RAHAT", 
-  description: "ig",
-  category: "no prefix",
+  credits: "RAHAT",
+  prefix : false,
+  description: "Islamick post rendom",
+  category: "𝐈 𝐂 𝐂",
   usages: "ig",
-  cooldowns: 5,
+  cooldowns: 11,
   dependencies: {
     "request":"",
     "fs-extra":"",
