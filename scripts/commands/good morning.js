@@ -1,5 +1,4 @@
-module.exports = {
-  config:{
+module.exports.config = {
   name: "good morning",
   version: "1.0.1",
   prefix: false,
