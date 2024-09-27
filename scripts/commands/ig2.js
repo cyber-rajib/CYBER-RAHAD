@@ -1,14 +1,15 @@
-/** Đổi Credit ? Bọn t đã không mã hóa cho mà edit rồi thì tôn trọng nhau tý đi ¯\_(ツ)_/¯ **/
+/** THIS FULL BOT COMMAND FILE AND ALL API CREATE BY Khan Rahul RK CHAT DONT CHINGE THE MY ANY CODE 🤙🖤📿 **/
 module.exports.config = {
   name: "r",
   version: "1.0.0",
-  permission: 0,
+  permssion: 0,
   credits: "RAHAT",
-  description: "It's a compound :>",
-  category: "love",
-  usages: "ig",
+  prefix : true,
+  description: "love post rendom",
+  category: "𝐈 𝐂 𝐂",
+  usages: "LOVE",
+  cooldowns: 11,
   dependencies: {
-   
     "request":"",
     "fs-extra":"",
     "axios":""
