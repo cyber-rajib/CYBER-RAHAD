@@ -4,9 +4,9 @@ module.exports.config = {
   prefix: true,
   permssion: 0,
   credits: "RAHAT", 
-  description: "TikTok Api",
-  category: "Khan Rahul Rk",
-  usages: "Tiktok💞",
+  description: "Tiktok🌺",
+  category: "Khan Rahul RK",
+  usages: "TIKTOK💞",
   cooldowns: 5, 
 },
 
