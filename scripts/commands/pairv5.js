@@ -4,7 +4,6 @@
 * @Dont Change This Credits Otherwisw Your Bot Lol
 */
 module.exports.config = {
-  config:{
   name: "pairv5",
   version: "1.0.1",
   prefix: true,
