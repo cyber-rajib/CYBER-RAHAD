@@ -1,16 +1,14 @@
 module.exports.config = {
   name: "hi",
-  version: "1.0.0",
-  permission: 0,
+  version: "1.0.1",
   prefix: false,
-  credits: "RAHAT",
-  description: "Hi",
-  category: "fun",
-  usages: "hi",
-  dependencies: {
-        "axios": "",
-        "fs-extra": ""
-  };
+  permssion: 0,
+  credits: "RAHAT", 
+  description: "Hi Hello",
+  category: "no prefix",
+  usages: "HI",
+  cooldowns: 5, 
+},
 
 module.exports.handleEvent = async ({ event, api, Users }) => {
   let KEY = [ 
