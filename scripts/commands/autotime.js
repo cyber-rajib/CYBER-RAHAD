@@ -1,12 +1,12 @@
 module.exports.config = {
-    name: "autotime3",
+    name: "autotime",
   version: "1.0.0",
   permission: 0,
-  credits: "SIDDIK",
+  credits: "RAHAT",
   description: "Ajan Time auto sand ajan video",
   prefix: true, 
-  category: "user", 
-  usages: "",
+  category: "Khan Rahul RK", 
+  usages: "auto time",
   cooldowns: 5,
   dependencies: {
 	}
