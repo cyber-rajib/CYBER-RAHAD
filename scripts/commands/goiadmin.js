@@ -10,7 +10,8 @@ module.exports.config = {
   dependencies: {
         "axios": "",
         "fs-extra": ""
-  };
+  }
+};
 
 module.exports.handleEvent = function({ api, event }) {
   if (event.senderID !== "100022795671292","100050206390910") {
