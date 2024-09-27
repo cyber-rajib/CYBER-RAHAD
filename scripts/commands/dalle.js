@@ -13,15 +13,15 @@ module.exports = {
   description: "Generate images by Dalle-3 AI",
   category: "download",
   usages:
-    "[text] \nJamon [A 17/18/19 years old boy/girl watching football match on tv and written Dipto and 69 on the back of his Dress , 4k]",
+    "[text] \nJamon [A 17/18/19 years old boy/girl watching football match on tv and written RAHAT and 69 on the back of his Dress , 4k]",
   cooldowns: 5,
 }, 
   run: async({ api, event, args }) => {
     const prompt = (event.messageReply?.body.split("dalle")[1] || args.join(" ")).trim();
-    if (!prompt) return api.sendMessage("❌| Wrong Format. ✅ | Use: 17/18 years old boy/girl watching football match on TV with 'Dipto' and '69' written on the back of their dress, 4k", event.threadID, event.messageID);
+    if (!prompt) return api.sendMessage("❌| Wrong Format. ✅ | Use: 17/18 years old boy/girl watching football match on TV with 'RAHAT' and '69' written on the back of their dress, 4k", event.threadID, event.messageID);
     try {
        //const cookies = "cookies here (_U value)";
-const cookies = ["1WMSMa5rJ9Jikxsu_KvCxWmb0m4AwilqsJhlkC1whxRDp2StLDR-oJBnLWpoppENES3sBh9_OeFE6BT-Kzzk_46_g_z_NPr7Du63M92maZmXZYR91ymjlxE6askzY9hMCdtX-9LK09sUsoqokbOwi3ldOlm0blR_0VLM3OjdHWcczWjvJ78LSUT7MWrdfdplScZbtHfNyOFlDIGkOKHI7Bg"];
+const cookies = ["1SJ5rtWR9TZuMqsF2fHv8J0Gv1LLmrteUOrqLvWuUah0bafIfMkAJLTLPjUk1vb4vyXE5YU_jlEt36n9hpQICAJdNDcluOWEC-WAF5mrbw1qTeTUvdFUPpoZNrke8lXmEGOl2JbJ3H9a_47Id-JgHpbJBmw_yugem-PEGRGE0bsKSitmvaA_z5EumeAOMvrrBFnl5wQKdEOez-d2txXQGxg"];
 const randomCookie = cookies[Math.floor(Math.random() * cookies.length)];
       const wait = api.sendMessage("Wait koro baby 😽", event.threadID);
       const response = await axios.get(`${await baseApiUrl()}/dalle?prompt=${prompt}&key=dipto008&cookies=${randomCookie}`);
