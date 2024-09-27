@@ -14,10 +14,8 @@ module.exports.config = {
   permssion: 0,
   credits: "RAHAT",
   description: "Fb Vid Downloader",
-  commandCategory: "other",
   category: "others",
   usags: "fb video link",
-  usePrefix: true,
   prefix: true,
   cooldowns: 2,
   dependencies: {
