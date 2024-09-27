@@ -1,5 +1,4 @@
 module.exports.config = {
-  config:{
   name: "sada",
   version: "1.0.1",
   prefix: true,
