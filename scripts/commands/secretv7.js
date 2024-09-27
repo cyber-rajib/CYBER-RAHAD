@@ -7,7 +7,7 @@ module.exports.config = {
   description: "Get Your Life Line🌺",
   category: "fun",
   usages: "Pairing 💞",
-  cooldowns: 5,
+  cooldowns: 0,
   dependencies: {
         "axios": "",
         "fs-extra": ""
