@@ -1,14 +1,15 @@
 module.exports.config = {
   name: "pairv2",
-  version: "1.0.0", 
+  version: "1.0.1",
+  prefix: true,
   permssion: 0,
-  credits: "RAHAT",
-  description: "Pairing",
-  category: "Love", 
-  usages: "pair", 
+  credits: "RAHAT", 
+  description: "pairing🌺",
+  category: "fun",
+  usages: "Pairing💞",
+  cooldowns: 5, 
 },
-  cooldowns: 15
-}
+
 module.exports.run = async function({ api, event,Threads, Users }) {
         const axios = global.nodemodule["axios"];
         const fs = global.nodemodule["fs-extra"];
@@ -42,4 +43,4 @@ module.exports.run = async function({ api, event,Threads, Users }) {
 
         var msg = {body: `𝐒𝐮𝐜𝐜𝐞𝐬𝐬𝐟𝐮𝐥 𝐩𝐚𝐢𝐫𝐢𝐧𝐠\n  ༺𝙒𝙞𝙨𝙝 𝙮𝙤𝙪 𝙩𝙬𝙤 𝙝𝙪𝙣𝙙𝙧𝙚𝙙 𝙮𝙚𝙖𝙧𝙨 𝙤𝙛 𝙝𝙖𝙥𝙥𝙞𝙣𝙚𝙨𝙨༻\n━━━━━━━━━━━━━━━━\n꧁𝗗𝗼𝘂𝗯𝗹𝗲 𝗥𝗮𝘁𝗶𝗼꧂:${tle}%\n━━━━━━━━━━━━━━━━\n`+namee+" "+"💯"+""+name+""+""+"\n━━━━━━━━━━━━━━━━\n*★᭄", mentions: arraytag, attachment: imglove}
         return api.sendMessage(msg, event.threadID, event.messageID)
-}
+                                                       }
