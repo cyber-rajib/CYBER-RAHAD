@@ -8,12 +8,12 @@ module.exports.config = {
   category: "fun",
   usages: "Pairing 💞",
   dependencies: {
+  
         "axios": "",
         "fs-extra": ""
-  }
-   
+  },
   cooldowns: 0
-};
+}
 
 module.exports.run = async function ({ args, Users, Threads, api, event, Currencies }) {
   const { loadImage, createCanvas } = require("canvas");
@@ -110,4 +110,4 @@ module.exports.run = async function ({ args, Users, Threads, api, event, Currenc
       event.threadID,
       () => fs.unlinkSync(pathImg),
       event.messageID);
-  }
+}
