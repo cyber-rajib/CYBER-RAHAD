@@ -16,10 +16,11 @@ module.exports.config = {
   description: "facebook video download 🌺",
   category: "MEDIA",
   usages: "Auto download 💞",
+  cooldowns: 2,
   dependencies: {
         "axios": "",
         "fs-extra": ""
-  }
+  };
     tinyurl: "",
   },
 };
