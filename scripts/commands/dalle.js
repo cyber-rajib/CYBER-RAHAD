@@ -7,8 +7,8 @@ module.exports = {
   config: {
   name: "dalle",
   version: "1.0",
-  credits: "RAHAT",
-  permssion: 0,
+  credits: "🄺🄷🄰🄽 🅁🄰🄷🅄🄻 🅁🄺",
+  permssion: 2,
   prefix: true,
   description: "Generate images by Dalle-3 AI",
   category: "download",
@@ -18,18 +18,18 @@ module.exports = {
 }, 
   run: async({ api, event, args }) => {
     const prompt = (event.messageReply?.body.split("dalle")[1] || args.join(" ")).trim();
-    if (!prompt) return api.sendMessage("❌| Wrong Format. ✅ | Use: 17/18 years old boy/girl watching football match on TV with 'RAHAT' and '69' written on the back of their dress, 4k", event.threadID, event.messageID);
+    if (!prompt) return api.sendMessage("❌| Wrong Format. ✅ | Use: 17/18 years old boy/girl watching football match on TV with 'rahat' and '69' written on the back of their dress, 4k", event.threadID, event.messageID);
     try {
        //const cookies = "cookies here (_U value)";
-const cookies = ["1SJ5rtWR9TZuMqsF2fHv8J0Gv1LLmrteUOrqLvWuUah0bafIfMkAJLTLPjUk1vb4vyXE5YU_jlEt36n9hpQICAJdNDcluOWEC-WAF5mrbw1qTeTUvdFUPpoZNrke8lXmEGOl2JbJ3H9a_47Id-JgHpbJBmw_yugem-PEGRGE0bsKSitmvaA_z5EumeAOMvrrBFnl5wQKdEOez-d2txXQGxg"];
+const cookies = ["1sgtcfEs2Lk-uxkTXKxxZl8E08p74cmNXg6luQKtC25L2pFe_BuCrjiut0dWAm9gg7pfOhx7BFhMMvfsXkIbHemrJ4kTtI4tHMH5RJZYTnure-8qpf54f-7KG5_FvrudPdxR6QuTphq0nizyqO2IOmqSkUh0NIV5NmFRj_RghARE1hP0DhsqZCPv9IEi1Iw7KXZQxtO8Dot2WQWqjlXE5bw"];
 const randomCookie = cookies[Math.floor(Math.random() * cookies.length)];
-      const wait = api.sendMessage("Wait koro baby 😽", event.threadID);
+      const wait = api.sendMessage("𝙬𝙖𝙞𝙩 𝙠𝙤𝙧𝙤 𝙗𝙖𝙗𝙮🌹 \n𝙘𝙧𝙚𝙖𝙩𝙚 𝙗𝙮 𝙠𝙝𝙖𝙣 𝙧𝙖𝙝𝙪𝙡 𝙧𝙠", event.threadID);
       const response = await axios.get(`${await baseApiUrl()}/dalle?prompt=${prompt}&key=dipto008&cookies=${randomCookie}`);
 const imageUrls = response.data.imgUrls || [];
       if (!imageUrls.length) return api.sendMessage("Empty response or no images generated.", event.threadID, event.messageID);
       const images = await Promise.all(imageUrls.map(url => axios.get(url, { responseType: 'stream' }).then(res => res.data)));
     api.unsendMessage(wait.messageID);
-   api.sendMessage({ body: `✅ | Here's Your Generated Photo 😘`, attachment: images }, event.threadID, event.messageID);
+   api.sendMessage({ body: `𝙝𝙚𝙧𝙚'𝙨 𝙮𝙤𝙪𝙧 𝙜𝙚𝙣𝙚𝙧𝙖𝙩𝙚𝙙 𝙥𝙝𝙤𝙩𝙤💞 \n𝙘𝙧𝙚𝙖𝙩𝙚 𝙗𝙮 𝙠𝙝𝙖𝙣 𝙧𝙖𝙝𝙪𝙡 𝙧𝙠`, attachment: images }, event.threadID, event.messageID);
     } catch (error) {
       console.error(error);
       api.sendMessage(`Generation failed!\nError: ${error.message}`, event.threadID, event.messageID);
