@@ -4,7 +4,7 @@ module.exports.config = {
   version: "1.0.0",
   permssion: 0,
   credits: "RAHAT",
-  prefix : true,
+  prefix : false,
   description: "love post rendom",
   category: "𝐈 𝐂 𝐂",
   usages: "LOVE",
