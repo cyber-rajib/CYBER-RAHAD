@@ -1,14 +1,14 @@
 module.exports.config = {
-    name: "frame3",
-    version: "7.3.1",
-    permssion: 0,
-    credits: "RAHAT",///don't change my Credit Edit 
-    description: "Get Pair From Mention",
-    category: "img",
-    usages: "[@mention]",
-    cooldowns: 5,
-    dependencies: {
-        "axios": "",
+  name: "frame3",
+  version: "1.0.0",
+  permission: 0,
+  prefix: true,
+  credits: "RAHAT",
+  description: "Tag Your Gf💞",
+  category: "fun",
+  usages: "",
+  dependencies: {
+  axios": "",
         "fs-extra": "",
         "path": "",
         "jimp": ""
