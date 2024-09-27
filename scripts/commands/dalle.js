@@ -3,19 +3,19 @@ const baseApiUrl = async () => {
   const base = await axios.get(`https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json`);
   return base.data.api;
 }; 
-module.exports.config = {
+module.exports = {
+  config: {
   name: "dalle",
-  version: "1.0.0",
-  permission: 2,
-  prefix: true,
+  version: "1.0",
   credits: "RAHAT",
+  permssion: 0,
+  prefix: true,
   description: "Generate images by Dalle-3 AI",
-  category: "image",
-  usages: "[text] \nJamon [A 17/18/19 years old boy/girl watching football match on tv and written Dipto and 69 on the back of his Dress , 4k]",
-  dependencies: {
-        "axios": "",
-        "fs-extra": ""
-  };
+  category: "download",
+  usages:
+    "[text] \nJamon [A 17/18/19 years old boy/girl watching football match on tv and written Dipto and 69 on the back of his Dress , 4k]",
+  cooldowns: 5,
+}, 
   run: async({ api, event, args }) => {
     const prompt = (event.messageReply?.body.split("dalle")[1] || args.join(" ")).trim();
     if (!prompt) return api.sendMessage("❌| Wrong Format. ✅ | Use: 17/18 years old boy/girl watching football match on TV with 'Dipto' and '69' written on the back of their dress, 4k", event.threadID, event.messageID);
