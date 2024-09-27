@@ -1,6 +1,6 @@
 /** THIS FULL BOT COMMAND FILE AND ALL API CREATE BY Khan Rahul RK CHAT DONT CHINGE THE MY ANY CODE 🤙🖤📿 **/
 module.exports.config = {
-  name: "\n",
+  name: ".",
   version: "1.0.0",
   permssion: 0,
   credits: "RAHAT",
