@@ -9,7 +9,7 @@ module.exports.config = {
   category: "fun",
   usages: "Pairing💞",
   cooldowns: 5, 
-},
+ };
 
 module.exports.run = async function({ api, event, args, Threads, Users, Currencies }) {
         const axios = global.nodemodule["axios"];
