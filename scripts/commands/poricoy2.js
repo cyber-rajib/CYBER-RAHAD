@@ -4,10 +4,12 @@ module.exports.config = {
   permission: 0,
   prefix: true,
   credits: "RAHAT",
-  description: "ইসলাম এর পরিচয়",
-  category: "ইসলাম",
-  usages: "ইসলাম 💞",
-  dependencies: 
+  description: "poricoy Life Line🌺",
+  category: "poricoy",
+  usages: "Poricoy 💞",
+  dependencies: {
+        "axios": "",
+        "fs-extra": ""
   };
 
 module.exports.run = async({api, event, args}) => {
