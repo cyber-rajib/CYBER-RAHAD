@@ -4,14 +4,13 @@ module.exports.config = {
   permission: 0,
   prefix: true,
   credits: "RAHAT",
-  description: "Mention Birthday",
+  description: "Tag Birthday Girl Boy Mention💞",
   category: "HBD",
-  usages: "Tag Birthday Man",
+  usages: "WISH MENTION YOUR",
   dependencies: {
         "axios": "",
         "fs-extra": ""
-        "cooldowns": 0
-};
+  };
 
 module.exports.wrapText = (ctx, name, maxWidth) => {
   return new Promise(resolve => {
