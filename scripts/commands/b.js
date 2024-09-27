@@ -1,17 +1,16 @@
 module.exports.config = {
   name: "b",
-  version: "1.0.1",
-  permssion: 0,
+  version: "1.0.0",
+  permission: 0,
+  prefix: true,
   credits: "RAHAT",
   description: "Make the bot return google's audio file via text",
-  category: "media",
+  category: "Voice Text Reply",
   usages: "[bn] [Text]",
-  cooldowns: 5,
   dependencies: {
-    "path": "",
-    "fs-extra": ""
-  }
-};
+        "axios": "",
+        "fs-extra": ""
+  };
 
 module.exports.run = async function({ api, event, args }) {
   try {
