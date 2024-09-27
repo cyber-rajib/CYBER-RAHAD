@@ -7,20 +7,22 @@ const baseApiUrl = async () => {
   );
   return base.data.api;
 };
+
 module.exports.config = {
   name: "autolink",
-  version: "1.0.0",
-  permission: 0,
-  prefix: true,
+  version: "1.0.",
+  permssion: 0,
   credits: "RAHAT",
-  description: "facebook video download 🌺",
-  category: "MEDIA",
-  usages: "Auto download 💞",
+  description: "Fb Vid Downloader",
+  commandCategory: "other",
+  category: "others",
+  usags: "fb video link",
+  usePrefix: true,
+  prefix: true,
   cooldowns: 2,
   dependencies: {
-        "axios": "",
-        "fs-extra": ""
-  };
+    axios: "",
+    "fs-extra": "",
     tinyurl: "",
   },
 };
