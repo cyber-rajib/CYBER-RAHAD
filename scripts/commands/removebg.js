@@ -1,9 +1,9 @@
 module.exports.config = {
-  name: 'bg',
+  name: 'rmbg',
   version: '1.1.1',
   permssion: 0,
-  credits: 'SIDDIK',
-  prefix: 'awto',
+  credits: 'RAHAT',
+  prefix: 'true',
   description: 'Remove Photo Background',
   category: 'user',
   usages: 'rbg ( Reply images or url images )',
