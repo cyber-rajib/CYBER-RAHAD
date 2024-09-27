@@ -7,8 +7,9 @@ module.exports.config = {
   description: "Make the bot return google's audio file via text",
   category: "Voice Text Reply",
   usages: "[bn] [Text]",
+  cooldowns: 5,
   dependencies: {
-        "axios": "",
+        "path": "",
         "fs-extra": ""
   };
 
