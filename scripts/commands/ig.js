@@ -7,7 +7,8 @@ module.exports.config = {
   description: "ig",
   category: "no prefix",
   usages: "ig",
-  cooldowns: 5, 
+  cooldowns: 5,
+  dependencies: {
     "request":"",
     "fs-extra":"",
     "axios":""
