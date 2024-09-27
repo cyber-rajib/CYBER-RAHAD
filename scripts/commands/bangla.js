@@ -1,8 +1,8 @@
 module.exports.config = {
-  name: "bn",
+  name: "bangla",
   version: "1.0.1",
   permssion: 0,
-  credits: "SIDDIK",
+  credits: "RAHAT",
   prefix: false,
   description: "Text translation",
   category: "media",
