@@ -4,7 +4,7 @@ module.exports.config = {
     permssion: 0,
     prefix:false,
     premium:false,
-    credits: "SIDDIK",
+    credits: "RAHAT",
     description: "Bangladesh",
     category: "no prefix",
     usages: "",
