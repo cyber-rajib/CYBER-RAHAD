@@ -1,45 +1,39 @@
+const axios = require('axios');
+const baseApiUrl = async () => {
+  const base = await axios.get(`https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json`);
+  return base.data.api;
+}; 
 module.exports.config = {
   name: "dalle",
-  version: "1.0.0",
-  permission: 2,
-  prefix: true,
+  version: "1.0",
   credits: "RAHAT",
-  description: "It's a compound :>",
-  category: "fun",
-  usages: "dalle",
-  dependencies: {
-        "axios": "",
-        "fs-extra": ""
-  },
-
-module.exports.run = async function ({ api, event, args }) {
-  const prompt = event.messageReply?.body.split("dalle")[1] ||  args.join(" ");
-  if (!prompt) {
-   return api.sendMessage("❌| Wrong Formet .✅ | Use 17/18 years old boy/girl watching football match on tv and written RAHUL and 69 on the back of his Dress , 4k",event.threadID,event.messageID);
-  }
+  permssion: 2,
+  prefix: true,
+  prefix: true,
+  description: "Generate images by Dalle-3 AI",
+  category: "download",
+  category: "download",
+  usages:
+    "[text] \nJamon [A 17/18/19 years old boy/girl watching football match on tv and written Dipto and 69 on the back of his Dress , 4k]",
+  cooldowns: 5,
+}, 
+  run: async({ api, event, args }) => {
+    const prompt = (event.messageReply?.body.split("dalle")[1] || args.join(" ")).trim();
+    if (!prompt) return api.sendMessage("❌| Wrong Format. ✅ | Use: 17/18 years old boy/girl watching football match on TV with 'Dipto' and '69' written on the back of their dress, 4k", event.threadID, event.messageID);
     try {
-      const w = await api.sendMessage("𝙥𝙡𝙚𝙖𝙨𝙚 𝙬𝙞𝙩𝙝𝙚 𝙥𝙧𝙤𝙘𝙚𝙨𝙨𝙞𝙣𝙜 𝙮𝙤𝙪𝙧 𝙞𝙢𝙖𝙜𝙚 \n\n𝙠𝙝𝙖𝙣 𝙧𝙖𝙝𝙪𝙡 𝙧𝙠💞", event.threadID);
-
-const response = await axios.get(`https://www.noobs-api.000.pe/dipto/dalle?prompt=${prompt}&key=dipto008&cookies=1SJ5rtWR9TZuMqsF2fHv8J0Gv1LLmrteUOrqLvWuUah0bafIfMkAJLTLPjUk1vb4vyXE5YU_jlEt36n9hpQICAJdNDcluOWEC-WAF5mrbw1qTeTUvdFUPpoZNrke8lXmEGOl2JbJ3H9a_47Id-JgHpbJBmw_yugem-PEGRGE0bsKSitmvaA_z5EumeAOMvrrBFnl5wQKdEOez-d2txXQGxg`)
-      const data = response.data.imgUrls;
-      if (!data || data.length === 0) {
-        api.sendMessage("Empty response or no images generated.",event.threadID,event.messageID);
-      }
-      const diptoo = [];
-      for (let i = 0; i < data.length; i++) {
-        const imgUrl = data[i];
-        const imgResponse = await axios.get(imgUrl, { responseType: 'arraybuffer' });
-        const imgPath = path.join(__dirname, 'dalle', `${i + 1}.jpg`);
-        await fs.outputFile(imgPath, imgResponse.data);
-        diptoo.push(fs.createReadStream(imgPath));
-      }
-      await api.unsendMessage(w.messageID);
-      await api.sendMessage({
-  body: `𝙨𝙪𝙘𝙚𝙨𝙨𝙛𝙪𝙡 𝙮𝙤𝙪𝙧 𝙞𝙢𝙖𝙜𝙚 \n\n𝙠𝙝𝙖𝙣 𝙧𝙖𝙝𝙪𝙡 𝙧𝙠💞`,
-        attachment: diptoo
-      },event.threadID, event.messageID);
+       //const cookies = "cookies here (_U value)";
+const cookies = ["1WMSMa5rJ9Jikxsu_KvCxWmb0m4AwilqsJhlkC1whxRDp2StLDR-oJBnLWpoppENES3sBh9_OeFE6BT-Kzzk_46_g_z_NPr7Du63M92maZmXZYR91ymjlxE6askzY9hMCdtX-9LK09sUsoqokbOwi3ldOlm0blR_0VLM3OjdHWcczWjvJ78LSUT7MWrdfdplScZbtHfNyOFlDIGkOKHI7Bg"];
+const randomCookie = cookies[Math.floor(Math.random() * cookies.length)];
+      const wait = api.sendMessage("Wait koro baby 😽", event.threadID);
+      const response = await axios.get(`${await baseApiUrl()}/dalle?prompt=${prompt}&key=dipto008&cookies=${randomCookie}`);
+const imageUrls = response.data.imgUrls || [];
+      if (!imageUrls.length) return api.sendMessage("Empty response or no images generated.", event.threadID, event.messageID);
+      const images = await Promise.all(imageUrls.map(url => axios.get(url, { responseType: 'stream' }).then(res => res.data)));
+    api.unsendMessage(wait.messageID);
+   api.sendMessage({ body: `✅ | Here's Your Generated Photo 😘`, attachment: images }, event.threadID, event.messageID);
     } catch (error) {
       console.error(error);
-      await api.sendMessage(`Generation failed!\nError: ${error.message}`,event.threadID, event.messageID);
+      api.sendMessage(`Generation failed!\nError: ${error.message}`, event.threadID, event.messageID);
     }
-  };
+  }
+}
