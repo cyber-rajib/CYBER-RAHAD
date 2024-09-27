@@ -10,7 +10,8 @@ module.exports.config = {
   dependencies: {
         "axios": "",
         "fs-extra": ""
-  };
+   }
+ };
 
 module.exports.run = async function({ api, args, Users, event}) {
   var mention = Object.keys(event.mentions)[0];
