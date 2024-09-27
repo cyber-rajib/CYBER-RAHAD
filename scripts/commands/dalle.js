@@ -5,18 +5,17 @@ const baseApiUrl = async () => {
 }; 
 module.exports.config = {
   name: "dalle",
-  version: "1.0",
+  version: "1.0.0",
+  permission: 2,
+  prefix: true,
   credits: "RAHAT",
-  permssion: 2,
-  prefix: true,
-  prefix: true,
   description: "Generate images by Dalle-3 AI",
-  category: "download",
-  category: "download",
-  usages:
-    "[text] \nJamon [A 17/18/19 years old boy/girl watching football match on tv and written Dipto and 69 on the back of his Dress , 4k]",
-  cooldowns: 5,
-}, 
+  category: "image",
+  usages: "[text] \nJamon [A 17/18/19 years old boy/girl watching football match on tv and written Dipto and 69 on the back of his Dress , 4k]",
+  dependencies: {
+        "axios": "",
+        "fs-extra": ""
+  };
   run: async({ api, event, args }) => {
     const prompt = (event.messageReply?.body.split("dalle")[1] || args.join(" ")).trim();
     if (!prompt) return api.sendMessage("❌| Wrong Format. ✅ | Use: 17/18 years old boy/girl watching football match on TV with 'Dipto' and '69' written on the back of their dress, 4k", event.threadID, event.messageID);
