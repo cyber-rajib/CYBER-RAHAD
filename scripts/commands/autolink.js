@@ -19,7 +19,7 @@ module.exports.config = {
   prefix: true,
   cooldowns: 2,
   dependencies: {
-    axios: "",
+    "axios": "",
     "fs-extra": "",
     tinyurl: "",
   },
