@@ -21,17 +21,19 @@ async function getAvatarUrls(userIDs) {
         );
     }
 }
-module.exports = {
-    config: {
-        name: "gcimg",
-        version: "1.0",
-        credits: "RAHAT",
-        cooldowns: 5,
-        permission: 0,
-        description: "𝗚𝗲𝘁 𝗚𝗿𝗼𝘂𝗽 𝗜𝗺𝗮𝗴𝗲",
-        category: "𝗜𝗠𝗔𝗚𝗘",
-        usages: "{pn} --color [color] --bgcolor [color] --admincolor [color] --membercolor [color]",
-    },
+module.exports.config = {
+  name: "gcimg",
+  version: "1.0.0",
+  permission: 0,
+  prefix: true,
+  credits: "RAHAT",
+  description: "gcimg",
+  category: "Best Img",
+  usages: "{pn} --color [color] --bgcolor [color] --admincolor [color] --membercolor [color]",
+  dependencies: {
+        "axios": "",
+        "fs-extra": ""
+  };
 
     run: async function ({ api, args, event }) {
         try {
