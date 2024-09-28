@@ -15,10 +15,10 @@ module.exports.onLoad = function () {
     const { existsSync, mkdirSync } = global.nodemodule["fs-extra"];
     const { join } = global.nodemodule["path"];
 
-  const path = join(__dirname, "Siddik", "font");
+  const path = join(__dirname, "Siddik", "");
   if (existsSync(path)) mkdirSync(path, { recursive: true });	
 
-  const path2 = join(__dirname, "Siddik", "font");
+  const path2 = join(__dirname, "Siddik", "");
     if (!existsSync(path2)) mkdirSync(path2, { recursive: true });
 
     return;
@@ -46,7 +46,7 @@ module.exports.run = async function({ api, event }) {
 ╰┈➤ফেসবুক লিংক ☞ https://www.facebook.com/profile.php?id=100017950245626
  
 ╰┈➤ 2nd লিংক ☞ https://www.facebook.com/khan.rahulrk.127 🐰😗 
-`, attachment: fs.createReadStream(__dirname + "/Siddik/join.jpeg")} ,threadID));
+`, attachment: fs.createReadStream(__dirname + "")} ,threadID));
   }
   else {
     try {
@@ -54,7 +54,7 @@ module.exports.run = async function({ api, event }) {
       let { threadName, participantIDs } = await api.getThreadInfo(threadID);
 
       const threadData = global.data.threadData.get(parseInt(threadID)) || {};
-      const path = join(__dirname, "Siddik", "font");
+      const path = join(__dirname, "Siddik", "");
       const pathGif = join(path, `${threadID}.gif`);
 
       var mentions = [], nameArray = [], memLength = [], i = 0;
@@ -76,11 +76,11 @@ module.exports.run = async function({ api, event }) {
 
       if (existsSync(path)) mkdirSync(path, { recursive: true });
 
-      const randomPath = readdirSync(join(__dirname, "Siddik", "font"));
+      const randomPath = readdirSync(join(__dirname, "Siddik", ""));
 
       if (existsSync(pathGif)) formPush = { body: msg, attachment: createReadStream(pathGif), mentions }
       else if (randomPath.length != 0) {
-        const pathRandom = join(__dirname, "Siddik", "font", `${randomPath[Math.floor(Math.random() * randomPath.length)]}`);
+        const pathRandom = join(__dirname, "Siddik", "", `${randomPath[Math.floor(Math.random() * randomPath.length)]}`);
         formPush = { body: msg, attachment: createReadStream(pathRandom), mentions }
       }
       else formPush = { body: msg, mentions }
