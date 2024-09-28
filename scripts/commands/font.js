@@ -2,7 +2,7 @@ module.exports.config = {
   name: 'font',
   version: '1.1.0',
   permission: 0,
-  credits: 'SIDDIK',
+  credits: 'RAHAT',
   description: 'Converts text into any Font',
   category: 'Tools',
   prefix: false,
@@ -138,7 +138,7 @@ module.exports.run = async ({ event, api, args }) => {
  
   if (args.length === 0) {
     return api.sendMessage(
-      '✨ 𝐀𝐯𝐚𝐢𝐥𝐚𝐛𝐥𝐞 𝐅𝐨𝐧𝐭𝐬 𝐒𝐭𝐚𝐲𝐥𝐞 ✨\n✇━━━━━━━━━━━━━━━✇\n𝟏 - 𝓝𝓐𝓩𝓡𝓤𝓛 /𝓷𝓪𝔃𝓻𝓾𝓵\n𝟐 - ℕ𝔸ℤℝ𝕌𝕃 𝕟𝕒𝕫𝕣𝕦𝕝\n𝟑 - 𝗡𝗔𝗭𝗥𝗨𝗟 | 𝗻𝗮𝘇𝗿𝘂𝗹\n𝟒 - 𝑵𝑨𝒁𝑹𝑼𝑳 | 𝒏𝑎𝒛𝒓𝒖𝒍\n 𝟓 - 𝔑𝔄ℨℜ𝔘𝔏 | 𝔫𝔞𝔷𝔯𝔲𝔩\n𝟔 - SIDDIK | ɴᴀᴢʀᴜʟ\n𝟕 - 🅽🅰🆉🆁🆄🅻 \n𝟖 -🅝🅐🅩🅡🅤🅛\n𝟗 - 𝐍𝐀𝐙𝐑𝐔𝐋 | 𝐧𝐚𝐳𝐫𝐮𝐥\n𝟏𝟎 -𝙽𝙰𝚉𝚁𝚄𝙻 | 𝚗𝚊𝚣𝚛𝚞𝚕\nEx:-font 1 SIDDIK/siddik',
+      '✨ 𝐀𝐯𝐚𝐢𝐥𝐚𝐛𝐥𝐞 𝐅𝐨𝐧𝐭𝐬 𝐒𝐭𝐚𝐲𝐥𝐞 ✨',
       event.threadID,
       event.messageID
     );
