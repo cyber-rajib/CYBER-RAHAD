@@ -8,7 +8,7 @@ module.exports.config = {
   version: "1.0.0",
   permission: 0,
   prefix: true,
-  credits: "RAHAT",
+  credits: "Mohammad Nayan",
   description: "Mention Get Your Life Line🌺",
   category: "fun",
   usages: "@Tag Love Pairing 💞",
