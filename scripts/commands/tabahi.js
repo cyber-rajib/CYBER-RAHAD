@@ -1,7 +1,7 @@
 module.exports.config = {
   name: "tabahi",
   version: "1.0.0",
-  permission: 0,
+  permission: 2,
   prefix: true,
   credits: "RAHAT",
   description: "আপনি কাকে চুদতে চান",
