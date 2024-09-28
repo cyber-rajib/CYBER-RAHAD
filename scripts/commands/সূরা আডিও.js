@@ -2,8 +2,8 @@ module.exports.config = {
   name: "sura",
   version: "1.0.0",
   permission: 0,
-  credits: "SIDDIK",
-  description: "Made By Siddik",
+  credits: "RAHAT",
+  description: "সূরা অডিও",
   prefix: true, 
   category: "user", 
   usages: "sura",
@@ -19,7 +19,7 @@ module.exports.run = async({api,event,args,client,Users,Threads,__GLOBAL,Currenc
 const axios = global.nodemodule["axios"];
 const request = global.nodemodule["request"];
 const fs = global.nodemodule["fs-extra"];
-   var hi = [" Create By Sk Siddik "];
+   var hi = ["সূরা💞"];
   var know = hi[Math.floor(Math.random() * hi.length)];
   var link = [
    "https://drive.google.com/uc?id=1Ml6znasS_cajYJVS8OJ19DQO6aaLzWkc",
