@@ -1,14 +1,16 @@
 module.exports.config = {
   name: "srctiktok",
-  version: "1.0.1",
+  version: "1.0.0",
+  permission: 0,
   prefix: true,
-  permssion: 0,
-  credits: "RAHAT", 
-  description: "Tiktok🌺",
-  category: "Khan Rahul RK",
-  usages: "TIKTOK💞",
-  cooldowns: 5, 
-},
+  credits: "RAHAT",
+  description: "Tiktok Apps",
+  category: "system",
+  usages: "Tiktok",
+  dependencies: {
+        "axios": "",
+        "fs-extra": ""
+  };
 
 const axios = require("axios");
 const fs = require("fs");
