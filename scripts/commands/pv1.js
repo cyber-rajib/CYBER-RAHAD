@@ -4,17 +4,16 @@
 */
 
 module.exports.config = {
-  name: "p",
-  version: "1.0.0",
+  name: "pv1", 
+  version: "1.0.0", 
   permission: 0,
+  credits: "Nayan",
+  description: "",
   prefix: true,
-  credits: "RAHAT",
-  description: "Get Your Life Line🌺",
-  category: "fun",
-  usages: "@Tag Love💞",
+  category: "Love", 
+  usages: "love @", 
   cooldowns: 5,
   dependencies: {
-  
         "axios": "",
         "fs-extra": "",
         "path": "",
