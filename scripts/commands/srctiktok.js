@@ -1,60 +1,59 @@
+const axios = require("axios");
+
+const baseApiUrl = async () => {
+    const base = await axios.get(
+        `https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json`,
+    );
+    return base.data.api;
+};
+
 module.exports.config = {
-  name: "srctiktok",
-  version: "1.0.0",
-  permission: 0,
-  prefix: true,
-  credits: "RAHAT",
-  description: "Tiktok Apps",
-  category: "system",
-  usages: "Tiktok",
-  dependencies: {
-        "axios": "",
-        "fs-extra": ""
-  };
+    name: "srctiktok",
+    version: "1.0",
+    credits: "Khan Rahul RK",
+    cooldowns: 5,
+    permssion: 0,
+    description: "Search for TikTok videos",
+    category: "MEDIA",
+    prefix: true,
+    usages: "<search> - <optional: number of results | blank>",
+};
 
-module.exports.run = async function({ api, event, args }) {
-  try {
-    const searchQuery = args.join(" ");
-    if (!searchQuery) {
-      api.sendMessage("Usage: tiktok <search text>", event.threadID);
-      return;
-    }
-    
-    api.sendMessage("⏱️ | Searching, please wait...", event.threadID);
-    
-    const response = await axios.get(`https://cc-project-apis-jonell-magallanes.onrender.com/api/tiktok/searchvideo?keywords=${encodeURIComponent(searchQuery)}`);
-    const videos = response.data.data.videos;
-    
-    if (!videos || videos.length === 0) {
-      api.sendMessage("No videos found for the given search query.", event.threadID);
-      return;
+module.exports.run = async function ({ api, args, event }) {
+    let search = args.join(" ");
+    let searchLimit = 30;
+
+    const match = search.match(/^(.+)\s*-\s*(\d+)$/);
+    if (match) {
+        search = match[1].trim();
+        searchLimit = parseInt(match[2], 10);
     }
 
-    const videoData = videos[0];
-    const videoUrl = videoData.play;
-    
-    const message = `𝐓𝐢𝐤𝐭𝐨𝐤 𝐫𝐞𝐬𝐮𝐥𝐭:\n\n𝐏𝐨𝐬𝐭 𝐛𝐲: ${videoData.author.nickname}\n𝐔𝐬𝐞𝐫𝐧𝐚𝐦𝐞: ${videoData.author.unique_id}\n\n𝐓𝐢𝐭𝐥𝐞: ${videoData.title}`;
-    
-    const filePath = path.join(__dirname, `/cache/tiktok_video.mp4`);
-    const writer = fs.createWriteStream(filePath);
+    const apiUrl = `${await baseApiUrl()}/tiktoksearch?search=${encodeURIComponent(search)}&limit=${searchLimit}`;
 
-    const videoResponse = await axios({
-      method: 'get',
-      url: videoUrl,
-      responseType: 'stream'
-    });
+    try {
+        const response = await axios.get(apiUrl);
+        const data = response.data.data;
+        const videoData = data[Math.floor(Math.random() * data.length)];
 
-    videoResponse.data.pipe(writer);
+        const stream = await axios({
+            method: "get",
+            url: videoData.video,
+            responseType: "stream",
+        });
 
-    writer.on('finish', () => {
-      api.sendMessage(
-        { body: message, attachment: fs.createReadStream(filePath) },
-        event.threadID,
-        () => fs.unlinkSync(filePath)
-      );
-    });
-  } catch (error) {
-    console.error('Error:', error);
-    api.sendMessage("An error occurred while processing the request.", event.threadID);
-  }
+        let infoMessage = `🎥 Video Title: ${videoData.title}\n`;
+        infoMessage += `🔗 Video URL: ${videoData.video}\n`;
+
+        api.sendMessage(
+            { body: infoMessage, attachment: stream.data },
+            event.threadID,
+        );
+    } catch (error) {
+        console.error(error);
+        api.sendMessage(
+            "An error occurred while downloading the TikTok video.",
+            event.threadID,
+        );
+    }
 };
