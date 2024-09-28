@@ -2,7 +2,7 @@ module.exports.config = {
     name: "adduser",
     version: "1.0.0",
     permssion: 0,
-    credits: "SIDDIK",
+    credits: "RAHAT",
     description: "Add users to groups by link or UID",
     prefix: true,
     category: "Box chat",
@@ -28,10 +28,10 @@ if(link.indexOf(".com/")!==-1) {
   else { 
     var uidUser = args[0] 
     api.addUserToGroup(uidUser, threadID, (err) => {
-    if (participantIDs.includes(uidUser)) return api.sendMessage(`Sk Siddik Boss Already Add Ase 🖤`, threadID, messageID);
+    if (participantIDs.includes(uidUser)) return api.sendMessage(`Boss Already Add Ase 🖤`, threadID, messageID);
     if (err) return api.sendMessage(`Cannot add members to the group`, threadID, messageID);
     else if (approvalMode && !adminIDs.some(item => item.id == api.getCurrentUserID())) return api.sendMessage(`Add successful users to the browser list`, threadID, messageID);
-    else return api.sendMessage(`Sk Siddik Boss Add Done 😘`, threadID, messageID);
+    else return api.sendMessage(`Boss Add Done 😘`, threadID, messageID);
     });
   }
                        }
