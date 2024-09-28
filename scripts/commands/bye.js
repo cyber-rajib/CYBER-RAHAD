@@ -1,13 +1,14 @@
 module.exports.config = {
-	name: "bye",
-     	version: "1.0.1",
-	permssion: 0,
-	credits: "RAHUL", 
-	description: "No prefix",
-	category: "null",
-	usages: "...",
-    cooldowns: 1, 
-};
+  name: "bye",
+  version: "1.0.1",
+  prefix: true,
+  permssion: 0,
+  credits: "RAHAT", 
+  description: "No Prefix",
+  category: "bye",
+  usages: "bye",
+  cooldowns: 1, 
+},
 
 module.exports.handleEvent = function({ api, event, client, __GLOBAL }) {
 	var { threadID, messageID } = event;
