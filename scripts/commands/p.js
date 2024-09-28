@@ -12,6 +12,7 @@ module.exports.config = {
   description: "Get Your Life Line🌺",
   category: "fun",
   usages: "@Tag Love💞",
+  cooldowns: 5,
   dependencies: {
   
         "axios": "",
