@@ -1,32 +1,33 @@
 const axios = require("axios");
+const baseApiUrl = async () => {
+  const base = await axios.get(
+    `https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json`,
+  );
+  return base.data.api;
+};
 
-module.exports = {
-  config: {
-    name: "gimani",
-    version: "1.0",
-    credit: "SIDDIK",
-    prefix: 'awto',
-    description: "gemeini ai",
-    cooldowns: 5,
-    permission: 0,
-    category: "google",
-    usages: {
-      en: "{pn} message | photo reply",
-    },
-  },
-  run: async ({ api, args, event }) => {
+module.exports.config = {
+  name: "gemini",
+  version: "1.0",
+  permssion: 0,
+  credits: "RAHAT",
+  description: "gemeini ai",
+  usePrefix: true,
+  category: "google",
+  cooldowns: 5,
+};
+
+module.exports.run = async ({ api, args, event }) => {
     const prompt = args.join(" ");
     //---- Image Reply -----//
     if (event.type === "message_reply") {
       var t = event.messageReply.attachments[0].url;
       try {
-       const res = await axios.post('https://geminipro-3rhs.onrender.com/chat-with-gemini', {
-                modelType: 'text_and_image',
-                prompt: prompt || '',
-                imageParts: [t]
-            });
-            const mgs = res.data.result;
-        api.sendMessage(mgs, event.threadID, event.messageID);
+        const response = await axios.get(
+          `${await baseApiUrl()}/gemini?prompt=${encodeURIComponent(prompt)}&url=${encodeURIComponent(t)}`,
+        );
+        const data2 = response.data.dipto;
+        api.sendMessage(data2, event.threadID, event.messageID);
       } catch (error) {
         console.error("Error:", error.message);
         api.sendMessage(error, event.threadID, event.messageID);
@@ -35,18 +36,17 @@ module.exports = {
     //---------- Message Reply ---------//
     else if (!prompt) {
       return api.sendMessage(
-        "দয়া করে একটা ফটোতে রিপ্লাই দিন",
+        "Please provide a prompt or message reply",
         event.threadID,
         event.messageID,
       );
     } else {
       try {
-       const res = await axios.post('https://geminipro-3rhs.onrender.com/chat-with-gemini', {
-                modelType: 'text_only',
-                prompt: prompt
-            });
-            const mgs = res.data.result;
-        api.sendMessage(mgs, event.threadID, event.messageID);
+        const respons = await axios.get(
+          `${await baseApiUrl()}/gemini?prompt=${encodeURIComponent(prompt)}`,
+        );
+        const message = respons.data.dipto;
+        api.sendMessage(message, event.threadID, event.messageID);
       } catch (error) {
         console.error("Error calling Gemini AI:", error);
         api.sendMessage(
@@ -56,5 +56,4 @@ module.exports = {
         );
       }
     }
-  },
-};
+  }
