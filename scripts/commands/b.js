@@ -1,6 +1,6 @@
 module.exports.config = {
   name: "b",
-  version: "1.0.0",
+  version: "1.0.1",
   permission: 0,
   prefix: true,
   credits: "RAHAT",
@@ -9,8 +9,9 @@ module.exports.config = {
   usages: "[bn] [Text]",
   cooldowns: 5,
   dependencies: {
-        "axios": "",
+        "axios": "path",
         "fs-extra": ""
+   }
   };
 
 module.exports.run = async function({ api, event, args }) {
