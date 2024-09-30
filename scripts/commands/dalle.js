@@ -3,11 +3,12 @@ const baseApiUrl = async () => {
   const base = await axios.get(`https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json`);
   return base.data.api;
 }; 
-module.exports.config = {
+module.exports = {
+  config: {
   name: "dalle",
   version: "1.0",
   credits: "RAHAT KHAN",
-  permssion: 2,
+  hasPermssion: 2,
   prefix: true,
   description: "Generate images by Dalle-3 AI",
   category: "download",
