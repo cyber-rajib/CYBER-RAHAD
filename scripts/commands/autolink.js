@@ -22,7 +22,7 @@ module.exports.config = {
     axios: "",
     "fs-extra": "",
     tinyurl: "",
-  },
+  }
 };
 
 module.exports.handleEvent = async function ({ api, event, client, __GLOBAL }) {
