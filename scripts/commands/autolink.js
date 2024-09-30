@@ -10,20 +10,17 @@ const baseApiUrl = async () => {
 
 module.exports.config = {
   name: "autolink",
-  version: "1.0.",
-  permssion: 0,
+  version: "1.0.0",
+  permission: 0,
+  prefix: true,
   credits: "𝗥𝗔𝗛𝗔𝗧 𝗞𝗛𝗔𝗡",
   description: "𝑨𝒍𝒍 𝑽𝒊𝑑𝑒𝒐 𝑫𝒐𝒘𝒏𝒍𝒐𝑎𝑑𝑒𝒓",
   category: "𝗼𝘁𝗵𝗲𝗿𝘀",
-  usags: "𝗔𝗹𝗹 𝗩𝗶𝗱𝗲𝗼 𝗟𝗶𝗻𝗸",
-  prefix: true,
-  cooldowns: 2,
+  usages: "𝗔𝗹𝗹 𝗩𝗶𝗱𝗲𝗼 𝗟𝗶𝗻𝗸",
   dependencies: {
-    axios: "",
-    "fs-extra": "",
-    tinyurl: "",
-  }
-};
+        "axios": "",
+        "fs-extra": ""
+  };
 
 module.exports.handleEvent = async function ({ api, event, client, __GLOBAL }) {
   let dipto = event.body ? event.body : "";
