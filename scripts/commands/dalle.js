@@ -1,60 +1,37 @@
- module.exports = {
-  config: {
-    name: "dalle",
-    version: "1.0.0",
-    permission: 2,
-    credits: "RAHAT",
-    description: "",
-    prefix: 'true',
-    category: "DALLE",
-    usages: "bing prompt",
-    cooldowns: 10,
-},
-
-   languages: {
-   "vi": {},
-       "en": {
-           "missing": 'use : /bing cat'
-       }
-   },
-
-start: async function({ nayan, events, args, lang}) {
-    const axios = require("axios");
-    const fs = require("fs-extra");
-    const request = require("request");
-    const prompt = args.join(" ");
-    const key = this.config.credits;
-    const apis = await axios.get('https://raw.githubusercontent.com/MOHAMMAD-NAYAN/Nayan/main/api.json')
-  const n = apis.data.bing
-    if(!prompt) return nayan.reply(lang('missing'), events.threadID, events.messageID)
-
-  const rndm = ['1sgtcfEs2Lk-uxkTXKxxZl8E08p74cmNXg6luQKtC25L2pFe_BuCrjiut0dWAm9gg7pfOhx7BFhMMvfsXkIbHemrJ4kTtI4tHMH5RJZYTnure-8qpf54f-7KG5_FvrudPdxR6QuTphq0nizyqO2IOmqSkUh0NIV5NmFRj_RghARE1hP0DhsqZCPv9IEi1Iw7KXZQxtO8Dot2WQWqjlXE5bw'] // input your cookie hare
-
-  var cookie = rndm[Math.floor(Math.random() * rndm.length)];
-
-
-    const res = await axios.get(`${n}/bing-img?key=${key}&cookie=${cookie}&prompt=${encodeURIComponent(prompt)}`);
-
-
-  console.log(res.data)
-    const data = res.data.result;
-  const numberSearch = data.length
-    var num = 0;
-    var imgData = [];
-    for (var i = 0; i < parseInt(numberSearch); i++) {
-      let path = __dirname + `/cache/${num+=1}.jpg`;
-      let getDown = (await axios.get(`${data[i]}`, { responseType: 'arraybuffer' })).data;
-      fs.writeFileSync(path, Buffer.from(getDown, 'utf-8'));
-      imgData.push(fs.createReadStream(__dirname + `/cache/${num}.jpg`));
+const axios = require('axios');
+const baseApiUrl = async () => {
+  const base = await axios.get(`https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json`);
+  return base.data.api;
+}; 
+module.exports.config = {
+  name: "dalle",
+  version: "1.0",
+  credits: "RAHAT KHAN",
+  permssion: 2,
+  prefix: true,
+  description: "Generate images by Dalle-3 AI",
+  category: "download",
+  usages:
+    "[text] \nJamon [A 17/18/19 years old boy/girl watching football match on tv and written Rahul and 69 on the back of his Dress , 4k]",
+  cooldowns: 5,
+}, 
+  run: async({ api, event, args }) => {
+    const prompt = (event.messageReply?.body.split("dalle")[1] || args.join(" ")).trim();
+    if (!prompt) return api.sendMessage("❌| Wrong Format. ✅ | Use: 17/18 years old boy/girl watching football match on TV with 'Rahul' and '69' written on the back of their dress, 4k", event.threadID, event.messageID);
+    try {
+       //const cookies = "cookies here (_U value)";
+const cookies = ["1sgtcfEs2Lk-uxkTXKxxZl8E08p74cmNXg6luQKtC25L2pFe_BuCrjiut0dWAm9gg7pfOhx7BFhMMvfsXkIbHemrJ4kTtI4tHMH5RJZYTnure-8qpf54f-7KG5_FvrudPdxR6QuTphq0nizyqO2IOmqSkUh0NIV5NmFRj_RghARE1hP0DhsqZCPv9IEi1Iw7KXZQxtO8Dot2WQWqjlXE5bw"];
+const randomCookie = cookies[Math.floor(Math.random() * cookies.length)];
+      const wait = api.sendMessage("Wait koro baby 😽", event.threadID);
+      const response = await axios.get(`${await baseApiUrl()}/dalle?prompt=${prompt}&key=dipto008&cookies=${randomCookie}`);
+const imageUrls = response.data.imgUrls || [];
+      if (!imageUrls.length) return api.sendMessage("Empty response or no images generated.", event.threadID, event.messageID);
+      const images = await Promise.all(imageUrls.map(url => axios.get(url, { responseType: 'stream' }).then(res => res.data)));
+    api.unsendMessage(wait.messageID);
+   api.sendMessage({ body: `✅ | Here's Your Generated Photo 😘`, attachment: images }, event.threadID, event.messageID);
+    } catch (error) {
+      console.error(error);
+      api.sendMessage(`Generation failed!\nError: ${error.message}`, event.threadID, event.messageID);
     }
-
-
-    nayan.reply({
-        attachment: imgData,
-        body: "🔍Bing Search Result🔍\n\n📝Prompt: " + prompt + "\n\n#️⃣Number of Images: " + numberSearch
-    }, events.threadID, events.messageID)
-    for (let ii = 1; ii < parseInt(numberSearch); ii++) {
-        fs.unlinkSync(__dirname + `/cache/${ii}.jpg`)
-    }
+  }
 }
- }
