@@ -3,7 +3,7 @@ module.exports = {
     name: "autolink",
     version: "0.0.2",
     permission: 0,
-    prefix: 'awto',
+    prefix: true,
     credits: "𝗥𝗔𝗛𝗔𝗧 𝗞𝗛𝗔𝗡",
     description: "𝑨𝒍𝒍 𝑽𝒊𝑑𝑒𝒐 𝑫𝒐𝒘𝒏𝒍𝒐𝑎𝑑𝑒𝒓",
     category: "𝗼𝘁𝗵𝗲𝗿𝘀",
@@ -17,7 +17,7 @@ handleEvent: async function ({ api, event, args }) {
     const fs = require("fs-extra")
   const content = event.body ? event.body : '';
   const body = content.toLowerCase();
-  const {alldown} = require("https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json")
+  const {alldown} = require("nayan-media-downloader")
   if (body.startsWith("https://")) {
   api.setMessageReaction("🔍", event.messageID, (err) => {}, true);
 const data = await alldown(content);
@@ -28,13 +28,12 @@ const data = await alldown(content);
       responseType: "arraybuffer",
     })).data;
     fs.writeFileSync(__dirname + "/cache/auto.mp4", Buffer.from(video, "utf-8"))
- 
+
         return api.sendMessage({
             body: `《TITLE》: ${title}`,
             attachment: fs.createReadStream(__dirname + "/cache/auto.mp4")
- 
+
         }, event.threadID, event.messageID);
     }
 }
 }
- 
