@@ -2,8 +2,7 @@ const axios = require('axios');
 const fs = require('fs-extra');
 const path = require('path');
 
-module.exports = {
-  config: {
+module.exports.config = {
   name: "dalle",
   version: "1.0",
   credits: "𝑹𝑨𝑯𝑨𝑻 𝑲𝑯𝑨𝑵",
