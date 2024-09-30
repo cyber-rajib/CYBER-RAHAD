@@ -20,11 +20,6 @@ module.exports = {
     usages: "𝗔𝗹𝗹 𝗩𝗶𝗱𝗲𝗼 𝗟𝗶𝗻𝗸",
     cooldowns: 5,
 },
-    axios: "",
-    "fs-extra": "",
-    tinyurl: "",
-  },
-};
 
 module.exports.handleEvent = async function ({ api, event, client, __GLOBAL }) {
   let dipto = event.body ? event.body : "";
