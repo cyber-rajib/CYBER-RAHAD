@@ -8,7 +8,7 @@ module.exports = {
   name: "dalle",
   version: "1.0",
   credits: "𝑹𝑨𝑯𝑨𝑻 𝑲𝑯𝑨𝑵",
-  permssion: 0,
+  permssion: 2,
   prefix: true,
   description: "𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲 𝗜𝗺𝗮𝗴𝗲𝘀 𝗯𝘆 𝗗𝗮𝗹𝗹𝗲- 𝗔𝗜",
   category: "𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱",
