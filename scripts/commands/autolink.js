@@ -8,7 +8,8 @@ const baseApiUrl = async () => {
   return base.data.api;
 };
 
-module.exports.config = {
+module.exports = {
+  config:
   name: "autolink",
   version: "1.0.",
   permssion: 0,
