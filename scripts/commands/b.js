@@ -8,9 +8,9 @@ module.exports.config = {
   category: "media",
   usages:   "[bn] [Text]",
   cooldowns: 5, 
-  
-    "path": "",
-    "fs-extra": ""
+  "request":"",
+    "fs-extra":"",
+    "axios":""
   }
 };
 
