@@ -9,7 +9,7 @@ const baseApiUrl = async () => {
 };
 
 module.exports = {
-  config:
+  config:{
   name: "autolink",
   version: "1.0.",
   permssion: 0,
