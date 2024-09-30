@@ -8,12 +8,11 @@ const baseApiUrl = async () => {
   return base.data.api;
 };
 
-module.exports = {
-  config:{
+module.exports.config = {
     name: "autolink",
     version: "0.0.2",
     permission: 0,
-    prefix: 'awto',
+    prefix: 'true',
     credits: "𝗥𝗔𝗛𝗔𝗧 𝗞𝗛𝗔𝗡",
     description: "𝑨𝒍𝒍 𝑽𝒊𝑑𝑒𝒐 𝑫𝒐𝒘𝒏𝒍𝒐𝑎𝑑𝑒𝒓",
     category: "𝗼𝘁𝗵𝗲𝗿𝘀",
