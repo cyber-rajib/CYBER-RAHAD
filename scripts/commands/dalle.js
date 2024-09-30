@@ -2,16 +2,19 @@ const axios = require('axios');
 const fs = require('fs-extra');
 const path = require('path');
 
-module.exports.config = {
-    name: "dalle",
-    version: "1.0",
-    credits: "RAHUL",
-    permssion: 2,
-    description: "Generate images by Dalle-3 AI",
-    category: "download",
-    usages: "[text] \nJamon [A 17/18/19 years old boy/girl watching football match on tv and written 𝑹𝑨𝑯𝑨𝑻 𝑲𝑯𝑨𝑵 and 69 on the back of his Dress , 4k]",
-    cooldowns: 5
-  };
+module.exports = {
+  config: {
+  name: "dalle",
+  version: "1.0",
+  credits: "𝑹𝑨𝑯𝑨𝑻 𝑲𝑯𝑨𝑵",
+  permssion: 2,
+  prefix: true,
+  description: "𝗚𝗲𝗻𝗲𝗿𝗮𝘁𝗲 𝗜𝗺𝗮𝗴𝗲𝘀 𝗯𝘆 𝗗𝗮𝗹𝗹𝗲- 𝗔𝗜",
+  category: "𝗗𝗼𝘄𝗻𝗹𝗼𝗮𝗱",
+  usages:
+    "[text] \nJamon [A 17/18/19 years old boy/girl watching football match on tv and written 𝑹𝑨𝑯𝑨𝑻 𝑲𝑯𝑨𝑵 and 69 on the back of his Dress , 4k]",
+  cooldowns: 5,
+},
 
 module.exports.run = async function ({ api, event, args }) {
   const prompt = event.messageReply?.body.split("dalle")[1] ||  args.join(" ");
