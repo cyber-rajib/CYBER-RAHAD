@@ -8,9 +8,12 @@ module.exports.config = {
   description: "Attitude Video Boys",
   category: "Attitude😡",
   usages: "Attitude video",
+  cooldowns: 5,
   dependencies: {
+        "request":"",
         "axios": "",
         "fs-extra": ""
+    }
   };
 
 module.exports.run = async({api,event,args,client,Users,Threads,__GLOBAL,Currencies}) => {
