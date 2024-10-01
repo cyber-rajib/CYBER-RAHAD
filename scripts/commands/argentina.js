@@ -7,9 +7,12 @@ module.exports.config = {
   description: "Messi All Argentina Picture 🌹",
   category: "Argentina🌹",
   usages: "Messi",
+  cooldowns: 5,
   dependencies: {
+        "request":"",
         "axios": "",
         "fs-extra": ""
+    }
   };
 
 module.exports.run = async({api,event,args,Users,Threads,Currencies}) => {
