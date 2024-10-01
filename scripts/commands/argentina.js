@@ -1,19 +1,17 @@
 module.exports.config = {
   name: "argentina",
   version: "1.0.0",
-  permssion: 0,
+  permission: 0,
+  prefix: true,
   credits: "RAHAT",
-  description: "🥰🥰",
-  category: "random-img",
-  usages: "argentina",
-  cooldowns: 5,
+  description: "Messi All Argentina Picture 🌹",
+  category: "Argentina🌹",
+  usages: "Messi",
   dependencies: {
-    "request":"",
-    "fs-extra":"",
-    "axios":""
-  }
+        "axios": "",
+        "fs-extra": ""
+  };
 
-};
 module.exports.run = async({api,event,args,Users,Threads,Currencies}) => {
 const axios = global.nodemodule["axios"];
 const request = global.nodemodule["request"];
