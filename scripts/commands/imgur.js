@@ -8,15 +8,17 @@ const baseApiUrl = async () => {
 
 module.exports.config = {
   name: "imgur",
-  version: "1.0.1",
+  version: "1.0.0",
+  permission: 0,
   prefix: true,
-  permssion: 0,
-  credits: "RAHAT", 
+  credits: "RAHAT",
   description: "convert image/video into Imgur link"",
-  category: "MEDIA",
+  category: "Media",
   usages: "reply [image, video]",
-  }
-};
+  dependencies: {
+        "axios": "",
+        "fs-extra": ""
+  };
 
   (module.exports.run = async function ({ api, event }) {
     const dip = event.messageReply?.attachments[0]?.url;
