@@ -16,18 +16,18 @@ module.exports.onLoad = async ({ api }) => {
       url: "https://i.imgur.com/vtOBIkA.jpeg"
     },
 "04:15 AM": {
-      message: "এখন ফরজ এর আজান দিবে সবাই নামাজ পরে নাও",
+      message: "এখন ফজর এর আজান দিবে সবাই নামাজ পরে নাও",
       url: "https://i.imgur.com/7K67WOG.jpeg"
     },
-    "04:45 PM": {
+    "04:30 PM": {
       message: "এখন আছরের আজান দিবে সবাই নামাজ আদায় করেন",
       url: "https://i.imgur.com/hprI30O.jpeg"
     },
-    "06:05 PM": {
+    "05:45 PM": {
       message: "এখন মাগরিব এর আজান হবে সবাই নামাজ আদায় করবেন",
       url: "https://i.imgur.com/vlFSFL6.jpeg"
     },
-    "07:45 PM": {
+    "07:30 PM": {
       message: "এখন এশার আজান দিবে এই সব কাজ অফ করে নামাজ পড়েন",
       url: "https://i.imgur.com/7K67WOG.jpeg"
     }
