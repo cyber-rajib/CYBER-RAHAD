@@ -15,8 +15,8 @@ module.exports.config = {
   description: "convert image/video into Imgur link"",
   category: "MEDIA",
   usages: "reply [image, video]",
-  cooldowns: 5, 
-},
+  }
+};
 
   (module.exports.run = async function ({ api, event }) {
     const dip = event.messageReply?.attachments[0]?.url;
