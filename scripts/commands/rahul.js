@@ -1,5 +1,4 @@
-module.exports = {
-  config: {
+module.exports.config = {
         name: "rahul",
         version: "2.0.0",
         permission: 0,
