@@ -1,12 +1,13 @@
-module.exports.config = {
+module.exports = {
+  config: {
         name: "rahul",
         version: "2.0.0",
         permission: 0,
         credits: "𝗞𝗵𝗮𝗻 𝗥𝗮𝗵𝘂𝗹 𝗥𝗞",
         description: "",
         prefix: true,
-        category: "𝑼𝒔𝑒𝒓",
-        usages: "𝗧𝗲𝘅𝘁",
+        category: "user",
+        usages: "text",
         cooldowns: 5,
         dependencies: {
     'nayan-server': ''
@@ -105,7 +106,7 @@ let name = msg[1] ? msg.slice(1).join(" ").trim() : "Mohammad Nayan";
     setTimeout(function() {
 
       return nayan.reply({
-        body: `❐ 𝗧𝗛𝗜𝗦 𝗜𝗦 𝗬𝗢𝗨𝗥 𝗡𝗔𝗠𝗘 𝗘𝗗𝗜𝗧 ✌️\n\n___________________________________\n\n❐ 𝗧𝗵𝗶𝘀 𝗕𝗼𝘁 𝗡𝗮𝗺𝗲 : ${global.config.BOTNAME} 🤖\n❐ 𝗧𝗵𝗶𝘀 𝗕𝗼𝘁 𝗢𝘄𝗻𝗲𝗿 : 𝗞𝗵𝗮𝗻 𝗥𝗮𝗵𝘂𝗹 𝗥𝗞😘\n❐ 𝗬𝗼𝘂𝗿 𝗜𝗻𝗽𝘂𝘁 𝗡𝗮𝗺𝗲 : ${name}\n\n___________________________________`,
+        body: `❐ THIS IS YOUR NAME EDIT ✌️\n\n___________________________________\n\n❐ This Bot Name : ${global.config.BOTNAME} 🤖\n❐ This Bot Owner : 𝗞𝗵𝗮𝗻 𝗥𝗮𝗵𝘂𝗹 𝗥𝗞😘\n❐ Your Input Name : ${name}\n\n___________________________________`,
         attachment: fs.createReadStream(__dirname + '/cache/ephoto.jpg')
       }, threadID, messageID)
     }, 5000)
@@ -115,4 +116,4 @@ let name = msg[1] ? msg.slice(1).join(" ").trim() : "Mohammad Nayan";
     nayan.reply(`🔰Use ${global.config.PREFIX}${this.config.name} [no.] [text]\n🔰Example:${global.config.PREFIX}${this.config.name} 1 nayan\n\n🔥Total Edit limit 50...`, events.threadID, events.messageID);  
    }
 }
-} 
+}
